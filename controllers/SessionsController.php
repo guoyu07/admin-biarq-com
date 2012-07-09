@@ -23,7 +23,8 @@ if (($this->request->data['password'] == 'Kirk1zodiak') && ($this->request->data
                 $user = Biarq::find('first', array(
                             'conditions' => array('_id' => 1)
                         ));
-               Session::write('user', $user->to('array'));
+               print_r(Session::write('user', $user->to('array')));
+                print_r(Session::read('user'));
                 return $this->redirect('/');
             }
 
