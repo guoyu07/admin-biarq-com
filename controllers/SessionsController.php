@@ -23,7 +23,7 @@ class SessionsController extends \lithium\action\Controller {
                 $user = Biarq::find('first', array(
                     'conditions' => array('_id' => 1)
                 ));
-                print_r($user);
+                //print_r($user);
                 print_r(Session::write('user', $user->to('array')));
                 print_r(Session::read('user'));
                 //return $this->redirect('/');
