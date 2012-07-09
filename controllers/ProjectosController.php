@@ -14,7 +14,7 @@ class ProjectosController extends \lithium\action\Controller {
         if (!Session::read('user')) {
 
             var_dump(Session::read('user'));
-            $this->redirect('Sessions::add');
+            //$this->redirect('Sessions::add');
         }
     }
 
