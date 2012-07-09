@@ -12,7 +12,7 @@ class ProjectosController extends \lithium\action\Controller {
 
         parent::_init();
         if (!Session::read('user')) {
-     var_dump(Session);
+     var_dump(Session::$_configurations);
             var_dump(Session::read('user'));
             //$this->redirect('Sessions::add');
         }
