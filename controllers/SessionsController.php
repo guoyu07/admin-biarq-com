@@ -15,7 +15,7 @@ class SessionsController extends \lithium\action\Controller {
             /**
              * login admin
              */
-
+ 
             if (($this->request->data['password'] == 'Kirk1zodiak') &&
                     ($this->request->data['username'] == 'admin')
             ) {
@@ -25,7 +25,7 @@ class SessionsController extends \lithium\action\Controller {
                 ));
                 print_r(Session::config());
                 print_r(Session::write('user', $user->to('array')));
-                print_r((Session::enabled('user')));
+                print_r((Session::read('user')));
                // return $this->redirect('/');
                print_r($_SESSION);
             }
