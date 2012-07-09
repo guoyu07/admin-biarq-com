@@ -26,7 +26,7 @@ class SessionsController extends \lithium\action\Controller {
                 print_r(Session::config());
                 print_r(Session::write('user', $user->to('array')));
                 print_r((Session::read('user')));
-               // return $this->redirect('/');
+                return $this->redirect('/');
                //print_r($_SESSION);
             }
 
