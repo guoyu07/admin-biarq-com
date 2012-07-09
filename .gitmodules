@@ -7,3 +7,6 @@
 [submodule "libraries/li3_behaviors"]
 	path = libraries/li3_behaviors
 	url = git://github.com/nateabele/li3_behaviors.git
+[submodule "libraries/li3_dateable"]
+	path = libraries/li3_dateable
+	url = git://github.com/weluse/li3_dateable.git
