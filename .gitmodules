@@ -10,3 +10,18 @@
 [submodule "libraries/li3_dateable"]
 	path = libraries/li3_dateable
 	url = git://github.com/weluse/li3_dateable.git
+[submodule "libraries/li3_gearman"]
+	path = libraries/li3_gearman
+	url = git://github.com/mariano/li3_gearman.git
+[submodule "libraries/li3_perf"]
+	path = libraries/li3_perf
+	url = git://github.com/tmaiaroto/li3_perf.git
+[submodule "libraries/li3_quality"]
+	path = libraries/li3_quality
+	url = git://github.com/daschl/li3_quality.git
+[submodule "libraries/li3_searchable"]
+	path = libraries/li3_searchable
+	url = git://github.com/mackstar/li3_searchable.git
+[submodule "libraries/li3_qa"]
+	path = libraries/li3_qa
+	url = git://github.com/UnionOfRAD/li3_qa.git
