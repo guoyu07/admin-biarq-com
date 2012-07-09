@@ -26,7 +26,7 @@ class SessionsController extends \lithium\action\Controller {
                 print_r($user);
                 print_r(Session::write('user', $user->to('array')));
                 print_r(Session::read('user'));
-                return $this->redirect('/');
+                //return $this->redirect('/');
             }
 
             $user = Biarq::find('first', array(
