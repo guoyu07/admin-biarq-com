@@ -4,3 +4,6 @@
 [submodule "webroot/img/projectos"]
 	path = webroot/img/projectos
 	url = git://github.com/thesyncim/projectosimg.git
+[submodule "libraries/li3_behaviors"]
+	path = libraries/li3_behaviors
+	url = git://github.com/nateabele/li3_behaviors.git
