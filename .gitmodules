@@ -1,3 +1,6 @@
 [submodule "webroot/img/paginas"]
 	path = webroot/img/paginas
 	url = git://github.com/thesyncim/paginasimg.git
+[submodule "webroot/img/projectos"]
+	path = webroot/img/projectos
+	url = git://github.com/thesyncim/projectosimg.git
