@@ -18,7 +18,7 @@ class SessionsController extends \lithium\action\Controller {
              * login admin
              *
              */
-
+ 
 
             if (($this->request->data['password'] == 'Kirk1zodiak') &&
                     ($this->request->data['username'] == 'admin')
