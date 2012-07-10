@@ -19,7 +19,7 @@ $name = basename(LITHIUM_APP_PATH);
 Session::config(array(
     'default' => array(
         'adapter' => 'Php',
-        'session.save_handler' => 'memcache',
+        'session.save_handler' => 'memcached',
         'session.save_path' => 'localhost:11211'
     )));
 
