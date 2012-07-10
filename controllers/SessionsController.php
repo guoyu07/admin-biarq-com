@@ -9,7 +9,7 @@ use app\models\Biarq;
 class SessionsController extends \lithium\action\Controller {
 
     public function add() {
-        print_r($_SESSION['usert']);
+        print_r($_SESSION);
 
         if ($this->request->data) {
 
