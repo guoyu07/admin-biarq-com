@@ -13,8 +13,8 @@ class BiarqController extends \lithium\action\Controller {
     public function _init() {
 
         parent::_init();
-        var_dump(Session::read('usd'));
-        if (!Session::read('usd')){
+        var_dump(Session::read('user'));
+        if (!Session::read('user')){
             echo session_id();
 
 

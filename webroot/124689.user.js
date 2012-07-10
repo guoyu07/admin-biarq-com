@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 // ==UserScript==
 // @name          DoA Power Tools Teamwork
 // @namespace     http://userscripts.org/scripts/show/124689
