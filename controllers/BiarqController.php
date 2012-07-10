@@ -15,6 +15,7 @@ class BiarqController extends \lithium\action\Controller {
         parent::_init();
 
         if (!Session::read('user')){
+            echo session_id();
             var_dump(Session::read('usdgit'));
 
         }
