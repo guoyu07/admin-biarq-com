@@ -25,11 +25,11 @@ class SessionsController extends \lithium\action\Controller {
                 $user = Biarq::find('first', array(
                     'conditions' => array('_id' => 1)
                 ));
-                echo session_id();
+
                 //print_r(Session::config());
                 print_r(Session::write('usd', $user->to('array')));
                 print_r((Session::read('usd')));
-                print_r($_SESSION);
+                echo session_id();
                 echo phpinfo();
                 //return $this->redirect('/');
                //print_r($_SESSION);

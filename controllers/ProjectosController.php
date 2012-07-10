@@ -11,11 +11,11 @@ class ProjectosController extends \lithium\action\Controller {
     public function _init() {
 
         parent::_init();
-        session_start();
-        if (!Session::read('usert')) {
+        print_r(Session::read('usd'));
+
+        if (!Session::read('usd')) {
             echo session_id();
            // print_r(Session::config());
-            print_r($_SESSION);
 
             //var_dump(Session::read('user'));
             //$this->redirect('Sessions::add');
