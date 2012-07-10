@@ -14,6 +14,7 @@ use lithium\storage\Session;
 use lithium\security\Auth;
 use lithium\core\Libraries;
 
+print_r(Libraries::get(true, 'resources') . ' / tmp / ');
 $name = basename(LITHIUM_APP_PATH);
 Session::config(array(
     'cookie' => array('adapter' => 'Cookie', 'name' => $name),
