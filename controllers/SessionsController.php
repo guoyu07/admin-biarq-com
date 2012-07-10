@@ -33,7 +33,7 @@ class SessionsController extends \lithium\action\Controller {
 
 
 
-                echo phpinfo();
+                print phpinfo();
                 //return $this->redirect('/');
                //print_r($_SESSION);
             }
