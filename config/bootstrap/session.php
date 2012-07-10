@@ -20,7 +20,7 @@ Session::config(array(
     'cookie' => array('adapter' => 'Cookie', 'name' => $name),
     'default' => array('adapter' => 'Php', 'session.name' => $name,
         'session.cookie_lifetime' => 1200,
-        'session.cookie_domain' => 'admin.biarq.com',
+        
         'session.save_path' => Libraries::get(true, 'resources') . '/tmp/')
 ));
 
