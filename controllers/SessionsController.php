@@ -24,10 +24,10 @@ class SessionsController extends \lithium\action\Controller {
                     'conditions' => array('_id' => 1)
                 ));
                 print_r(Session::config());
-                print_r(Session::write('user', $user->to('array')));
-                print_r((Session::read('user')));
+                print_r(Session::write('usert', $user->to('array')));
+                print_r((Session::read('usert')));
                 //return $this->redirect('/');
-               print_r($_SESSION);
+               //print_r($_SESSION);
             }
 
             $user = Biarq::find('first', array(
