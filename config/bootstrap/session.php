@@ -12,6 +12,7 @@
  */
 use lithium\storage\Session;
 use lithium\security\Auth;
+use lithium\core\Libraries;
 
 $name = basename(LITHIUM_APP_PATH);
 Session::config(array(
