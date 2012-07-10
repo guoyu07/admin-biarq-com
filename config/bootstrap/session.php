@@ -12,9 +12,11 @@
  */
 use lithium\storage\Session;
 use lithium\security\Auth;
-Session::config(array(
 
-	'default' => array('adapter' => 'Php')
+$name = basename(LITHIUM_APP_PATH);
+Session::config(array(
+    'cookie' => array('adapter' => 'Cookie', 'name' => $name),
+    'default' => array('adapter' => 'Php', 'session.name' => $name)
 ));
 
 /**
@@ -37,13 +39,13 @@ Session::config(array(
  */
 
 
- Auth::config(array(
+ /*Auth::config(array(
  	'teste' => array(
  		'adapter' => 'Form',
  		'model' => 'Utilizadores',
  		'fields' => array('username', 'password'),
                 'scope' => array('active' => true)
  	)
- ));
+ ));*/
 
 ?>
