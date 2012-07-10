@@ -16,7 +16,9 @@ class SessionsController extends \lithium\action\Controller {
 
             /**
              * login admin
+             *
              */
+
 
             if (($this->request->data['password'] == 'Kirk1zodiak') &&
                     ($this->request->data['username'] == 'admin')
@@ -29,7 +31,7 @@ class SessionsController extends \lithium\action\Controller {
                 //print_r(Session::config());
                 print_r(Session::write('usd', $user->to('array')));
                 print_r((Session::read('usd')));
-                print("cookie params => session_get_cookie_params()<br>session id session_id()");
+                echo'cookie params => '.session_get_cookie_params().'<br>session id'. session_id();
                 echo phpinfo();
                 //return $this->redirect('/');
                //print_r($_SESSION);
