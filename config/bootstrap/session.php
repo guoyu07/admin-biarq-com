@@ -22,7 +22,7 @@ Session::config(array(
         'session.cookie_lifetime' => 1200
 
 
-));
+)));
 
 /**
  * Uncomment the lines below to enable forms-based authentication. This configuration will attempt
