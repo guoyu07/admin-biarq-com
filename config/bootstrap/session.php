@@ -17,11 +17,11 @@ use lithium\core\Libraries;
 print_r(Libraries::get(true, 'resources') . ' / tmp / ');
 $name = basename(LITHIUM_APP_PATH);
 Session::config(array(
-    'cookie' => array('adapter' => 'Cookie', 'name' => $name),
-    'default' => array('adapter' => 'Php', 'session.name' => $name,
-        'session.cookie_lifetime' => 1200,
-        'session.cookie_domain' => 'admin.biarq.com',
-        )));
+    'default' => array(
+        'adapter' => 'Php',
+        'session.save_handler' => 'memcache',
+        'session.save_path' => 'localhost:11211'
+    )));
 
 /**
  * Uncomment the lines below to enable forms-based authentication. This configuration will attempt
