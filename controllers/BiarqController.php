@@ -13,8 +13,9 @@ class BiarqController extends \lithium\action\Controller {
     public function _init() {
 
         parent::_init();
+        print_r($_SESSION);
         if (!Session::read('user'))
-            $this->redirect('Sessions::add');
+          //  $this->redirect('Sessions::add');
     }
 
     /**
