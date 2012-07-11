@@ -12,15 +12,6 @@ class ProjectosController extends \lithium\action\Controller {
 
         parent::_init();
 
-        $imagine = new \Imagine\Gmagick\Imagine();
-
-        $sizeSmall = new \Imagine\Image\Box(125, 75);
-        $sizeBig = new \Imagine\Image\Box(635, 381);
-
-        // $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-// or
-        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
-
         if (!Session::read('user')) {
 
             $this->redirect('Sessions::add');
@@ -38,6 +29,14 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function adicionar() {
+        $imagine = new \Imagine\Gmagick\Imagine();
+
+        $sizeSmall = new \Imagine\Image\Box(125, 75);
+        $sizeBig = new \Imagine\Image\Box(635, 381);
+
+        // $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+// or
+        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
 
         $projectostrue = true;
         $projectosadicionartrue = true;
@@ -66,7 +65,7 @@ class ProjectosController extends \lithium\action\Controller {
                         ->save($fotodir . 'grandes/' . $nomeimgjpg);
 
                 $imagine->open($fotodir . $nomeimgjpg)
-                        ->thumbnail($sizeBig, $mode)
+                        ->thumbnail($sizeSmall, $mode)
                         ->save($fotodir . 'pequenas/' . $nomeimgjpg);
             }
             $projectos->foto = $imagens;
