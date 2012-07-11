@@ -41,23 +41,32 @@ class ProjectosController extends \lithium\action\Controller {
             $projectos = Projectos::create();
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
-            $projectos->save();
 
-            $imagens = array();
-            foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
-                $nomeimg = uniqid('img') . '.jpg';
-                move_uploaded_file($foto, $fotodir . $nomeimg);
-                array_push($imagens, $nomeimg);
-
-                $imagine->open($fotodir . $nomeimg)
-                        ->thumbnail($sizeBig, $mode)
-                        ->save($fotodir . 'grandes/' . $nomeimg);
-
-                $imagine->open($fotodir . $nomeimg)
-                        ->thumbnail($sizeSmall, $mode)
-                        ->save($fotodir . 'pequenas/' . $nomeimg);
+            if (!$projectos->save()) {
+                Session::write(
+                    'message', array(
+                    'status' => 'red',
+                    'msg' => 'Falha ao inserir ' . $projectos->titulo
+                ));
             }
-            $projectos->foto = $imagens;
+            if (isset($_FILES["fotos"]["tmp_name"])) {
+                $imagens = array();
+                foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
+                    $nomeimg = uniqid('img') . '.jpg';
+                    move_uploaded_file($foto, $fotodir . $nomeimg);
+                    array_push($imagens, $nomeimg);
+
+                    $imagine->open($fotodir . $nomeimg)
+                            ->thumbnail($sizeBig, $mode)
+                            ->save($fotodir . 'grandes/' . $nomeimg);
+
+                    $imagine->open($fotodir . $nomeimg)
+                            ->thumbnail($sizeSmall, $mode)
+                            ->save($fotodir . 'pequenas/' . $nomeimg);
+                }
+                $projectos->foto = $imagens;
+            }
+
             if ($projectos->save()) {
                 Session::write(
                     'message', array(
@@ -72,7 +81,6 @@ class ProjectosController extends \lithium\action\Controller {
                 ));
             }
             $this->redirect('Projectos::index');
-            //$success = $post->save();
         }
 
         return compact('projectosadicionartrue', 'projectostrue');
@@ -80,24 +88,22 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function editar($id) {
         $imagine = new \Imagine\Gmagick\Imagine();
-
         $sizeSmall = new \Imagine\Image\Box(125, 75);
         $sizeBig = new \Imagine\Image\Box(635, 381);
         $sizeTop = new \Imagine\Image\Box(219, 146);
-
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
         $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
+        $projectostrue = true;
+
+        $projectos = Projectos::find('first', array(
+            'conditions' => array('_id' => $id)
+        ));
+
         if ($this->request->data) {
-            $projectos = Projectos::find('first', array(
-                'conditions' => array('_id' => $id)
-            ));
-
             $imagens = $projectos->foto->to('array');
-
             if (isset($_FILES["fotos"]["tmp_name"])) {
                 foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                     $nomeimg = uniqid('img') . '.jpg';
-
                     move_uploaded_file($foto, $fotodir . $nomeimg);
                     array_push($imagens, $nomeimg);
 
@@ -109,6 +115,7 @@ class ProjectosController extends \lithium\action\Controller {
                             ->thumbnail($sizeSmall, $mode)
                             ->save($fotodir . 'pequenas/' . $nomeimg);
                 }
+                $projectos->foto = $imagens;
             }
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
@@ -123,7 +130,6 @@ class ProjectosController extends \lithium\action\Controller {
                 $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
             }
 
-            $projectos->foto = $imagens;
             if ($projectos->save()) {
                 Session::write(
                     'message', array(
@@ -139,10 +145,7 @@ class ProjectosController extends \lithium\action\Controller {
             }
             $this->redirect('Projectos::index');
         }
-        $projectos = Projectos::find('first', array(
-            'conditions' => array('_id' => $id)
-        ));
-        $projectostrue = true;
+
         return compact('projectos', 'projectostrue');
     }
 
