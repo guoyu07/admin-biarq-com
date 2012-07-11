@@ -34,7 +34,7 @@ class ProjectosController extends \lithium\action\Controller {
         $sizeSmall = new \Imagine\Image\Box(125, 75);
         $sizeBig = new \Imagine\Image\Box(635, 381);
 
-        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         //$mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
 
