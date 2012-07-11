@@ -126,5 +126,6 @@ Libraries::add('li3_searchable');
 
 Libraries::add('li3_quality');
 Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine/lib'));
+var_dump(interface_exists('Imagine\Image\ImageInterface'));
 
 ?>
