@@ -66,10 +66,10 @@ define('LITHIUM_LIBRARY_PATH', '/libraries');
  * If your Lithium core directory is named something other than `lithium`, change the string below.
  */
 if (!include LITHIUM_LIBRARY_PATH . '/lithium/core/Libraries.php') {
-	$message = "Lithium core could not be found.  Check the value of LITHIUM_LIBRARY_PATH in ";
-	$message .= __FILE__ . ".  It should point to the directory containing your ";
-	$message .= "/libraries directory.";
-	throw new ErrorException($message);
+    $message = "Lithium core could not be found.  Check the value of LITHIUM_LIBRARY_PATH in ";
+    $message .= __FILE__ . ".  It should point to the directory containing your ";
+    $message .= "/libraries directory.";
+    throw new ErrorException($message);
 }
 
 use lithium\core\Libraries;
@@ -124,15 +124,7 @@ Libraries::add('app', array('default' => true));
 Libraries::add('li3_dateable');
 Libraries::add('li3_searchable');
 
-
 Libraries::add('li3_quality');
-Libraries::add('li3_u1');
-use li3_u1\extensions\UbuntuOne;
-	UbuntuOne::config(array(
-		'consumer_key' => 'rJQJdDB',
-		'consumer_secret' => 'OXZVqHWYhwYBCwssnlJzbsrmkNUzOf',
-		'token' => 'LzQKblrgAWohFKXlhLtdrjuCxPKIQOtaOsdfEhSKEqahpqBzaw',
-		'token_secret' => 'TVDAqYeabgQbRyfSJojJIozrHOdaLWTQLJqgCtlGrUpZAizQyq'
-	));
-Libraries::add('li3_gearman');
+
+
 ?>
