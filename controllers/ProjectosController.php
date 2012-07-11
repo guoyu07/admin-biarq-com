@@ -13,7 +13,6 @@ class ProjectosController extends \lithium\action\Controller {
         parent::_init();
 
         if (!Session::read('user')) {
-
             $this->redirect('Sessions::add');
         }
     }
@@ -30,30 +29,23 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function adicionar() {
         $imagine = new \Imagine\Gmagick\Imagine();
-
         $sizeSmall = new \Imagine\Image\Box(125, 75);
         $sizeBig = new \Imagine\Image\Box(635, 381);
-
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-
-        //$mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
-
+        $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
         $projectostrue = true;
         $projectosadicionartrue = true;
 
         if ($this->request->data) {
+
             $projectos = Projectos::create();
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
-
             $projectos->save();
 
             $imagens = array();
-
             foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                 $nomeimg = uniqid('img') . '.jpg';
-
-                $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
                 move_uploaded_file($foto, $fotodir . $nomeimg);
                 array_push($imagens, $nomeimg);
 
