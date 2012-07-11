@@ -40,18 +40,15 @@ use lithium\data\Connections;
 /**
  * Uncomment this configuration to use MongoDB as your default database.
  */
- Connections::add('default', array(
- 	'type' => 'MongoDb',
- 	'host' => 'pearl.mongohq.com:27086',
- 	'database' => 'biarq',
-        'login' => 'biarq',
-        'password' => 'Kirk1zodiak'
- ));
-li3_gearman\Gearman::config(array(
-	'default' => array(
-		'servers' => '127.0.0.1'
-	)
+Connections::add('default', array(
+    'type' => 'MongoDb',
+    'host' => 'pearl.mongohq.com:27086',
+    'database' => 'biarq',
+    'login' => 'biarq',
+    'password' => 'Kirk1zodiak'
 ));
+
+
 /**
  * Uncomment this configuration to use CouchDB as your default database.
  */
