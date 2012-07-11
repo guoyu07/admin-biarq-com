@@ -10,15 +10,12 @@ class SessionsController extends \lithium\action\Controller {
 
     public function add() {
 
-
-
         if ($this->request->data) {
 
             /**
              * login admin
              *
              */
- 
 
             if (($this->request->data['password'] == 'Kirk1zodiak') &&
                     ($this->request->data['username'] == 'admin')
@@ -28,14 +25,9 @@ class SessionsController extends \lithium\action\Controller {
                     'conditions' => array('_id' => 1)
                 ));
 
-                //print_r(Session::config());
                 print_r(Session::write('user', $user->to('array')));
 
-
-
-                print phpinfo();
-                //return $this->redirect('/');
-               //print_r($_SESSION);
+                return $this->redirect('/');
             }
 
             $user = Biarq::find('first', array(

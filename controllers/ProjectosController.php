@@ -11,23 +11,18 @@ class ProjectosController extends \lithium\action\Controller {
     public function _init() {
 
         parent::_init();
-        print_r(Session::read('user'));
 
         if (!Session::read('user')) {
-            echo session_id();
-           // print_r(Session::config());
 
-            //var_dump(Session::read('user'));
-            //$this->redirect('Sessions::add');
+            $this->redirect('Sessions::add');
         }
     }
 
     public function index() {
 
-
         $projectos = Projectos::find('all', array(
-                    'order' => array('ordem' => 'ASC')
-                ));
+            'order' => array('ordem' => 'ASC')
+        ));
         $projectostrue = true;
         $projectosindextrue = true;
         return compact('projectos', 'projectostrue', 'projectosindextrue');
@@ -48,9 +43,7 @@ class ProjectosController extends \lithium\action\Controller {
             $config['maintain_ratio'] = false;
             $projectos->save();
 
-
             $imagens = array();
-
 
             foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                 $nomeimg = uniqid('img');
@@ -76,19 +69,18 @@ class ProjectosController extends \lithium\action\Controller {
             $projectos->foto = $imagens;
             if ($projectos->save()) {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'green',
-                    'msg' => 'projecto ' . $projectos->titulo . ' adicionado.'));
+                    'msg' => 'projecto ' . $projectos->titulo . ' adicionado.'
+                ));
             } else {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'red',
                     'msg' => 'Falha ao inserir ' . $projectos->titulo
                 ));
             }
             $this->redirect('Projectos::index');
-
-
             //$success = $post->save();
         }
 
@@ -99,16 +91,13 @@ class ProjectosController extends \lithium\action\Controller {
 
         if ($this->request->data) {
             $projectos = Projectos::find('first', array(
-                        'conditions' => array('_id' => $id)
-                    ));
+                'conditions' => array('_id' => $id)
+            ));
 
             $config['image_library'] = 'gd2';
             $config['create_thumb'] = true;
             $config['maintain_ratio'] = false;
             $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
-
-
-
 
             $imagens = $projectos->foto->to('array');
 
@@ -149,34 +138,36 @@ class ProjectosController extends \lithium\action\Controller {
             $projectos->foto = $imagens;
             if ($projectos->save()) {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'green',
-                    'msg' => 'projecto ' . $projectos->titulo . ' editado com sucesso'));
+                    'msg' => 'projecto ' . $projectos->titulo . ' editado com sucesso'
+                ));
             } else {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'red',
-                    'msg' => 'Falha ao editar ' . $projectos->titulo));
+                    'msg' => 'Falha ao editar ' . $projectos->titulo
+                ));
             }
             $this->redirect('Projectos::index');
         }
         $projectos = Projectos::find('first', array(
-                    'conditions' => array('_id' => $id)
-                ));
+            'conditions' => array('_id' => $id)
+        ));
         $projectostrue = true;
         return compact('projectos', 'projectostrue');
     }
 
     public function apagarfoto($idProjecto, $idFoto) {
 
-
         $projecto = Projectos::find('first', array(
-                    'conditions' => array('_id' => $idProjecto)
-                ));
+            'conditions' => array('_id' => $idProjecto)
+        ));
         Session::write(
-                'message', array(
+            'message', array(
             'status' => 'red',
-            'msg' => 'Tens de escolher um foto principal antes de apagar esta'));
+            'msg' => 'Tens de escolher um foto principal antes de apagar esta'
+        ));
         $imagens = $projecto->foto->to('array');
         if ($projecto->fotoprincipal != $idFoto) {
             $imagens = array_diff($imagens, array($idFoto));
@@ -186,14 +177,16 @@ class ProjectosController extends \lithium\action\Controller {
             $projecto->foto = $imagens;
             if ($projecto->save()) {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'green',
-                    'msg' => 'foto apagada!'));
+                    'msg' => 'foto apagada!'
+                ));
             } else {
                 Session::write(
-                        'message', array(
+                    'message', array(
                     'status' => 'red',
-                    'msg' => 'erro ao apagar foto! tenta novamente'));
+                    'msg' => 'erro ao apagar foto! tenta novamente'
+                ));
             }
         }
 
@@ -203,8 +196,8 @@ class ProjectosController extends \lithium\action\Controller {
     public function apagarProjecto($id) {
 
         $projecto = Projectos::find('first', array(
-                    'conditions' => array('_id' => $id)
-                ));
+            'conditions' => array('_id' => $id)
+        ));
 
         // $imagens = $projecto->foto->to('array');
         if (isset($projecto->foto)) {
@@ -217,14 +210,16 @@ class ProjectosController extends \lithium\action\Controller {
 
         if (Projectos::remove(array('_id' => $id))) {
             Session::write(
-                    'message', array(
+                'message', array(
                 'status' => 'green',
-                'msg' => 'projecto ' . $projecto->titulo . ' apagado com sucesso'));
+                'msg' => 'projecto ' . $projecto->titulo . ' apagado com sucesso'
+            ));
         } else {
             Session::write(
-                    'message', array(
+                'message', array(
                 'status' => 'red',
-                'msg' => 'Falha ao apagar ' . $projecto->titulo));
+                'msg' => 'Falha ao apagar ' . $projecto->titulo
+            ));
         }
         $this->redirect('Projectos::index');
     }
@@ -240,8 +235,8 @@ class ProjectosController extends \lithium\action\Controller {
         }
 
         $projectos = Projectos::find('all', array(
-                    'order' => array('ordem' => 'ASC')
-                ));
+            'order' => array('ordem' => 'ASC')
+        ));
         $projectosordenartrue = true;
         $projectostrue = true;
         return compact('projectostrue', 'projectosordenartrue', 'projectos');
@@ -250,48 +245,50 @@ class ProjectosController extends \lithium\action\Controller {
     public function featured($id) {
 
         $projecto = Projectos::find('first', array(
-                    'conditions' => array('_id' => $id)
-                ));
+            'conditions' => array('_id' => $id)
+        ));
         $featured = Projectos::count(array('featured' => true));
         if ($featured < 4) {
 
             $projecto->featured = true;
             Session::write(
-                    'message', array(
-                        'status' => 'green',
-                        'msg' => 'projecto ' . $projecto->titulo . ' Featured.'));}
+                'message', array(
+                'status' => 'green',
+                'msg' => 'projecto ' . $projecto->titulo . ' Featured.'
+            ));
+        }
         if ($featured == 4) {
             if ($projecto->featured == false) {
                 Session::write(
-                        'message', array(
-                            'status' => 'red',
-                            'msg' => 'O limite de projectos na Home são 4!Apaga primeiro um '));
+                    'message', array(
+                    'status' => 'red',
+                    'msg' => 'O limite de projectos na Home são 4!Apaga primeiro um '
+                ));
             }
             if ($projecto->featured == true) {
                 $projecto->featured = false;
                 Session::write(
-                        'message', array(
-                            'status' => 'green',
-                            'msg' => 'projecto ' . $projecto->titulo . ' Unfeatured'));
+                    'message', array(
+                    'status' => 'green',
+                    'msg' => 'projecto ' . $projecto->titulo . ' Unfeatured'
+                ));
             }
         }
 
-
         if (!$projecto->save()) {
             Session::write(
-                    'message', array(
-                        'status' => 'red',
-                        'msg' => 'Falha ao adicionar ' . $projecto->titulo . '.'));
+                'message', array(
+                'status' => 'red',
+                'msg' => 'Falha ao adicionar ' . $projecto->titulo . '.'
+            ));
         }
         $this->redirect('Projectos::index');
     }
 
     public function search() {
-
     }
 
     public function teste() {
-
     }
 }
 

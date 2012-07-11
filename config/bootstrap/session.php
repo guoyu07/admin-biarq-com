@@ -14,13 +14,13 @@ use lithium\storage\Session;
 use lithium\security\Auth;
 use lithium\core\Libraries;
 
-print_r(Libraries::get(true, 'resources') . ' / tmp / ');
 $name = basename(LITHIUM_APP_PATH);
 Session::config(array(
     'default' => array(
-        'adapter' => 'Php','session.name'=> 'PHPSESSID'
+        'adapter' => 'Php', 'session.name' => 'PHPSESSID'
 
-    )));
+    )
+));
 
 /**
  * Uncomment the lines below to enable forms-based authentication. This configuration will attempt
@@ -41,14 +41,13 @@ Session::config(array(
  * @see lithium\security\Auth
  */
 
-
- /*Auth::config(array(
- 	'teste' => array(
- 		'adapter' => 'Form',
- 		'model' => 'Utilizadores',
- 		'fields' => array('username', 'password'),
+/*Auth::config(array(
+     'teste' => array(
+         'adapter' => 'Form',
+         'model' => 'Utilizadores',
+         'fields' => array('username', 'password'),
                 'scope' => array('active' => true)
- 	)
+     )
  ));*/
 
 ?>
