@@ -94,7 +94,7 @@ class ProjectosController extends \lithium\action\Controller {
         $sizeTop = new \Imagine\Image\Box(219, 146);
 
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-
+        $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
         if ($this->request->data) {
             $projectos = Projectos::find('first', array(
                 'conditions' => array('_id' => $id)
@@ -106,7 +106,6 @@ class ProjectosController extends \lithium\action\Controller {
                 foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                     $nomeimg = uniqid('img') . '.jpg';
 
-                    $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
                     move_uploaded_file($foto, $fotodir . $nomeimg);
                     array_push($imagens, $nomeimg);
 
