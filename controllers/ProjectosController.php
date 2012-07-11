@@ -120,11 +120,15 @@ class ProjectosController extends \lithium\action\Controller {
             }
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
-            $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
 
-            $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
-                    ->thumbnail($sizeTop, $mode)
-                    ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
+            if ($projectos->fotoprincipal != $this->request->data['fotoprincipal']) {
+
+                $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
+                        ->thumbnail($sizeTop, $mode)
+                        ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
+
+                $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
+            }
 
             $projectos->foto = $imagens;
             if ($projectos->save()) {
