@@ -52,7 +52,7 @@ class ProjectosController extends \lithium\action\Controller {
 
             foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                 $nomeimg = uniqid('img');
-                $nomeimgjpg = $nomeimg;
+                $nomeimgjpg = $nomeimg . '.jpg';
                 $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
                 move_uploaded_file($foto, $fotodir . $nomeimgjpg);
                 array_push($imagens, $nomeimg);
