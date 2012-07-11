@@ -51,19 +51,19 @@ class ProjectosController extends \lithium\action\Controller {
             $imagens = array();
 
             foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
-                $nomeimg = uniqid('img');
-                $nomeimgjpg = $nomeimg . '.jpg';
+                $nomeimg = uniqid('img') . '.jpg';
+
                 $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
-                move_uploaded_file($foto, $fotodir . $nomeimgjpg);
+                move_uploaded_file($foto, $fotodir . $nomeimg);
                 array_push($imagens, $nomeimg);
 
-                $imagine->open($fotodir . $nomeimgjpg)
+                $imagine->open($fotodir . $nomeimg)
                         ->thumbnail($sizeBig, $mode)
-                        ->save($fotodir . 'grandes/' . $nomeimgjpg);
+                        ->save($fotodir . 'grandes/' . $nomeimg);
 
-                $imagine->open($fotodir . $nomeimgjpg)
+                $imagine->open($fotodir . $nomeimg)
                         ->thumbnail($sizeSmall, $mode)
-                        ->save($fotodir . 'pequenas/' . $nomeimgjpg);
+                        ->save($fotodir . 'pequenas/' . $nomeimg);
             }
             $projectos->foto = $imagens;
             if ($projectos->save()) {
