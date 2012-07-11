@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use lithium\storage\Session;
-use app\models\Projectos as Projectos;
+use app\models\Projectos;
 use app\libraries\Image\ImageTool as Resize;
 
 class ProjectosController extends \lithium\action\Controller {

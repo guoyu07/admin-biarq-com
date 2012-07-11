@@ -125,6 +125,6 @@ Libraries::add('li3_dateable');
 Libraries::add('li3_searchable');
 
 Libraries::add('li3_quality');
-
+Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine/lib'));
 
 ?>
