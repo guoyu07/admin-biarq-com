@@ -61,19 +61,13 @@ class ProjectosController extends \lithium\action\Controller {
                 move_uploaded_file($foto, $fotodir . $nomeimgjpg);
                 array_push($imagens, $nomeimg . '_thumb.jpg');
 
-                $config['source_image'] = $fotodir . $nomeimgjpg;
-                $config['new_image'] = $fotodir . 'grandes/' . $nomeimgjpg;
-                $config['width'] = 635;
-                $config['height'] = 381;
-                $img = new Resize($config);
-                $img->resize();
+                $imagine->open($fotodir . $nomeimgjpg)
+                        ->thumbnail($sizeBig, $mode)
+                        ->save($fotodir . 'grandes/' . $nomeimgjpg);
 
-                $config['source_image'] = $fotodir . $nomeimgjpg;
-                $config['new_image'] = $fotodir . 'pequenas/' . $nomeimgjpg;
-                $config['width'] = 125;
-                $config['height'] = 75;
-                $img = new Resize($config);
-                $img->resize();
+                $imagine->open($fotodir . $nomeimgjpg)
+                        ->thumbnail($sizeBig, $mode)
+                        ->save($fotodir . 'pequenas/' . $nomeimgjpg);
             }
             $projectos->foto = $imagens;
             if ($projectos->save()) {
