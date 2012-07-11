@@ -34,9 +34,9 @@ class ProjectosController extends \lithium\action\Controller {
         $sizeSmall = new \Imagine\Image\Box(125, 75);
         $sizeBig = new \Imagine\Image\Box(635, 381);
 
-        // $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-// or
-        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+        //$mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
 
         $projectostrue = true;
         $projectosadicionartrue = true;
@@ -46,19 +46,16 @@ class ProjectosController extends \lithium\action\Controller {
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
 
-            $config['image_library'] = 'gd2';
-            $config['create_thumb'] = true;
-            $config['maintain_ratio'] = false;
             $projectos->save();
 
             $imagens = array();
 
             foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
                 $nomeimg = uniqid('img');
-                $nomeimgjpg = $nomeimg . '_thumb.jpg';
+                $nomeimgjpg = $nomeimg;
                 $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
                 move_uploaded_file($foto, $fotodir . $nomeimgjpg);
-                array_push($imagens, $nomeimg . '_thumb.jpg');
+                array_push($imagens, $nomeimg);
 
                 $imagine->open($fotodir . $nomeimgjpg)
                         ->thumbnail($sizeBig, $mode)
