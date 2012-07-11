@@ -12,14 +12,14 @@ class ProjectosController extends \lithium\action\Controller {
 
         parent::_init();
 
-        $imagine = new Imagine\Gmagick\Imagine();
+        $imagine = new \Imagine\Gmagick\Imagine();
 
-        $sizeSmall = new Imagine\Image\Box(125, 75);
-        $sizeBig = new Imagine\Image\Box(635, 381);
+        $sizeSmall = new \Imagine\Image\Box(125, 75);
+        $sizeBig = new \Imagine\Image\Box(635, 381);
 
         // $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 // or
-        $mode = Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
 
         if (!Session::read('user')) {
 
