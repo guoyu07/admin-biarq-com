@@ -87,52 +87,45 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function editar($id) {
+        $imagine = new \Imagine\Gmagick\Imagine();
+
+        $sizeSmall = new \Imagine\Image\Box(125, 75);
+        $sizeBig = new \Imagine\Image\Box(635, 381);
+        $sizeTop = new \Imagine\Image\Box(219, 146);
+
+        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         if ($this->request->data) {
             $projectos = Projectos::find('first', array(
                 'conditions' => array('_id' => $id)
             ));
 
-            $config['image_library'] = 'gd2';
-            $config['create_thumb'] = true;
-            $config['maintain_ratio'] = false;
-            $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
-
             $imagens = $projectos->foto->to('array');
 
             if (isset($_FILES["fotos"]["tmp_name"])) {
                 foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
-                    $nomeimg = uniqid('img');
-                    $nomeimgjpg = $nomeimg . '.jpg';
+                    $nomeimg = uniqid('img') . '.jpg';
 
-                    move_uploaded_file($foto, $fotodir . $nomeimgjpg);
-                    array_push($imagens, $nomeimg . '_thumb.jpg');
+                    $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
+                    move_uploaded_file($foto, $fotodir . $nomeimg);
+                    array_push($imagens, $nomeimg);
 
-                    $config['source_image'] = $fotodir . $nomeimgjpg;
-                    $config['new_image'] = $fotodir . 'grandes/' . $nomeimgjpg;
-                    $config['width'] = 635;
-                    $config['height'] = 381;
-                    $img = new Resize($config);
+                    $imagine->open($fotodir . $nomeimg)
+                            ->thumbnail($sizeBig, $mode)
+                            ->save($fotodir . 'grandes/' . $nomeimg);
 
-                    $img->resize();
-                    $config['source_image'] = $fotodir . $nomeimgjpg;
-                    $config['new_image'] = $fotodir . 'pequenas/' . $nomeimgjpg;
-                    $config['width'] = 125;
-                    $config['height'] = 75;
-                    $img = new Resize($config);
-                    $img->resize();
+                    $imagine->open($fotodir . $nomeimg)
+                            ->thumbnail($sizeSmall, $mode)
+                            ->save($fotodir . 'pequenas/' . $nomeimg);
                 }
             }
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
             $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
-            $config['create_thumb'] = false;
-            $config['source_image'] = $fotodir . 'grandes/' . $this->request->data['fotoprincipal'];
-            $config['new_image'] = $fotodir . 'principal/' . $this->request->data['fotoprincipal'];
-            $config['width'] = 219;
-            $config['height'] = 146;
-            $img = new Resize($config);
-            $img->resize();
+
+            $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
+                    ->thumbnail($sizeTop, $mode)
+                    ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
 
             $projectos->foto = $imagens;
             if ($projectos->save()) {
