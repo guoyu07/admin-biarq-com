@@ -126,7 +126,7 @@ class ProjectosController extends \lithium\action\Controller {
                 $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
                         ->thumbnail($sizeTop, $mode)
                         ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
-                @unlink($fotodir . 'grandes/' . $this->request->data['fotoprincipal']);
+                @unlink($fotodir . 'principal/' . $projectos->fotoprincipal);
 
                 $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
             }
