@@ -286,7 +286,7 @@ class Upload_handler {
 
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
                                           $index = null) {
-        $file = new stdClass();
+        $file = new \stdClass();
         $file->name = $this->trim_file_name($name, $type, $index);
         $file->size = intval($size);
         $file->type = $type;
