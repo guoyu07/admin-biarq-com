@@ -26,7 +26,8 @@
 </blockquote>
 <br>
 <!-- The file upload form used as target for the file upload widget -->
-<form id="fileupload" action="server/php/" method="POST" enctype="multipart/form-data">
+<form id="fileupload" action="/projectos/upload_handler" method="POST"
+        enctype="multipart/form-data">
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
         <div class="span7">
