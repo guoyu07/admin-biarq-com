@@ -9,7 +9,7 @@ $password = "biarq"; // Change the password to something suitable
 session_start();
 print_r($_SESSION);
 
-$_SESSION['isLoggedIn'] = true;
+$_SESSION['isLoggedIn'] = false;
 $_SESSION['user'] = 'biarq';
 
 // Override any config option
