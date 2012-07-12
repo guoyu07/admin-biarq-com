@@ -212,7 +212,7 @@
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="/js/upload_progress/vendor/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
@@ -223,19 +223,19 @@
 <script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
 <script src="http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/upload_progress/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
-<script src="/js/jquery.fileupload.js"></script>
+<script src="/js/upload_progress/jquery.fileupload.js"></script>
 <!-- The File Upload file processing plugin -->
-<script src="/js/jquery.fileupload-fp.js"></script>
+<script src="/js/upload_progress/jquery.fileupload-fp.js"></script>
 <!-- The File Upload user interface plugin -->
-<script src="/js/jquery.fileupload-ui.js"></script>
+<script src="/js/upload_progress/jquery.fileupload-ui.js"></script>
 <!-- The localization script -->
-<script src="/js/locale.js"></script>
+<script src="/js/upload_progress/locale.js"></script>
 <!-- The main application script -->
-<script src="/js/main.js"></script>
+<script src="/js/upload_progress/main.js"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]>
-<script src="/js/cors/jquery.xdr-transport.js"></script><![endif]-->
+<script src="/js/upload_progress/cors/jquery.xdr-transport.js"></script><![endif]-->
 </body>
 </html>
