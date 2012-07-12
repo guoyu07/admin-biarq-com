@@ -1,4 +1,5 @@
-<?= $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
+<?=
+$this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 ; ?>
 <style>
     #gallery {
@@ -190,7 +191,9 @@
 		<h5 class="ui-widget-header">foto' . $r . '</h5>
 		<img src="http://admin.biarq.com/img/projectos/pequenas/' . $foto . '"  alt="foto' . $r . '" width="96" height="72" //>
 		<a href="http://admin.biarq.com/img/projectos/grandes/' . $foto . '" title="Ver maior" class="ui-icon ui-icon-zoomin">Ver Maior</a>
-		<a href="http://admin.biarq.com/projectos/apagarfoto/' . $projectos->_id . '/' . $foto . '" title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
+		<a href="http://admin.biarq.com/projectos/apagarfoto/' . $projectos->_id . '/' .
+                                        urlencode($foto) .
+                                        '" title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
 	</li>';
 
                                 ++$r;
