@@ -150,7 +150,7 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function apagarfoto($idProjecto, $idFoto) {
-        $idFoto = urldecode($idFoto);
+        $idFoto = base64_decode($idFoto);
 
         $projecto = Projectos::find('first', array(
             'conditions' => array('_id' => $idProjecto)
