@@ -6,6 +6,10 @@ $password = "biarq"; // Change the password to something suitable
 
 // If password match, then set login
 // Set session
+ini_set('session.name', 'PHPSESSID');
+ini_set('session.save_handler', 'memcached');
+ini_set('session.save_path', 'localhost:11211');
+
 session_start();
 print_r($_SESSION);
 
