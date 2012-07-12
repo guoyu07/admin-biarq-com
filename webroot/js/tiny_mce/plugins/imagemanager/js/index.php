@@ -1,72 +1,81 @@
 <?php
-	// Use installer
-	if (file_exists("../install"))
-		die("alert('You need to run the installer or rename/remove the \"install\" directory.');");
+ini_set('session.name', 'PHPSESSID');
+ini_set('session.save_handler', 'memcached');
+ini_set('session.save_path', 'localhost:11211');
 
-	error_reporting(E_ALL ^ E_NOTICE);
+// Use installer
+if (file_exists("../install")) {
+    die("alert('You need to run the installer or rename/remove the \"install\" directory.');");
+}
 
-	require_once("../includes/general.php");
-	require_once('../classes/Utils/JSCompressor.php');
-	require_once("../classes/ManagerEngine.php");
+error_reporting(E_ALL ^ E_NOTICE);
 
-	$theme = getRequestParam("theme", "", true);
-	$package = getRequestParam("package", "", true);
-	$type = getRequestParam("type", "", true);
+require_once("../includes/general.php");
+require_once('../classes/Utils/JSCompressor.php');
+require_once("../classes/ManagerEngine.php");
 
-	// Include Base and Core and Config.
-	$man = new Moxiecode_ManagerEngine($type);
+$theme = getRequestParam("theme", "", true);
+$package = getRequestParam("package", "", true);
+$type = getRequestParam("type", "", true);
 
-	require_once($basepath ."CorePlugin.php");
-	require_once("../config.php");
+// Include Base and Core and Config.
+$man = new Moxiecode_ManagerEngine($type);
 
-	$man->dispatchEvent("onPreInit", array($type));
-	$config = $man->getConfig();
+require_once($basepath . "CorePlugin.php");
+require_once("../config.php");
 
-	if ($package) {
-		$compressor = new Moxiecode_JSCompressor(array(
-			'expires_offset' => 3600 * 24 * 10,
-			'disk_cache' => true,
-			'cache_dir' => '_cache',
-			'gzip_compress' => true,
-			'remove_whitespace' => true,
-			'charset' => 'UTF-8',
-			'name' => $theme . "_" . $package
-		));
+$man->dispatchEvent("onPreInit", array($type));
+$config = $man->getConfig();
 
-		require_once('../classes/Utils/ClientResources.php');
+if ($package) {
+    $compressor = new Moxiecode_JSCompressor(array(
+        'expires_offset' => 3600 * 24 * 10,
+        'disk_cache' => true,
+        'cache_dir' => '_cache',
+        'gzip_compress' => true,
+        'remove_whitespace' => true,
+        'charset' => 'UTF-8',
+        'name' => $theme . "_" . $package
+    ));
 
-		$resources = new Moxiecode_ClientResources();
+    require_once('../classes/Utils/ClientResources.php');
 
-		// Load theme resources
-		$resources->load('../pages/' . $theme . '/resources.xml');
+    $resources = new Moxiecode_ClientResources();
 
-		// Load plugin resources
-		$plugins = explode(',', $config["general.plugins"]);
-		foreach ($plugins as $plugin)
-			$resources->load('../plugins/' . $plugin . '/resources.xml');
+    // Load theme resources
+    $resources->load('../pages/' . $theme . '/resources.xml');
 
-		$files = $resources->getFiles($package);
+    // Load plugin resources
+    $plugins = explode(',', $config["general.plugins"]);
+    foreach ($plugins as $plugin) {
+        $resources->load('../plugins/' . $plugin . '/resources.xml');
+    }
 
-		if ($resources->isDebugEnabled() || checkBool($config["general.debug"])) {
-			header('Content-type: text/javascript');
+    $files = $resources->getFiles($package);
 
-			$pagePath = dirname($_SERVER['SCRIPT_NAME']);
-			echo "// Debug enabled, scripts will be loaded without compression\n";
-			echo "(function() {\n";
-			echo "var h = '';\n";
+    if ($resources->isDebugEnabled() || checkBool($config["general.debug"])) {
+        header('Content-type: text/javascript');
 
-			foreach ($files as $file)
-				echo 'h += \'<script type="text/javascript" src="' . $pagePath . '/' . $file->getPath() . '"></script>\';' . "\n";
+        $pagePath = dirname($_SERVER['SCRIPT_NAME']);
+        echo "// Debug enabled, scripts will be loaded without compression\n";
+        echo "(function() {\n";
+        echo "var h = '';\n";
 
-			echo "document.write(h);\n";
-			echo "})();\n";
-		} else {
-			foreach ($files as $file)
-				$compressor->addFile($file->getPath(), $file->isRemoveWhiteSpaceEnabled());
+        foreach ($files as $file) {
+            echo'h += \'<script type="text/javascript" src="' . $pagePath . '/' .
+                    $file->getPath() . '"></script>\';' . "\n";
+        }
 
-			$compressor->compress($package);
-		}
+        echo "document.write(h);\n";
+        echo "})();\n";
+    } else {
+        foreach ($files as $file) {
+            $compressor->addFile($file->getPath(), $file->isRemoveWhiteSpaceEnabled());
+        }
 
-		die;
-	}
+        $compressor->compress($package);
+    }
+
+    die;
+}
 ?>
