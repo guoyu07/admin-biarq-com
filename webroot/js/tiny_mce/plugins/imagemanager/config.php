@@ -1,5 +1,5 @@
 <?php
-var_dump($_SESSION);
+
 require_once($basepath . "ImageManager/ImageManagerPlugin.php");
 
 // * * * * ImageManager config
