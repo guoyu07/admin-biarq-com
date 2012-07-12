@@ -18,8 +18,7 @@ $_SESSION['user'] = 'biarq';
 
 // Redirect
 die;
-header("location: /js/tiny_mce/plugins/imagemanager/index.php?type=im&amp;page=index.html");
-
+//header("location: /js/tiny_mce/plugins/imagemanager/index.php?type=im&amp;page=index.html");
 
 ?>
 
