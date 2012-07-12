@@ -5,6 +5,7 @@ namespace app\controllers;
 use lithium\storage\Session;
 use app\models\Projectos;
 use app\libraries\Image\ImageTool as Resize;
+use li3_upload_progress\extensions\Upload_handler;
 
 class ProjectosController extends \lithium\action\Controller {
 
@@ -285,8 +286,6 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function teste() {
-        var_dump($_SESSION);
-        var_dump($_FILES);
     }
 }
 

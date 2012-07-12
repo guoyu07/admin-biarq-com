@@ -1,7 +1,7 @@
 <?php
 namespace li3_upload_progress\extensions;
 
-class UploadHandler {
+class Upload_handler {
     protected $options;
 
     function __construct($options = null) {
