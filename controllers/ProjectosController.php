@@ -281,12 +281,7 @@ class ProjectosController extends \lithium\action\Controller {
     public function search() {
     }
 
-    public function upload_progress() {
-        echo json_encode(Session::read('upload_progress_upload'));
-    }
-
-    public function teste() {
-
+    public function upload_handler() {
         $upload_handler = new Upload_handler();
 
         header('Pragma: no-cache');
@@ -317,6 +312,9 @@ class ProjectosController extends \lithium\action\Controller {
             default:
                 header('HTTP/1.1 405 Method Not Allowed');
         }
+    }
+
+    public function teste() {
     }
 }
 
