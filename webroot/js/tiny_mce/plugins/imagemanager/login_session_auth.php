@@ -11,10 +11,12 @@ ini_set('session.save_handler', 'memcached');
 ini_set('session.save_path', 'localhost:11211');
 
 session_start();
-$_SESSION['isLoggedIn'] = true;
+print_r($_SESSION);
+
 if (is_array($_SESSION['user'])) {
+    $_SESSION['isLoggedIn'] = true;
 }
-print_r($_SESSION)
+
 // Override any config option
 //$_SESSION['imagemanager.filesystem.rootpath'] = 'some path';
 //$_SESSION['filemanager.filesystem.rootpath'] = 'some path';
