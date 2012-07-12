@@ -1,12 +1,42 @@
-<form id="upload" action="/projectos/teste" method="POST" enctype="multipart/form-data">
+<form action="/progress/upload.php" method="POST" enctype="multipart/form-data" id="upload">
     <input type="hidden"
             name="<?php echo ini_get("session.upload_progress.name"); ?>"
             value="upload" />
 
-    <input id="file1" type="file" name="file1" />
-    <input id="file2" type="file" name="file2" />
+    <div class="clearfix">
+        <label for="file1">File 1</label>
 
-    <input class="btn primary" type="submit" value="Upload" /></form>
+        <div class="input">
+            <input type="file" name="file1" id="file1" />
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <label for="file2">File 1</label>
+
+        <div class="input">
+            <input type="file" name="file2" id="file2" />
+        </div>
+    </div>
+    <div class="actions">
+        <input type="submit" class="btn primary" value="Upload" />
+    </div>
+</form>
+
+<h2>Progress</h2>
+<progress max="1" value="0" id="progress"></progress>
+<p id="progress-txt"></p>
+</div>
+</div>
+</div>
+
+</article>
+
+
+
+
+<!-- File containing Jquery and the Jquery form plugin-->
+<script src="jquery.js"></script>
 <script>
 
     //Holds the id from set interval
@@ -31,7 +61,7 @@
 
             //Poll the server for progress
             interval_id = setInterval(function () {
-                $.getJSON('/projectos/upload_progress', function (data) {
+                $.getJSON('/progress/progress.php', function (data) {
 
                     //if there is some progress then update the status
                     if (data) {
@@ -61,9 +91,3 @@
         clearInterval(interval_id);
     }
 </script>
-	
-	
-	
-	
-	
-	
