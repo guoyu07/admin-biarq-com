@@ -1,7 +1,7 @@
 <!-- Bootstrap CSS Toolkit styles -->
 <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
 <!-- Generic page styles -->
-<link rel="stylesheet" href="/css/style.css">
+
 <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
 <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
 <!-- Bootstrap CSS fixes for IE6 -->
@@ -223,19 +223,19 @@
 <script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
 <script src="http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
-<script src="js/jquery.fileupload.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
 <!-- The File Upload file processing plugin -->
-<script src="js/jquery.fileupload-fp.js"></script>
+<script src="/js/jquery.fileupload-fp.js"></script>
 <!-- The File Upload user interface plugin -->
-<script src="js/jquery.fileupload-ui.js"></script>
+<script src="/js/jquery.fileupload-ui.js"></script>
 <!-- The localization script -->
-<script src="js/locale.js"></script>
+<script src="/js/locale.js"></script>
 <!-- The main application script -->
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]>
-<script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
+<script src="/js/cors/jquery.xdr-transport.js"></script><![endif]-->
 </body>
 </html>
