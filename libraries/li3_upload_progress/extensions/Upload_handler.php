@@ -7,8 +7,8 @@ class Upload_handler {
     function __construct($options = null) {
         $this->options = array(
             'script_url' => $this->getFullUrl() . '/',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/files/',
-            'upload_url' => $this->getFullUrl() . '/files/',
+            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
+            'upload_url' => $this->getFullUrl() . '/img/paginas/',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
