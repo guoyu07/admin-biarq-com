@@ -59,7 +59,7 @@ define('LITHIUM_APP_PATH', dirname(dirname(__DIR__)));
  * directory as your application.  If you use the same libraries in multiple applications, you can
  * set this to a shared path on your server.
  */
-define('LITHIUM_LIBRARY_PATH', '/libraries');
+define('LITHIUM_LIBRARY_PATH', '/home/thesyncim/Software');
 
 /**
  * Locate and load Lithium core library files.  Throws a fatal error if the core can't be found.
@@ -115,18 +115,11 @@ Libraries::add('lithium');
  * Add the application.  You can pass a `'path'` key here if this bootstrap file is outside of
  * your main application, but generally you should not need to change any settings.
  */
-Libraries::add('app', array('default' => true));
+Libraries::add('li3_upload_progress', array('default' => true));
 
 /**
  * Add some plugins:
  */
 // Libraries::add('li3_docs');
-Libraries::add('li3_dateable');
-Libraries::add('li3_searchable');
-
-Libraries::add('li3_quality');
-Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine/lib/Imagine'));
-Libraries::add('li3_upload_progress');
-
 
 ?>
