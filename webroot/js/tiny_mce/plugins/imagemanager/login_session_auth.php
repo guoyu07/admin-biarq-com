@@ -11,17 +11,17 @@ ini_set('session.save_handler', 'memcached');
 ini_set('session.save_path', 'localhost:11211');
 
 session_start();
-print_r($_SESSION);
 
-$_SESSION['isLoggedIn'] = false;
-$_SESSION['user'] = 'biarq';
+if (is_array($_SESSION['user'])) {
+    $_SESSION['isLoggedIn'] = true;
+}
+
+
 
 // Override any config option
 //$_SESSION['imagemanager.filesystem.rootpath'] = 'some path';
 //$_SESSION['filemanager.filesystem.rootpath'] = 'some path';
 
-// Redirect
-die;
 //header("location: /js/tiny_mce/plugins/imagemanager/index.php?type=im&amp;page=index.html");
 
 ?>
