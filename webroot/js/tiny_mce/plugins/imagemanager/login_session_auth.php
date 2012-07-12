@@ -16,13 +16,11 @@ if (is_array($_SESSION['user'])) {
     $_SESSION['isLoggedIn'] = true;
 }
 
-
-
 // Override any config option
 //$_SESSION['imagemanager.filesystem.rootpath'] = 'some path';
 //$_SESSION['filemanager.filesystem.rootpath'] = 'some path';
 
-//header("location: /js/tiny_mce/plugins/imagemanager/index.php?type=im&amp;page=index.html");
+header("location: /js/tiny_mce/plugins/imagemanager/index.php?type=im&amp;page=index.html");
 
 ?>
 
