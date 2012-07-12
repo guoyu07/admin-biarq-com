@@ -280,7 +280,13 @@ class ProjectosController extends \lithium\action\Controller {
     public function search() {
     }
 
+    public function upload_progress() {
+        echo json_encode(Session::read('upload_progress_upload'));
+    }
+
     public function teste() {
+        var_dump($_SESSION);
+        var_dump($_FILES);
     }
 }
 
