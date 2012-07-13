@@ -309,7 +309,7 @@ class ProjectosController extends \lithium\action\Controller {
 
                 header('HTTP/1.1 405 Method Not Allowed');
         }
-        $this->_render = false;
+        $this->render(array('head' => true));
     }
 
     public function teste() {
