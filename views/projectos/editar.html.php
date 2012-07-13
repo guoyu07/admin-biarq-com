@@ -398,7 +398,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     </tr>
     {% } %}
 </script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="/js/upload_progress/vendor/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
