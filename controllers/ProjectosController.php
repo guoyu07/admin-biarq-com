@@ -280,7 +280,8 @@ class ProjectosController extends \lithium\action\Controller {
     public function search() {
     }
 
-    public function upload_handler() {
+    public function upload_handler($idprojecto) {
+
         $upload_handler = new Upload_handler();
 
         header('Pragma: no-cache');
@@ -299,7 +300,7 @@ class ProjectosController extends \lithium\action\Controller {
                 $upload_handler->get();
                 break;
             case 'POST':
-                $upload_handler->post();
+                $upload_handler->post($idprojecto);
                 break;
             case 'DELETE':
                 $upload_handler->delete();

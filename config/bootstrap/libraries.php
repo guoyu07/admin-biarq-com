@@ -153,18 +153,7 @@ Libraries::add('li3_upload_progress', array(
         // Set to true to rotate images based on EXIF meta data, if available:
         'orient_image' => false,
         'image_versions' => array(
-            // Uncomment the following version to restrict the size of
-            // uploaded images. You can also add additional versions with
-            // their own upload directories:
-            /*
-                                    'large' => array(
-                                        'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/files/',
-                                        'upload_url' => $this->getFullUrl().'/files/',
-                                        'max_width' => 1920,
-                                        'max_height' => 1200,
-                                        'jpeg_quality' => 95
-                                    ),
-                                    */
+
             'pequenas' => array(
                 'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
                 'upload_url' => '/img/paginas/',
