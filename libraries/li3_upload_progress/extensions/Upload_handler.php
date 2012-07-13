@@ -1,6 +1,8 @@
 <?php
 namespace li3_upload_progress\extensions;
 
+use lithium\action\Request;
+
 class Upload_handler extends \lithium\core\Object {
     protected $options;
 
