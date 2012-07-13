@@ -127,12 +127,10 @@ Libraries::add('li3_searchable');
 Libraries::add('li3_quality');
 Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine/lib/Imagine'));
 
-use lithium\net\http\Router;
-
 Libraries::add('li3_upload_progress', array(
     'config' => array(
         'script_url' => '/',
-        'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
+        'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
         'upload_url' => '/img/paginas/',
         'param_name' => 'files',
         // Set the following option to 'POST', if your server does not support
@@ -168,7 +166,7 @@ Libraries::add('li3_upload_progress', array(
                                     ),
                                     */
             'thumbnail' => array(
-                'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
+                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
                 'upload_url' => '/img/paginas/',
                 'max_width' => 80,
                 'max_height' => 80
