@@ -283,16 +283,17 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function upload_handler() {
         $upload_handler = new Upload_handler();
+        $this->response->_writeHeader(array(
+            'Pragma: no-cache',
+            'Cache-Control: no-store, no-cache, must-revalidate',
+            'Cache-Control: no-store, no-cache, must-revalidate',
+            'Content-Disposition: inline; filename="files.json"',
+            'X-Content-Type-Options: nosniff',
+            'Access-Control-Allow-Origin: *',
+            'Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT, DELETE',
+            'Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size'
+        ));
 
-        header('Pragma: no-cache');
-        header('Cache-Control: no-store, no-cache, must-revalidate');
-        header('Content-Disposition: inline; filename="files.json"');
-        header('X-Content-Type-Options: nosniff');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT, DELETE');
-        header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
-        //print();
-        //print($_SERVER['REQUEST_METHOD']);
         switch ($this->request->get('http:method')) {
             case 'OPTIONS':
                 break;
@@ -301,17 +302,13 @@ class ProjectosController extends \lithium\action\Controller {
                 $upload_handler->get();
                 break;
             case 'POST':
-                if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
-                    $upload_handler->delete();
-                } else {
-                    $upload_handler->post();
-                }
+                $upload_handler->post();
                 break;
             case 'DELETE':
                 $upload_handler->delete();
                 break;
             default:
-                header('HTTP/1.1 405 Method Not Allowed');
+                $this->response->_writeHeader('HTTP/1.1 405 Method Not Allowed');
         }
         $this->_render = false;
     }
