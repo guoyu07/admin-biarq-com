@@ -129,8 +129,6 @@ Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine
 
 use lithium\net\http\Router;
 
-print_r(\lithium\action\Request::$params);
-
 Libraries::add('li3_upload_progress', array(
     'config' => array(
         'script_url' => '/',
