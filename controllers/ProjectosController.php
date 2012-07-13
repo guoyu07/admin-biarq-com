@@ -293,7 +293,7 @@ class ProjectosController extends \lithium\action\Controller {
         header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
 
         print($this->request->get('http:method'));
-        print_r($_SERVER['REQUEST_METHOD']);
+        print($_SERVER['REQUEST_METHOD']);
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'OPTIONS':
                 break;
