@@ -105,7 +105,7 @@ class Upload_handler extends \lithium\core\Object {
         $new_file_path = $options['upload_dir'] . $file_name;
         $success = $imagine->open($file_path)
                 ->thumbnail($size, $mode)
-                ->save($new_file_path . 'teste');
+                ->save($new_file_path . $options['max_width']);
         return $success;
     }
 
