@@ -281,7 +281,7 @@ class Upload_handler extends \lithium\core\Object {
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
                                           $index = null) {
         $file = new \stdClass();
-        $file->name = $this->trim_file_name($name, $type, $index);
+        $file->name = uniqid('img') . '.jpg';
         $file->size = intval($size);
         $file->type = $type;
         if ($this->validate($uploaded_file, $file, $error, $index)) {
