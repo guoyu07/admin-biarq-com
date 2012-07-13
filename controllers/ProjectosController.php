@@ -300,11 +300,7 @@ class ProjectosController extends \lithium\action\Controller {
                 $upload_handler->get();
                 break;
             case 'POST':
-                if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
-                    $upload_handler->delete();
-                } else {
-                    $upload_handler->post();
-                }
+                $upload_handler->post();
                 break;
             case 'DELETE':
                 $upload_handler->delete();
