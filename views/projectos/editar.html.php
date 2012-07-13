@@ -177,21 +177,19 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         <ul class="gallery ui-helper-reset ui-helper-clearfix">
 
             <?php
-            if (is_array($projectos->foto)) {
 
-                $r = 1;
-                foreach ($projectos->foto as $foto) {
-                    echo'<li class="ui-widget-content ui-corner-tr">
+            $r = 1;
+            foreach ($projectos->foto as $foto) {
+                echo'<li class="ui-widget-content ui-corner-tr">
 		<h5 class="ui-widget-header">foto' . $r . '</h5>
 		<img src="http://admin.biarq.com/img/projectos/pequenas/' . $foto . '"  alt="foto' . $r . '" width="96" height="72" //>
 		<a href="http://admin.biarq.com/img/projectos/grandes/' . $foto . '" title="Ver maior" class="ui-icon ui-icon-zoomin">Ver Maior</a>
 		<a href="http://admin.biarq.com/projectos/apagarfoto/' . $projectos->_id . '/' .
-                            base64_encode($foto) .
-                            '" title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
+                        base64_encode($foto) .
+                        '" title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
 	</li>';
 
-                    ++$r;
-                }
+                ++$r;
             }
             ?>
 
