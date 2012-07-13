@@ -155,14 +155,14 @@ Libraries::add('li3_upload_progress', array(
         'image_versions' => array(
 
             'pequenas' => array(
-                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
-                'upload_url' => '/img/paginas/',
+                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/projectos/pequenas/',
+                'upload_url' => '/img/projectos/pequenas/',
                 'max_width' => 125,
                 'max_height' => 75
             ),
             'grandes' => array(
-                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
-                'upload_url' => '/img/paginas/',
+                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/',
+                'upload_url' => '/img/projectos/grandes/',
                 'max_width' => 635,
                 'max_height' => 381
             )
