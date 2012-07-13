@@ -1,10 +1,12 @@
 <?php
 namespace li3_upload_progress\extensions;
+use lithium\core\Libraries;
 
 class Upload_handler extends \lithium\core\Object {
     protected $options;
 
     function __construct($options = null) {
+        print_r(Libraries::get('li3_upload_progress'));
         $this->options = array(
             'script_url' => $this->getFullUrl() . '/',
             'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
