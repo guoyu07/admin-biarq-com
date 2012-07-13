@@ -9,11 +9,11 @@ class Upload_handler extends \lithium\core\Object {
     protected $options;
 
     function __construct($options = null) {
-        print_r(Libraries::get('li3_upload_progress'));
+        print_r(Libraries::get('li3_upload_progress')['config']);
         $this->options = array(
-            'script_url' => $this->getFullUrl() . '/',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
-            'upload_url' => $this->getFullUrl() . '/img/paginas/',
+            'script_url' => '/',
+            'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
+            'upload_url' => '/img/paginas/',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
@@ -48,8 +48,8 @@ class Upload_handler extends \lithium\core\Object {
                 ),
                 */
                 'thumbnail' => array(
-                    'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
-                    'upload_url' => $this->getFullUrl() . '/img/paginas/',
+                    'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
+                    'upload_url' => '/img/paginas/',
                     'max_width' => 80,
                     'max_height' => 80
                 )
@@ -58,17 +58,6 @@ class Upload_handler extends \lithium\core\Object {
         if ($options) {
             $this->options = array_replace_recursive($this->options, $options);
         }
-    }
-
-    protected function getFullUrl() {
-        $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
-        return
-                ($https ? 'https://' : 'http://') .
-                (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'] . '@' : '') .
-                (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'] .
-                ($https && $_SERVER['SERVER_PORT'] === 443 ||
-                $_SERVER['SERVER_PORT'] === 80 ? '' : ':' . $_SERVER['SERVER_PORT']))) .
-                substr($_SERVER['SCRIPT_NAME'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
     }
 
     protected function set_file_delete_url($file) {
