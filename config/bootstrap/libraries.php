@@ -165,11 +165,17 @@ Libraries::add('li3_upload_progress', array(
                                         'jpeg_quality' => 95
                                     ),
                                     */
-            'thumbnail' => array(
+            'pequenas' => array(
                 'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
                 'upload_url' => '/img/paginas/',
-                'max_width' => 80,
-                'max_height' => 80
+                'max_width' => 125,
+                'max_height' => 75
+            ),
+            'grandes' => array(
+                'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
+                'upload_url' => '/img/paginas/',
+                'max_width' => 635,
+                'max_height' => 381
             )
         )
     )
