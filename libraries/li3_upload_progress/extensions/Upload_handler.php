@@ -3,13 +3,13 @@ namespace li3_upload_progress\extensions;
 use lithium\core\Libraries;
 use lithium\core\Environment;
 
-print_r(Environment::get());
-
 class Upload_handler extends \lithium\core\Object {
     protected $options;
 
     function __construct($options = null) {
-        print_r(Libraries::get('li3_upload_progress')['config']);
+        if ($options == null) {
+            $options = Libraries::get('li3_upload_progress')['config'];
+        }
         $this->options = array(
             'script_url' => '/',
             'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
