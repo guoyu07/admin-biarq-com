@@ -1,7 +1,7 @@
 <?php
 namespace li3_upload_progress\extensions;
 
-class Upload_handler {
+class Upload_handler extends \lithium\core\Object {
     protected $options;
 
     function __construct($options = null) {
