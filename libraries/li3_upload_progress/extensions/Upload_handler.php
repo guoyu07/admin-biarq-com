@@ -359,6 +359,7 @@ class Upload_handler extends \lithium\core\Object {
     }
 
     public function post() {
+        echo '|inicio|';
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete();
         }
@@ -414,6 +415,8 @@ class Upload_handler extends \lithium\core\Object {
             header('Content-type: text/plain');
         }
         echo $json;
+
+        echo '|fim|';
     }
 
     public function delete() {
