@@ -22,7 +22,10 @@
 
     <!--  jquery core -->
 
-    <?php echo $this->Html->script(array('jquery-1.4.4.min', 'jquery-ui-1.8.16.custom.min'));?>
+    <?php echo $this->Html->script(array(
+    'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    'jquery-ui-1.8.16.custom.min'
+));?>
     <!--  checkbox styling script -->
     <!-- <script src="http://jqueryui.com/ui/jquery.ui.core.js" type="text/javascript"></script> -->
 
