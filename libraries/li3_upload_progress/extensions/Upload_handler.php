@@ -1,9 +1,7 @@
 <?php
 namespace li3_upload_progress\extensions;
 
-use lithium\action\Request;
-
-class Upload_handler extends \lithium\core\Object {
+class Upload_handler {
     protected $options;
 
     function __construct($options = null) {
@@ -359,7 +357,6 @@ class Upload_handler extends \lithium\core\Object {
     }
 
     public function post() {
-
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete();
         }

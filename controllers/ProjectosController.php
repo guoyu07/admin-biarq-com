@@ -282,7 +282,6 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function upload_handler() {
-
         $upload_handler = new Upload_handler();
 
         header('Pragma: no-cache');
@@ -293,7 +292,7 @@ class ProjectosController extends \lithium\action\Controller {
         header('Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT, DELETE');
         header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
 
-        switch ($this->request->get('http:method')) {
+        switch ($_SERVER['REQUEST_METHOD']) {
             case 'OPTIONS':
                 break;
             case 'HEAD':
@@ -301,15 +300,19 @@ class ProjectosController extends \lithium\action\Controller {
                 $upload_handler->get();
                 break;
             case 'POST':
-                $upload_handler->post();
+                if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
+                    $upload_handler->delete();
+                } else {
+                    $upload_handler->post();
+                }
+                break;
             case 'DELETE':
                 $upload_handler->delete();
                 break;
             default:
-
                 header('HTTP/1.1 405 Method Not Allowed');
         }
-        $this->render(array('head' => true));
+        $this->_render = false;
     }
 
     public function teste() {
