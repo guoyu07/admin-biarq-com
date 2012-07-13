@@ -129,7 +129,7 @@ Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine
 
 use lithium\net\http\Router;
 
-echo \lithium\net\http\Router::match('Projectos::index', array('absolute' => true));
+echo \lithium\net\http\Router::match();
 
 Libraries::add('li3_upload_progress', array(
     'config' => array(
