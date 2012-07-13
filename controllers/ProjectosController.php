@@ -49,6 +49,7 @@ class ProjectosController extends \lithium\action\Controller {
                     'msg' => 'Falha ao inserir ' . $projectos->titulo
                 ));
             }
+            $projectos->foto = array();
             if (isset($_FILES["fotos"]["tmp_name"])) {
                 $imagens = array();
                 foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
