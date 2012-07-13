@@ -133,9 +133,9 @@ echo \lithium\net\http\Router::match('/', null, array('absolute' => true));
 
 Libraries::add('li3_upload_progress', array(
     'config' => array(
-        'script_url' => $this->getFullUrl() . '/',
+        'script_url' => '/',
         'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
-        'upload_url' => $this->getFullUrl() . '/img/paginas/',
+        'upload_url' => '/img/paginas/',
         'param_name' => 'files',
         // Set the following option to 'POST', if your server does not support
         // DELETE requests. This is a parameter sent to the client:
@@ -171,7 +171,7 @@ Libraries::add('li3_upload_progress', array(
                                     */
             'thumbnail' => array(
                 'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']) . '/img/paginas/',
-                'upload_url' => $this->getFullUrl() . '/img/paginas/',
+                'upload_url' => '/img/paginas/',
                 'max_width' => 80,
                 'max_height' => 80
             )
