@@ -32,7 +32,9 @@ class Chat implements MessageComponentInterface {
         $this->clients->attach($conn);
 
         ob_start();
-        print_r($conn->Session);
+        print_r($conn->Session->set('teste', 'teste'));
+
+        print_r($conn->Session->get('teste'));
         print_r($_SESSION);
         $var = ob_get_contents();
         ob_end_clean();
