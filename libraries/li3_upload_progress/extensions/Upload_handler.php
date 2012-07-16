@@ -38,13 +38,15 @@ class Upload_handler extends \lithium\core\Object {
             'image_versions' => array(
 
                 'pequenas' => array(
-                    'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
+                    'upload_dir' => Libraries::get(true, 'path') .
+                            '/webroot/img/projectos/pequenas/',
                     'upload_url' => '/img/paginas/',
                     'max_width' => 125,
                     'max_height' => 75
                 ),
                 'grandes' => array(
-                    'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
+                    'upload_dir' => Libraries::get(true, 'path') .
+                            '/webroot/img/projectos/grandes/',
                     'upload_url' => '/img/paginas/',
                     'max_width' => 635,
                     'max_height' => 381
