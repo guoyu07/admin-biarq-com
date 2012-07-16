@@ -28,11 +28,7 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function adicionar() {
-        $imagine = new \Imagine\Gmagick\Imagine();
-        $sizeSmall = new \Imagine\Image\Box(125, 75);
-        $sizeBig = new \Imagine\Image\Box(635, 381);
-        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-        $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
+
         $projectostrue = true;
         $projectosadicionartrue = true;
 
@@ -42,31 +38,7 @@ class ProjectosController extends \lithium\action\Controller {
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
 
-            if (!$projectos->save()) {
-                Session::write(
-                    'message', array(
-                    'status' => 'red',
-                    'msg' => 'Falha ao inserir ' . $projectos->titulo
-                ));
-            }
             $projectos->foto = array();
-            if (isset($_FILES["fotos"]["tmp_name"])) {
-                $imagens = array();
-                foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
-                    $nomeimg = uniqid('img') . '.jpg';
-                    move_uploaded_file($foto, $fotodir . $nomeimg);
-                    array_push($imagens, $nomeimg);
-
-                    $imagine->open($fotodir . $nomeimg)
-                            ->thumbnail($sizeBig, $mode)
-                            ->save($fotodir . 'grandes/' . $nomeimg);
-
-                    $imagine->open($fotodir . $nomeimg)
-                            ->thumbnail($sizeSmall, $mode)
-                            ->save($fotodir . 'pequenas/' . $nomeimg);
-                }
-                $projectos->foto = $imagens;
-            }
 
             if ($projectos->save()) {
                 Session::write(
@@ -81,7 +53,7 @@ class ProjectosController extends \lithium\action\Controller {
                     'msg' => 'Falha ao inserir ' . $projectos->titulo
                 ));
             }
-            $this->redirect('Projectos::index');
+            $this->redirect('/projectos/editar/' . $projectos->_id);
         }
 
         return compact('projectosadicionartrue', 'projectostrue');
