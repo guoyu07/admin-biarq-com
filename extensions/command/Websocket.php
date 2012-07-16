@@ -30,7 +30,7 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
-        $memcache = new Memcache;
+        $memcache = new \Memcached;
         $memcache->connect('localhost', 11211);
 
         $session = new SessionProvider(
