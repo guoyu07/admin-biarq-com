@@ -14,6 +14,7 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
+use lithium\storage\Session;
 
 /**
  * chat.php
@@ -28,8 +29,7 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
-
-        print_r($conn);
+        var_dump(Session::read('user'));
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
