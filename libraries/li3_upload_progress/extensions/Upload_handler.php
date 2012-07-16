@@ -97,14 +97,12 @@ class Upload_handler extends \lithium\core\Object {
     protected function create_scaled_image($file_name, $options) {
         $imagine = new \Imagine\Gmagick\Imagine();
         $size = new \Imagine\Image\Box($options['max_width'], $options['max_height']);
-
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-
         $file_path = $this->options['upload_dir'] . $file_name;
         $new_file_path = $options['upload_dir'] . $file_name;
         $success = $imagine->open($file_path)
                 ->thumbnail($size, $mode)
-                ->save($new_file_path . $options['max_width']);
+                ->save($new_file_path);
         return $success;
     }
 
