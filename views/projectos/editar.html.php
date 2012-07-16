@@ -425,3 +425,73 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]>
 <script src="/js/upload_progress/cors/jquery.xdr-transport.js"></script><![endif]-->
+<script type="text/javascript" src="js/web-socket-js/swfobject.js"></script>
+<script type="text/javascript" src="js/web-socket-js/web_socket.js"></script>
+
+<script type="text/javascript">
+
+    // Set URL of your WebSocketMain.swf here:
+    WEB_SOCKET_SWF_LOCATION = "/js/web-socket-js/WebSocketMain.swf";
+    // Set this to dump debug message from Flash to console.log:
+    WEB_SOCKET_DEBUG = true;
+
+    // Everything below is the same as using standard WebSocket.
+
+    var ws;
+
+    function init() {
+
+        // Connect to Web Socket.
+        // Change host/port here to your own Web Socket server.
+        ws = new WebSocket("ws://admin.biarq.com:8000/chat");
+
+        // Set event handlers.
+        ws.onopen = function () {
+            output("onopen");
+        };
+        ws.onmessage = function (e) {
+            // e.data contains received string.
+            output("onmessage: " + e.data);
+        };
+        ws.onclose = function () {
+
+            output("onclose");
+            setTimeout(function () {
+                ws = new WebSocket("ws://localhost:8000/chat");
+            }, 5000);
+        };
+        ws.onerror = function () {
+            output("onerror");
+        };
+
+    }
+
+    function onSubmit() {
+        var input = document.getElementById("input");
+        // You can send message to the Web Socket using ws.send.
+        ws.send(input.value);
+        output("send: " + input.value);
+        input.value = "";
+        input.focus();
+    }
+
+    function onCloseClick() {
+        ws.close();
+    }
+
+    function output(str) {
+        var log = document.getElementById("log");
+        var escaped = str.replace(/&/, "&amp;").replace(/</, "&lt;").
+                replace(/>/, "&gt;").replace(/"/, "&quot;"); // "
+        log.innerHTML = escaped + "<br>" + log.innerHTML;
+    }
+
+</script>
+</head>
+<body onload="init();">
+<form onsubmit="onSubmit(); return false;">
+    <input type="text" id="input">
+    <input type="submit" value="Send">
+    <button onclick="onCloseClick(); return false;">close</button>
+</form>
+<div id="log"></div>
