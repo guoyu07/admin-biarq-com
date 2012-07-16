@@ -57,7 +57,7 @@ class Websocket extends \lithium\console\Command {
         $memcache->connect('localhost', 11211);
 
         $session = new SessionProvider(
-            new Chat,
+            new Chat(),
 
             new Handler\MemcacheSessionHandler($memcache)
         );
