@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace app\extensions\command;
-use \WebSocket\Server;
+
 use lithium\core\Libraries;
 use Ratchet\Session\SessionProvider;
 use Ratchet\MessageComponentInterface;
@@ -57,7 +57,7 @@ class Websocket extends \lithium\console\Command {
         $memcache->connect('localhost', 11211);
 
         $session = new SessionProvider(
-            new \Chat,
+            new Chat,
 
             new Handler\MemcacheSessionHandler($memcache)
         );
