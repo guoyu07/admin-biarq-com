@@ -127,9 +127,10 @@ Libraries::add('li3_searchable');
 Libraries::add('li3_quality');
 Libraries::add('Imagine', array('path' => LITHIUM_APP_PATH . '/libraries/Imagine/lib/Imagine'));
 
-Libraries::add('Ratchet', array('path' => LITHIUM_APP_PATH . '/libraries/Ratchet/src/Ratchet')
-
-);
+Libraries::add('Ratchet', array(
+    'bootstrap' =>
+    'vendor/autoload.php'
+));
 
 Libraries::add('li3_upload_progress', array(
     'config' => array(
