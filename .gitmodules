@@ -25,3 +25,6 @@
 [submodule "libraries/Imagine"]
 	path = libraries/Imagine
 	url = git://github.com/avalanche123/Imagine.git
+[submodule "libraries/Ratchet"]
+	path = libraries/Ratchet
+	url = git://github.com/cboden/Ratchet.git
