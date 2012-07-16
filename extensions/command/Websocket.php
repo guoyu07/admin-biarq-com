@@ -34,8 +34,8 @@ class Chat implements MessageComponentInterface {
         $memcache->connect('localhost', 11211);
 
         $session = new SessionProvider(
-            new MyApp
-            , new Handler\MemcacheSessionHandler($memcache)
+
+            new Handler\MemcacheSessionHandler($memcache)
         );
     }
 
