@@ -425,8 +425,8 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]>
 <script src="/js/upload_progress/cors/jquery.xdr-transport.js"></script><![endif]-->
-<script type="text/javascript" src="js/web-socket-js/swfobject.js"></script>
-<script type="text/javascript" src="js/web-socket-js/web_socket.js"></script>
+<script type="text/javascript" src="/js/web-socket-js/swfobject.js"></script>
+<script type="text/javascript" src="/js/web-socket-js/web_socket.js"></script>
 
 <script type="text/javascript">
 
