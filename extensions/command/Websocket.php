@@ -17,7 +17,6 @@ use Ratchet\WebSocket\WsServer;
 use lithium\storage\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
-Ratchet\Session\Storage\Proxy\VirtualProxy;
 /**
  * chat.php
  * Send any incoming messages to all connected clients (except sender)
