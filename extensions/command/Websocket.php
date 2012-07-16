@@ -30,7 +30,9 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
+        /
         var_dump($conn->session->get('user'));
+        print_r($conn->session);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
