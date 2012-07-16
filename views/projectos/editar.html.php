@@ -431,7 +431,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script type="text/javascript">
 
     // Set URL of your WebSocketMain.swf here:
-    WEB_SOCKET_SWF_LOCATION = "/js/web-socket-js/WebSocketMain.swf";
+    WEB_SOCKET_SWF_LOCATION = "WebSocketMain.swf";
     // Set this to dump debug message from Flash to console.log:
     WEB_SOCKET_DEBUG = true;
 
