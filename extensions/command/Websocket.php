@@ -32,7 +32,7 @@ class Chat implements MessageComponentInterface {
         $this->clients->attach($conn);
 
         //var_dump($conn->session->get('user'));
-        var_dump($conn->$Session);
+        print_r($conn);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
