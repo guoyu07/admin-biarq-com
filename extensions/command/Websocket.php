@@ -32,7 +32,7 @@ class Chat implements MessageComponentInterface {
         $this->clients->attach($conn);
 
         ob_start();
-        print_r($conn->Session->getId());
+        print_r($conn->Session);
         $var = ob_get_contents();
         ob_end_clean();
         $fp = fopen('/var/www/admin.biarq.com/webroot/teste.txt', 'w');
