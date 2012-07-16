@@ -60,10 +60,11 @@ class Websocket extends \lithium\console\Command {
         $memcache->connect('localhost', 11211);
         $chat = new Chat();
 
-        $handler = new Handler\MemcacheSessionHandler($memcache);
+        $handler = new Handler\MemcacheSessionHandler($memcache, array('prefix' => ''));
+        var_dump($handler->read('user'));
 
         $session = new SessionProvider($chat, $handler);
-        var_dump($session);
+
         // Run the server application through the WebSocket protocol on port 8000
         $server = IoServer::factory(new WsServer($session), 8000);
         $server->run();
