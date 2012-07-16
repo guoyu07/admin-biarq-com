@@ -17,6 +17,7 @@ use Ratchet\WebSocket\WsServer;
 use lithium\storage\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
+Ratchet\Session\Storage\Proxy\VirtualProxy;
 /**
  * chat.php
  * Send any incoming messages to all connected clients (except sender)
@@ -31,8 +32,7 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
 
-        //var_dump($conn->session->get('user'));
-        print_r($conn);
+        var_export($conn);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
@@ -61,7 +61,6 @@ class Websocket extends \lithium\console\Command {
         $chat = new Chat();
 
         $handler = new Handler\MemcacheSessionHandler($memcache, array('prefix' => ''));
-        var_dump($handler->read('user'));
 
         $session = new SessionProvider($chat, $handler, array(
             'adapter' => 'Php', 'session.name' => 'PHPSESSID',
