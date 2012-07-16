@@ -15,6 +15,7 @@ use Ratchet\ConnectionInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 use lithium\storage\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * chat.php
@@ -29,7 +30,13 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
-        var_dump(Session::read('user'));
+        $memcache = new Memcache;
+        $memcache->connect('localhost', 11211);
+
+        $session = new SessionProvider(
+            new MyApp
+            , new Handler\MemcacheSessionHandler($memcache)
+        );
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
