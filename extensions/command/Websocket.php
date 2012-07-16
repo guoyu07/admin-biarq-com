@@ -9,7 +9,7 @@
 namespace app\extensions\command;
 use \WebSocket\Server;
 use lithium\core\Libraries;
-
+use Ratchet\Session\SessionProvider;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Ratchet\Server\IoServer;
