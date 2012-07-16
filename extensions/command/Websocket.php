@@ -31,16 +31,7 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
 
-        ob_start();
         print_r($conn->Session->set('teste', 'teste'));
-
-        print_r($conn->Session->get('teste'));
-        print_r($_SESSION);
-        $var = ob_get_contents();
-        ob_end_clean();
-        $fp = fopen('/var/www/admin.biarq.com/webroot/teste.txt', 'w');
-        fputs($fp, $var);
-        fclose($fp);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
