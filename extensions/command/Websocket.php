@@ -30,13 +30,6 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
-        $memcache = new \Memcache;
-        $memcache->connect('localhost', 11211);
-
-        $session = new SessionProvider(
-
-            new Handler\MemcacheSessionHandler($memcache)
-        );
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
@@ -60,9 +53,16 @@ class Chat implements MessageComponentInterface {
 class Websocket extends \lithium\console\Command {
 
     public function start($adress = '127.0.0.1', $port = 8000, $ssl = false) {
+        $memcache = new \Memcache;
+        $memcache->connect('localhost', 11211);
 
+        $session = new SessionProvider(
+            new Chat,
+
+            new Handler\MemcacheSessionHandler($memcache)
+        );
         // Run the server application through the WebSocket protocol on port 8000
-        $server = IoServer::factory(new WsServer(new Chat), 8000);
+        $server = IoServer::factory(new WsServer(new $session), 8000);
         $server->run();
     }
 
