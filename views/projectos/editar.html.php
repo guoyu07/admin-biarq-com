@@ -180,7 +180,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
             $r = 1;
             foreach ($projectos->foto as $foto) {
-                echo'<li class="ui-widget-content ui-corner-tr">
+                echo'<li class="ui-widget-content ui-corner-tr"  id= "imagens">
 		<h5 class="ui-widget-header">foto' . $r . '</h5>
 		<img src="http://admin.biarq.com/img/projectos/pequenas/' . $foto . '"  alt="foto' . $r . '" width="96" height="72" //>
 		<a href="http://admin.biarq.com/img/projectos/grandes/' . $foto . '" title="Ver maior" class="ui-icon ui-icon-zoomin">Ver Maior</a>
@@ -452,6 +452,9 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         ws.onmessage = function (e) {
             // e.data contains received string.
             output("onmessage: " + e.data);
+            if (e.data == 'update') {
+
+            }
         };
         ws.onclose = function () {
 
