@@ -498,32 +498,46 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 <script type="text/x-tmpl" id="tmpl-demo">
-    <h3>{%=o.title%}</h3>
+    <h3>{%=o.titulo%}</h3>
 
-    <p>Released under the
-        <a href="{%=o.license.url%}">{%=o.license.name%}</a>.</p>
-    <h4>Features</h4>
-    <ul>
-        {% for (var i=0; i
-        <o.features.length
-        ; i++) { %}
-        <li>{%=o.features[i]%}</li>
-        {% } %}
+
+    {% for (var i=0; i
+    <o.foto
+    ; i++) { %}
+    <li>{%=o.foto[i]%}</li>
+    {% } %}
     </ul>
 </script>
 
+<ul class="gallery ui-helper-reset ui-helper-clearfix">
+
+    <?php
+
+    $r = 1;
+    foreach ($projectos->foto as $foto) {
+        echo'<li class="ui-widget-content ui-corner-tr"  id= "imagens">
+		<h5 class="ui-widget-header">foto' . $r . '</h5>
+		<img src="http://admin.biarq.com/img/projectos/pequenas/' . $foto . '"  alt="foto' . $r . '" width="96" height="72" //>
+		<a href="http://admin.biarq.com/img/projectos/grandes/' . $foto . '" title="Ver maior" class="ui-icon ui-icon-zoomin">Ver Maior</a>
+		<a href="http://admin.biarq.com/projectos/apagarfoto/' . $projectos->_id . '/' .
+                base64_encode($foto) .
+                '" title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
+	</li>';
+
+        ++$r;
+    }
+    ?>
+
+</ul>
+
 <script type="text/javascript">
-    var data = {
-        "title":"JavaScript Templates",
-        "license":{
-            "name":"MIT license",
-            "url":"http://www.opensource.org/licenses/MIT"
-        },
-        "features":[
-            "lightweight & fast",
-            "powerful",
-            "zero dependencies"
-        ]
+    var data = {"_id":"50055780a43fc2040200004f", "_keywords":[
+        "teste"
+    ], "created":"2012-07-17T13:16:00+0100",
+        "foto":[
+            "img500557ad7831c.jpg"
+        ],
+        "titulo":"teste"
     };
     document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
 </script>
