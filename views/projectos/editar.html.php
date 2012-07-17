@@ -154,6 +154,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <br>
     <select name="fotoprincipal" id="teste">
         <?php
+
         foreach ($projectos->foto as $foto) {
             $cond = '';
             if ($projectos->fotoprincipal == $foto) {
@@ -492,6 +493,38 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     }
 
 </script>
+
+
+<script type="text/x-tmpl" id="tmpl-demo">
+    <h3>{%=o.title%}</h3>
+
+    <p>Released under the
+        <a href="{%=o.license.url%}">{%=o.license.name%}</a>.</p>
+    <h4>Features</h4>
+    <ul>
+        {% for (var i=0; i
+        <o.features.length
+        ; i++) { %}
+        <li>{%=o.features[i]%}</li>
+        {% } %}
+    </ul>
+</script>
+
+<script type="text/javascript">
+    var data = {
+        "title":"JavaScript Templates",
+        "license":{
+            "name":"MIT license",
+            "url":"http://www.opensource.org/licenses/MIT"
+        },
+        "features":[
+            "lightweight & fast",
+            "powerful",
+            "zero dependencies"
+        ]
+    };
+</script>
+
 
 <body onload="init();">
 <form onsubmit="onSubmit(); return false;">
