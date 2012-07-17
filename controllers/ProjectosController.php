@@ -9,10 +9,9 @@ use li3_upload_progress\extensions\Upload_handler;
 class ProjectosController extends \lithium\action\Controller {
 
     public function _init() {
+        $this->_render['negotiate'] = true;
 
         parent::_init();
-
-        $this->_render['negotiate'] = true;
 
         if (!Session::read('user')) {
             $this->redirect('Sessions::add');
