@@ -119,7 +119,7 @@ class ProjectosController extends \lithium\action\Controller {
             }
             $this->redirect('Projectos::index');
         }
-        return $this->render(array('layout' => false, 'json' => $projectos));
+        //return $this->render(array('layout' => false, 'json' => $projectos));
         return compact('projectos', 'projectostrue');
     }
 
