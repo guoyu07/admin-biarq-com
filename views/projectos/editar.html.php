@@ -506,7 +506,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         ; i++) { %}
 
         <li class="ui-widget-content ui-corner-tr" id="imagens">
-            <h5 class="ui-widget-header">{%=i%}</h5>
+            <h5 class="ui-widget-header">{%=[i]%}</h5>
             <img src="http://admin.biarq.com/img/projectos/pequenas/{%=o.foto[i]%}"
                     alt="foto' . $r . '"
                     width="96"
