@@ -12,6 +12,8 @@ class ProjectosController extends \lithium\action\Controller {
 
         parent::_init();
 
+        $this->_render['negotiate'] = true;
+
         if (!Session::read('user')) {
             $this->redirect('Sessions::add');
         }
