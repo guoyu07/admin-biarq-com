@@ -520,7 +520,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     </li>
     <li>{%=o.foto[i]%}</li>
     {% } %}
-    </ul>
+
 </script>
 
 <ul class="gallery ui-helper-reset ui-helper-clearfix">
