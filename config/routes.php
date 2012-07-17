@@ -81,6 +81,6 @@ Router::connect('/test', array('controller' => 'lithium\test\Controller'));
  * a top-down fashion.
  */
 
-Router::connect('/{:controller}/{:action}/{:args}.{:type}');
+Router::connect('/{:controller}/{:action}/{:args}');
 
 ?>
