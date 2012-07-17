@@ -412,19 +412,6 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script type="text/javascript" src="/js/web-socket-js/web_socket.js"></script>
 
 <script type="text/javascript">
-    $('#fileupload').fileupload({
-        done:function (e, data) {
-            $.each(data.files, function (index, file) {
-                $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
-                        function (data) {
-                            console.log(data);
-                            document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
-
-                        });
-
-            });
-        }
-    });
 
     // Set URL of your WebSocketMain.swf here:
     WEB_SOCKET_SWF_LOCATION = "WebSocketMain.swf";
