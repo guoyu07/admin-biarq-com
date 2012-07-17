@@ -453,6 +453,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
             // e.data contains received string.
             output("onmessage: " + e.data);
             if (e.data == 'update') {
+                $("imagens").empty();
 
             }
         };
