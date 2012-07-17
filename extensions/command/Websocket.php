@@ -34,9 +34,9 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
 
-        session_id($conn->WebSocket->request->getCookie(ini_get('session.name')));
-        session_start();
-        print_r($_SESSION);
+        Session::key($conn->WebSocket->request->getCookie(ini_get('session.name')));
+
+        print_r(Session::read('user'));
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
