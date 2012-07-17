@@ -523,6 +523,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
             "zero dependencies"
         ]
     };
+    document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
 </script>
 
 
