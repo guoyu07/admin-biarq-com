@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 ini_set('session.name', 'PHPSESSID');
 ini_set('session.save_handler', 'memcached');
 ini_set('session.save_path', 'localhost:11211');
-session_start();
+
 /**
  * chat.php
  * Send any incoming messages to all connected clients (except sender)
@@ -36,7 +36,7 @@ class Chat implements MessageComponentInterface {
         $this->clients->attach($conn);
 
         session_id($conn->WebSocket->request->getCookie(ini_get('session.name')));
-
+        session_start();
         print_r($_SESSION);
     }
 
