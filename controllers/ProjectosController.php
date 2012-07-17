@@ -60,7 +60,7 @@ class ProjectosController extends \lithium\action\Controller {
         return compact('projectosadicionartrue', 'projectostrue');
     }
 
-    public function editar($id) {
+    public function editar() {
         $imagine = new \Imagine\Gmagick\Imagine();
         $sizeSmall = new \Imagine\Image\Box(125, 75);
         $sizeBig = new \Imagine\Image\Box(635, 381);
@@ -70,7 +70,7 @@ class ProjectosController extends \lithium\action\Controller {
         $projectostrue = true;
 
         $projectos = Projectos::find('first', array(
-            'conditions' => array('_id' => $id)
+            'conditions' => array('_id' => $this->request->id)
         ));
 
         if ($this->request->data) {
