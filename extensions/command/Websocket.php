@@ -17,6 +17,9 @@ use Ratchet\WebSocket\WsServer;
 use lithium\storage\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
+ini_set('session.name', 'PHPSESSID');
+ini_set('session.save_handler', 'memcached');
+ini_set('session.save_path', 'localhost:11211');
 /**
  * chat.php
  * Send any incoming messages to all connected clients (except sender)
@@ -31,13 +34,9 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
 
-        ini_set('session.name', 'PHPSESSID');
-        ini_set('session.save_handler', 'memcached');
-        ini_set('session.save_path', 'localhost:11211');
-
-    )
         session_id($conn->WebSocket->request->getCookie(ini_get('session.name')));
         session_start();
+        print_r($_SESSION);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
