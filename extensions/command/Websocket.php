@@ -46,6 +46,10 @@ class Chat implements MessageComponentInterface {
 
         foreach ($this->clients as $client) {
             if ($from != $client) {
+
+                if ($msg = 'update') {
+                    $client->send('div updated');
+                }
                 $client->send($msg);
             }
         }
