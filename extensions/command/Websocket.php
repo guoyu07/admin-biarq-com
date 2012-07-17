@@ -31,7 +31,13 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $this->clients->attach($conn);
 
-        print_r($conn->WebSocket->request->getCookie(ini_get('session.name')));
+        ini_set('session.name', 'PHPSESSID');
+        ini_set('session.save_handler', 'memcached');
+        ini_set('session.save_path', 'localhost:11211');
+
+    )
+        session_id($conn->WebSocket->request->getCookie(ini_get('session.name')));
+        session_start();
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
