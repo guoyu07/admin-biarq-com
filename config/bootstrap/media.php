@@ -56,13 +56,5 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
     return $chain->next($self, $params, $chain);
 });
 
-Media::type('json', array('text/javascript', 'application/javascript'), array(
-    'view' => 'lithium\template\View',
-    'layout' => false,
-    'conditions' => array('type' => true)
-    //'encode' => function($data, $handler, &$response) {
-    // do something with it
-    //  return $_GET['callback'] . "(" . json_encode($data) . ")";
-    //}
-));
+
 ?>
