@@ -160,10 +160,12 @@ class ProjectosController extends \lithium\action\Controller {
         $this->redirect('http://admin.biarq.com/projectos/editar/' . $idProjecto);
     }
 
-    public function apagarProjecto($id) {
+    public function apagarProjecto() {
 
         $projecto = Projectos::find('first', array(
-            'conditions' => array('_id' => $id)
+            'conditions' => array(
+                '_id' => $this->request->id
+            )
         ));
 
         // $imagens = $projecto->foto->to('array');
@@ -175,7 +177,7 @@ class ProjectosController extends \lithium\action\Controller {
             }
         }
 
-        if (Projectos::remove(array('_id' => $id))) {
+        if (Projectos::remove(array('_id' => $this->request->id))) {
             Session::write(
                 'message', array(
                 'status' => 'green',
