@@ -413,14 +413,9 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 <script type="text/javascript">
     $('#fileupload').fileupload({
-        drop:function (e, data) {
+        done:function (e, data) {
             $.each(data.files, function (index, file) {
-                alert('Dropped file: ' + file.name);
-            });
-        },
-        change:function (e, data) {
-            $.each(data.files, function (index, file) {
-                alert('Selected file: ' + file.name);
+                alert('done file: ' + file.name);
             });
         }
     });
