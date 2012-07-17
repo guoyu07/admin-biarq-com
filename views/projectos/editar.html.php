@@ -525,6 +525,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     };
     document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
 </script>
+<div id="result"></div>
 
 
 <body onload="init();">
