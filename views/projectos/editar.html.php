@@ -212,6 +212,9 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <?= $this->form->submit('Editar Projecto'); ?>
     <?= $this->form->end(); ?>
 
+    <div id="result"></div>
+
+
     <!-- Bootstrap CSS Toolkit styles -->
     <link rel="stylesheet"
             href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
@@ -400,8 +403,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     {% } %}
 </script>
 
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="/js/upload_progress/vendor/jquery.ui.widget.js"></script>
+
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
@@ -525,7 +527,6 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     };
     document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
 </script>
-<div id="result"></div>
 
 
 <body onload="init();">
