@@ -508,10 +508,12 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script type="text/javascript">
 
 
-    $.getJSON('/projectos/editar/<?=$projectos->_id?>.json', function (data) {
-        document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
+    $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
+            function (data) {
+                console.log(data);
+                document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
 
-    });
+            });
 
 </script>
 
