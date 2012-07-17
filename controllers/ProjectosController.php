@@ -255,7 +255,7 @@ class ProjectosController extends \lithium\action\Controller {
     public function search() {
     }
 
-    public function upload_handler($idprojecto) {
+    public function upload_handler() {
 
         $upload_handler = new Upload_handler();
 
@@ -275,7 +275,7 @@ class ProjectosController extends \lithium\action\Controller {
                 $upload_handler->get();
                 break;
             case 'POST':
-                $upload_handler->post($idprojecto);
+                $upload_handler->post($this->request->id);
                 break;
             case 'DELETE':
                 $upload_handler->delete();
