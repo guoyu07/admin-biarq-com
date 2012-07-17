@@ -43,8 +43,8 @@ Router::connect('/logout', 'Sessions::delete');
  * [http://path/to/app/test](/test) to run tests.
  */
 //if (!Environment::is('production')) {
-	Router::connect('/test/{:args}', array('controller' => 'lithium\test\Controller'));
-	Router::connect('/test', array('controller' => 'lithium\test\Controller'));
+Router::connect('/test/{:args}', array('controller' => 'lithium\test\Controller'));
+Router::connect('/test', array('controller' => 'lithium\test\Controller'));
 //}
 
 /**
@@ -80,8 +80,7 @@ Router::connect('/logout', 'Sessions::delete');
  * In almost all cases, custom routes should be added above this one, since route-matching works in
  * a top-down fashion.
  */
-        
-        
-Router::connect('/{:controller}/{:action}/{:args}');
+
+Router::connect('/{:controller}/{:action}/{:args}.{:type}');
 
 ?>
