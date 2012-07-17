@@ -190,7 +190,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     </script>
 
     <?= $this->form->submit('Editar Projecto'); ?>
-    <?= $this->form->end(); ?>
+
 
 
 
@@ -536,7 +536,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 </script>
 
-
+<?= $this->form->end(); ?>
 <body onload="init();">
 <form onsubmit="onSubmit(); return false;">
     <input type="text" id="input">
