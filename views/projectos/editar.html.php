@@ -502,7 +502,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
     {% for (var i=0; i
-    <o.foto
+    <o.foto.lenght
     ; i++) { %}
     <li>{%=o.foto[i]%}</li>
     {% } %}
