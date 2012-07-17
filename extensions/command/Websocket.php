@@ -45,11 +45,12 @@ class Chat implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
 
         foreach ($this->clients as $client) {
+            var_dump($msg);
+            if ($msg = 'update') {
+                $client->send('div updated');
+            }
             if ($from != $client) {
-                var_dump($msg);
-                if ($msg = 'update') {
-                    $client->send('div updated');
-                }
+
                 $client->send($msg);
             }
         }
