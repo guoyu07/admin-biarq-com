@@ -506,15 +506,13 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 <script type="text/javascript">
-    var data = {"_id":"50055780a43fc2040200004f", "_keywords":[
-        "teste"
-    ], "created":"2012-07-17T13:16:00+0100",
-        "foto":[
-            "img500557ad7831c.jpg"
-        ],
-        "titulo":"teste"
-    };
-    document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
+
+
+    $.getJSON('/projectos/editar/<?=$projectos->_id?>.json', function (data) {
+        document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
+
+    });
+
 </script>
 
 
