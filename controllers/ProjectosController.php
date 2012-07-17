@@ -73,7 +73,6 @@ class ProjectosController extends \lithium\action\Controller {
         $projectos = Projectos::find('first', array(
             'conditions' => array('_id' => $id)
         ));
-        print_r(json_encode($projectos->to('array')));
 
         if ($this->request->data) {
             $imagens = $projectos->foto->to('array');
