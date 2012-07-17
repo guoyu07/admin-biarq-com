@@ -483,16 +483,16 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
         {% for (var i=0; i
-        <o.foto.length
+        <o.projectos.foto.length
         ; i++) { %}
 
         <li class="ui-widget-content ui-corner-tr" id="imagens">
             <h5 class="ui-widget-header">foto{%=[i]%}</h5>
-            <img src="http://admin.biarq.com/img/projectos/pequenas/{%=o.foto[i]%}"
+            <img src="http://admin.biarq.com/img/projectos/pequenas/{%=o.projectos.foto[i]%}"
                     alt="foto' . $r . '"
                     width="96"
                     height="72" />
-            <a href="http://admin.biarq.com/img/projectos/grandes/{%=o.foto[i]%}"
+            <a href="http://admin.biarq.com/img/projectos/grandes/{%=o.projectos.foto[i]%}"
                     title="Ver maior"
                     class="ui-icon ui-icon-zoomin">Ver Maior</a>
             <a href="http://admin.biarq.com/projectos/apagarfoto/' . {%=o._id%} . '/' .
