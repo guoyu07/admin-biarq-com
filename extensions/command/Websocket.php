@@ -36,7 +36,9 @@ class Chat implements MessageComponentInterface {
         $this->clients->attach($conn);
 
         session_id($conn->WebSocket->request->getCookie(ini_get('session.name')));
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $conn->send(($conn->WebSocket->request->getCookie(ini_get('session.name'))));
     }
 
