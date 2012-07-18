@@ -41,7 +41,7 @@ class GaleriaController extends \lithium\action\Controller {
 
 
 
-        return compact('galeriaindextrue', 'galeriatrue', 'galeria', 'fotosGaleria', 'fotos');
+        return compact('galeria', 'fotosGaleria', 'fotos');
     }
 
     public function adicionar($foto = NULL) {
@@ -51,7 +51,7 @@ class GaleriaController extends \lithium\action\Controller {
         if ($foto) {
 
 
-            $fotodir = "/var/www/admin.biarq.com/app/webroot/img/projectos/";
+            $fotodir = LITHIUM_APP_PATH .'/webroot/img/projectos/';
             $fotoOriginal = substr($foto,0,-10).'.jpg';
            
 
@@ -90,10 +90,8 @@ class GaleriaController extends \lithium\action\Controller {
             $this->redirect('galeria::index');
         }
         $galeria = galeria::find('first');
-        $galeriatrue = TRUE;
-  
-        $galeriaeditartrue = TRUE;
-        return compact('galeria', 'galeriatrue','galeriaeditartrue');
+
+        return compact('galeria');
     }
 
     public function eliminarfoto($id) {

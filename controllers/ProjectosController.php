@@ -157,7 +157,7 @@ class ProjectosController extends \lithium\action\Controller {
             }
         }
 
-        $this->redirect('http://admin.biarq.com/projectos/editar/' . $idProjecto);
+        $this->redirect(array('Projectos::editar', 'id' => $idProjecto));
     }
 
     public function apagarProjecto() {
