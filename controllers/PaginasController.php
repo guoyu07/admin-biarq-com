@@ -46,7 +46,12 @@ class PaginasController extends \lithium\action\Controller {
     }
 
     public function editar($id) {
-        print_r($this->request);
+        $print_r = function($var) {
+            echo '<pre>';
+            print_r($var);
+            echo '</pre>';
+        };
+        $print_r($this->request);
         if (($this->request->data)) {
             $pagina = Paginas::find('first', array(
                 'conditions' => array('_id' => $id)
