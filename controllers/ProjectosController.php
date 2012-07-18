@@ -23,15 +23,13 @@ class ProjectosController extends \lithium\action\Controller {
         $projectos = Projectos::find('all', array(
             'order' => array('ordem' => 'ASC')
         ));
-        $projectostrue = true;
-        $projectosindextrue = true;
-        return compact('projectos', 'projectostrue', 'projectosindextrue');
+
+        return compact('projectos');
     }
 
     public function adicionar() {
 
-        $projectostrue = true;
-        $projectosadicionartrue = true;
+
 
         if ($this->request->data) {
 
@@ -67,7 +65,7 @@ class ProjectosController extends \lithium\action\Controller {
         $sizeTop = new \Imagine\Image\Box(219, 146);
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
         $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
-        $projectostrue = true;
+
 
         $projectos = Projectos::find('first', array(
             'conditions' => array('_id' => $this->request->id)
@@ -121,7 +119,7 @@ class ProjectosController extends \lithium\action\Controller {
         }
 
         //return $this->render(array('layout' => false, 'json' => $projectos));
-        return compact('projectos', 'projectostrue');
+        return compact('projectos');
     }
 
     public function apagarfoto($idProjecto, $idFoto) {
@@ -206,9 +204,8 @@ class ProjectosController extends \lithium\action\Controller {
         $projectos = Projectos::find('all', array(
             'order' => array('ordem' => 'ASC')
         ));
-        $projectosordenartrue = true;
-        $projectostrue = true;
-        return compact('projectostrue', 'projectosordenartrue', 'projectos');
+
+        return compact('projectos');
     }
 
     public function featured($id) {
