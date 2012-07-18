@@ -204,8 +204,8 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <!-- Generic page styles -->
 
     <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-    <link rel="stylesheet"
-            href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
+<!--    <link rel="stylesheet"
+            href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">-->
     <!-- Bootstrap CSS fixes for IE6 -->
     <!--[if lt IE 7]>
     <link rel="stylesheet"
