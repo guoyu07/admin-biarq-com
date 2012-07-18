@@ -344,15 +344,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
         <td colspan="2"></td>
         {% } %}
-        <td class="delete">
-            <button class="btn btn-danger"
-                    data-type="{%=file.delete_type%}"
-                    data-url="{%=file.delete_url%}">
-                <i class="icon-trash icon-white"></i>
-                <span>{%=locale.fileupload.destroy%}</span>
-            </button>
-            <input type="checkbox" name="delete" value="1">
-        </td>
+        
     </tr>
     {% } %}
 </script>
@@ -395,9 +387,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
 <script src="http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js"></script>
-<!-- Bootstrap JS and Bootstrap Image Gallery are not required, but included for the demo -->
-<script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
-<script src="http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"></script>
+
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="/js/upload_progress/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
