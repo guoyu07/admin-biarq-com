@@ -20,20 +20,17 @@ class PaginasController extends \lithium\action\Controller {
 
     public function index() {
 
-        $paginastrue = true;
-        $paginasindextrue = true;
 
         $paginas = Paginas::find('all', array(
             'order' => array('ordem' => 'ASC')
         ));
 
-        return compact('paginasindextrue', 'paginastrue', 'paginas');
+        return compact('paginas');
     }
 
     public function adicionar() {
 
-        $paginastrue = true;
-        $paginasadicionartrue = true;
+
 
         if (isset($this->request->data['titulo'])) {
             $pagina = Paginas::create();
@@ -42,16 +39,12 @@ class PaginasController extends \lithium\action\Controller {
             $pagina->save();
         }
 
-        return compact('paginasadicionartrue', 'paginastrue');
+        return;
     }
 
     public function editar() {
-        $print_r = function($var) {
-            echo '<pre>';
-            print_r($var);
-            echo '</pre>';
-        };
-        $print_r($this->request);
+
+
         if (($this->request->data)) {
             $pagina = Paginas::find('first', array(
                 'conditions' => array('_id' => $this->request->id)
@@ -66,8 +59,8 @@ class PaginasController extends \lithium\action\Controller {
         $pagina = Paginas::find('first', array(
             'conditions' => array('_id' => $this->request->id)
         ));
-        $paginastrue = true;
-        return compact('pagina', 'paginastrue');
+
+        return compact('pagina');
     }
 
     public function apagar() {
@@ -88,9 +81,8 @@ class PaginasController extends \lithium\action\Controller {
         $paginas = Paginas::find('all', array(
             'order' => array('ordem' => 'ASC')
         ));
-        $paginasordenartrue = true;
-        $paginastrue = true;
-        return compact('paginastrue', 'paginasordenartrue', 'paginas');
+
+        return compact('paginas');
     }
 }
 
