@@ -11,7 +11,7 @@ namespace app\controllers;
 use app\models\Galeria;
 use app\models\Projectos;
 use lithium\storage\Session;
-use li3_upload_progress\extensions\Upload_handler;
+
 
 class GaleriaController extends \lithium\action\Controller {
      public function _init() {
@@ -72,7 +72,7 @@ class GaleriaController extends \lithium\action\Controller {
 
            
 
-            $imagine->open($srcfotodir . $srcfoto)
+            $imagine->open($srcfotodir . $srcfoto.'.jpg')
                     ->thumbnail($size, $mode)
                     ->save($destfotodir. $foto);
 
