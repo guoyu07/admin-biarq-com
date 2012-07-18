@@ -53,7 +53,7 @@ class ProjectosController extends \lithium\action\Controller {
                 ));
             }
              array('controller' => 'projectos', 'action' => 'editar','args'=> array());
-            $this->redirect('Projectos::editar', array('id'=> $projectos->_id));
+            $this->redirect(array('Projectos::editar', 'id'=> $projectos->_id));
 
         }
 
