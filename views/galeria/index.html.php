@@ -43,6 +43,8 @@ foreach ($fotosGaleria as $foto) {
 
  foreach ($fotos as $foto) {
 
-                        echo '<a href="http://admin.biarq.com/Galeria/adicionar/' . $foto . '">' . $this->html->image('projectos/pequenas/' . $foto) . '</a>';
+                        echo '<a href="http://admin.biarq.com/Galeria/adicionar/' .
+                                base64_encode($foto)  . '">'  . $this->html->image
+                        ('projectos/pequenas/' . $foto ). '</a>';
  }
  ?>
