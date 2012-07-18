@@ -9,9 +9,10 @@ $print_r($this->_request->controller);
 
 		<div class="nav">
 		<div class="table">
-		<ul <?php if(isset($projectostrue)) echo ' class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/Projectos"><b>Projectos</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul <?php if($this->_request->controller == 'projectos') echo ' class="current"';else echo
+        'class="select"'; ?> ><li><a href="http://admin.biarq.com/Projectos"><b>Projectos</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub <?php if(isset($projectostrue)) echo ' show' ?>">
+		<div class="select_sub <?php if($this->_request->controller == 'projectos') echo ' show' ?>">
 			<ul class="sub">
 				<li <?php if(isset($projectostrue) && isset($projectosindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos">Listar Projectos</a></li>
 				<li <?php if(isset($projectostrue) && isset($projectosadicionartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/adicionar">Adicionar Projecto</a></li>
