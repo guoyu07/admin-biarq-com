@@ -27,9 +27,12 @@
 		</li>
 		</ul>
 		<div class="nav-divider">&nbsp;</div>
-		<ul <?php if(isset($paginastrue)) echo ' class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/Paginas"><b>Paginas</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul  <?php if (ucwords($this->_request->controller) == ucwords('paginas')) echo '
+		class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/Paginas"><b>Paginas</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub <?php if(isset($paginastrue)) echo ' show' ?>">
+		<div class="select_sub  <?php if (
+            ucwords($this->_request->controller) == ucwords('paginas')
+        ) echo ' show' ?>">
 			<ul class="sub">
 				<li <?php if(isset($paginastrue) && isset($paginasindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas">Listar Paginas</a></li>
 				<li <?php if(isset($paginastrue) && isset($paginasadicionartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas/adicionar">Adicionar Paginas</a></li>
@@ -42,9 +45,11 @@
 		</ul>
                 <div class="nav-divider">&nbsp;</div>
 
-		<ul <?php if(isset($galeriatrue)) echo ' class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/galeria"><b>Galeria</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul  <?php if (ucwords($this->_request->controller) == ucwords('galeria')
+        ) echo ' class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/galeria"><b>Galeria</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub <?php if(isset($galeriatrue)) echo ' show' ?>">
+		<div class="select_sub <?php if (ucwords($this->_request->controller) == ucwords('galeria')
+        ) echo ' show' ?>">
 			<ul class="sub">
 				<li <?php if(isset($galeriatrue) && isset($galeriaindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria">Actualizar Galeria</a></li>
 				<li <?php if(isset($galeriatrue) && isset($galeriaeditartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria/editar">Editar Texto</a></li>
