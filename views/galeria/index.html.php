@@ -26,7 +26,9 @@
 
 foreach ($fotosGaleria as $foto) {
 
-                        echo '<a href="http://admin.biarq.com/Galeria/eliminarfoto/' . $foto . '">' . $this->html->image('projectos/pequenas/' . $foto) . '</a>';
+                        echo '<a href="http://admin.biarq.com/Galeria/eliminarfoto/' .
+                                base64_encode($foto) . '">' . $this->html->image
+                        ('projectos/pequenas/' . $foto) . '</a>';
  }
  ?>
 
