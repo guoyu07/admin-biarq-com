@@ -439,7 +439,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
                     title="Ver maior"
                     class="ui-icon ui-icon-zoomin">Ver Maior</a>
             <a href="http://admin.biarq.com/projectos/apagarfoto/{%=o
-            .projectos_id%}/{%=(base64.encode(o.projectos.foto[i], true)) %}"
+            .projectos._id%}/{%=(base64.encode(o.projectos.foto[i], true)) %}"
                     title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
         </li>
 
