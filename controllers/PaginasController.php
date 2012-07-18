@@ -45,7 +45,7 @@ class PaginasController extends \lithium\action\Controller {
         return compact('paginasadicionartrue', 'paginastrue');
     }
 
-    public function editar($id) {
+    public function editar() {
         $print_r = function($var) {
             echo '<pre>';
             print_r($var);
@@ -54,7 +54,7 @@ class PaginasController extends \lithium\action\Controller {
         $print_r($this->request);
         if (($this->request->data)) {
             $pagina = Paginas::find('first', array(
-                'conditions' => array('_id' => $id)
+                'conditions' => array('_id' => $this->request->id)
             ));
 
             $pagina->titulo = $this->request->data['titulo'];
@@ -64,14 +64,14 @@ class PaginasController extends \lithium\action\Controller {
             $this->redirect('Paginas::index');
         }
         $pagina = Paginas::find('first', array(
-            'conditions' => array('_id' => $id)
+            'conditions' => array('_id' => $this->request->id)
         ));
         $paginastrue = true;
         return compact('pagina', 'paginastrue');
     }
 
-    public function apagar($id) {
-        Paginas::remove(array('_id' => $id));
+    public function apagar() {
+        Paginas::remove(array('_id' => $this->request->id));
         $this->redirect('Paginas::index');
     }
 
