@@ -3,7 +3,7 @@
     print_r($var);
     echo '</pre>';
 };
-$print_r($this->_request->action);
+//$print_r($this->_request->action);
 ?>
 <!--  start nav -->
 
