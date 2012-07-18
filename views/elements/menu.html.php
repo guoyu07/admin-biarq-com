@@ -17,9 +17,17 @@ $print_r($this->_request->action);
 		<div class="select_sub <?php if(ucwords($this->_request->controller) == ucwords
         ('projectos')) echo ' show' ?>">
 			<ul class="sub">
-				<li <?php if(isset($projectostrue) && isset($projectosindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos">Listar Projectos</a></li>
-				<li <?php if(isset($projectostrue) && isset($projectosadicionartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/adicionar">Adicionar Projecto</a></li>
-				<li <?php if(isset($projectostrue) && isset($projectosordenartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/ordenar">Ordenar Projectos</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('projectos')) &&
+                        ($this->_request->action == 'index'))echo ' class="sub_show"' ?>><a
+                        href="http://admin.biarq
+                        .com/Projectos">Listar Projectos</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('projectos')) &&
+                        ($this->_request->action == 'adicionar')
+                ) echo ' class="sub_show"' ?>><a href="http://admin.biarq
+                .com/Projectos/adicionar">Adicionar Projecto</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('projectos')) &&
+                        ($this->_request->action == 'ordenar')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/ordenar">Ordenar Projectos</a></li>
 
 			</ul>
 		</div>
@@ -34,9 +42,15 @@ $print_r($this->_request->action);
             ucwords($this->_request->controller) == ucwords('paginas')
         ) echo ' show' ?>">
 			<ul class="sub">
-				<li <?php if(isset($paginastrue) && isset($paginasindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas">Listar Paginas</a></li>
-				<li <?php if(isset($paginastrue) && isset($paginasadicionartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas/adicionar">Adicionar Paginas</a></li>
-				<li <?php if(isset($paginastrue) && isset($paginasordenartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas/ordenar">Ordenar Paginas</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('paginas')) &&
+                        ($this->_request->action == 'index')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas">Listar Paginas</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('paginas')) &&
+                        ($this->_request->action == 'adicionar')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas/adicionar">Adicionar Paginas</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('paginas')) &&
+                        ($this->_request->action == 'ordenar')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Paginas/ordenar">Ordenar Paginas</a></li>
 
 			</ul>
 		</div>
@@ -51,8 +65,12 @@ $print_r($this->_request->action);
 		<div class="select_sub <?php if (ucwords($this->_request->controller) == ucwords('galeria')
         ) echo ' show' ?>">
 			<ul class="sub">
-				<li <?php if(isset($galeriatrue) && isset($galeriaindextrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria">Actualizar Galeria</a></li>
-				<li <?php if(isset($galeriatrue) && isset($galeriaeditartrue))echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria/editar">Editar Texto</a></li>
+				<li <?php if ((ucwords($this->_request->controller) == ucwords('galeria')) &&
+                        ($this->_request->action == 'index')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria">Actualizar Galeria</a></li>
+				<li <?php  if ((ucwords($this->_request->controller) == ucwords('galeria')) &&
+                        ($this->_request->action == 'editar')
+                )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/galeria/editar">Editar Texto</a></li>
 
 			</ul>
 		</div>
