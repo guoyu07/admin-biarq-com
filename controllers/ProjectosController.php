@@ -74,23 +74,8 @@ class ProjectosController extends \lithium\action\Controller {
         ));
 
         if ($this->request->data) {
-            $imagens = $projectos->foto->to('array');
-            if (isset($_FILES["fotos"]["tmp_name"])) {
-                foreach ($_FILES["fotos"]["tmp_name"] as $foto) {
-                    $nomeimg = uniqid('img') . '.jpg';
-                    move_uploaded_file($foto, $fotodir . $nomeimg);
-                    array_push($imagens, $nomeimg);
+            
 
-                    $imagine->open($fotodir . $nomeimg)
-                            ->thumbnail($sizeBig, $mode)
-                            ->save($fotodir . 'grandes/' . $nomeimg);
-
-                    $imagine->open($fotodir . $nomeimg)
-                            ->thumbnail($sizeSmall, $mode)
-                            ->save($fotodir . 'pequenas/' . $nomeimg);
-                }
-                $projectos->foto = $imagens;
-            }
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
 
