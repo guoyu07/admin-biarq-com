@@ -58,8 +58,8 @@ class GaleriaController extends \lithium\action\Controller {
 
             $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
-
-
+            $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
+                    strstr($foto, '_thumb.jpg', true) . '.jpg' : $foto;
 
             $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'.$foto) ?
                     LITHIUM_APP_PATH . '/webroot/img/original/':
@@ -67,8 +67,6 @@ class GaleriaController extends \lithium\action\Controller {
 
             $destfotodir = LITHIUM_APP_PATH . '/webroot/img/projectos/galeria/';
 
-            $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
-                    strstr($foto,'_thumb.jpg', true).'.jpg': $foto;
 
            
 
