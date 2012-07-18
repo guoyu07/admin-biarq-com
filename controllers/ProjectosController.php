@@ -52,7 +52,9 @@ class ProjectosController extends \lithium\action\Controller {
                     'msg' => 'Falha ao inserir ' . $projectos->titulo
                 ));
             }
-            $this->redirect('/projectos/editar/' . $projectos->_id);
+             array('controller' => 'projectos', 'action' => 'editar','args'=> array());
+            $this->redirect('Projectos::editar', array('id'=> $projectos->_id));
+
         }
 
         return;
