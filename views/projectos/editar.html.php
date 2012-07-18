@@ -151,7 +151,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
     <br>
-    <select name="fotoprincipal" id="teste">
+    <select name="fotoprincipal" id="fotoprincipal">
         <?php
 
         foreach ($projectos->foto as $foto) {
@@ -185,7 +185,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <script type="text/javascript">
 
 
-        jQuery('select[name="fotoprincipal"]').ImageSelect({dropdownWidth:125});
+        $("select#fotoprincipal").ImageSelect({dropdownWidth:125});
 
 
     </script>
