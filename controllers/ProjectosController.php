@@ -62,8 +62,6 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function editar() {
         $imagine = new \Imagine\Gmagick\Imagine();
-        $sizeSmall = new \Imagine\Image\Box(125, 75);
-        $sizeBig = new \Imagine\Image\Box(635, 381);
         $sizeTop = new \Imagine\Image\Box(219, 146);
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
         $fotodir = LITHIUM_APP_PATH . "/webroot/img/projectos/";
@@ -74,7 +72,7 @@ class ProjectosController extends \lithium\action\Controller {
         ));
 
         if ($this->request->data) {
-            
+
 
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
