@@ -68,7 +68,7 @@ class GaleriaController extends \lithium\action\Controller {
             $destfotodir = LITHIUM_APP_PATH . '/webroot/img/projectos/galeria/';
 
             $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
-                    strstr($foto,'_thumb.jpg', true).'jpg': $foto;
+                    strstr($foto,'_thumb.jpg', true).'.jpg': $foto;
 
            
 
