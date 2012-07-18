@@ -29,15 +29,7 @@
                 <!--  start table-content  -->
                 <div id="table-content">
 
-                    <script type="text/javascript">
-                        var i = 0;
-                        function addField() {
-                            $('div#projectos').append('<?= $this->form->field('fotos[]',
-                                array('type' => 'file')); ?>');
-                            i++;
-                            return false;
-                        }
-                    </script>
+
                     <!-- Load TinyMCE -->
                     <script type="text/javascript"
                             src="http://admin.biarq.com/js/tiny_mce/jquery.tinymce.js"></script>
@@ -74,10 +66,6 @@
                     <?= $this->form->field('titulo', array('class' => "inp-form")); ?>
                     <?= $this->form->field('texto',
                     array('type' => 'textarea', 'class' => 'tinymce')); ?>
-                    <input type="button" onclick="addField();" value="adicionar fotos" /><br />
-
-                    <div id="projectos"></div>
-
 
 
                     <?= $this->form->submit('Continuar'); ?>

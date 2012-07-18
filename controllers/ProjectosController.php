@@ -55,7 +55,7 @@ class ProjectosController extends \lithium\action\Controller {
             $this->redirect('/projectos/editar/' . $projectos->_id);
         }
 
-        return compact('projectosadicionartrue', 'projectostrue');
+        return;
     }
 
     public function editar() {
