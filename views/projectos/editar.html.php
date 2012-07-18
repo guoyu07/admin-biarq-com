@@ -74,39 +74,32 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 </style>
 
 
+<!-- Bootstrap CSS Toolkit styles -->
+<link rel="stylesheet"
+        href="/css/bootstrap.min.css">
+<!-- Generic page styles -->
+
+<!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
+<link rel="stylesheet"
+        href="/css/bootstrap-responsive.min.css">
+
+<!-- Bootstrap CSS fixes for IE6 -->
+<!--[if lt IE 7]>
+    <link rel="stylesheet"
+            href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css">
+    <![endif]-->
+<!-- Bootstrap Image Gallery styles -->
+<link rel="stylesheet"
+        href="http://blueimp.github.com/Bootstrap-Image-Gallery/css/bootstrap-image-gallery.min.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="/css/jquery.fileupload-ui.css">
+<!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 
 
-<!-- Load TinyMCE -->
-<script type="text/javascript" src="http://admin.biarq.com/js/tiny_mce/jquery.tinymce.js"></script>
-<script type="text/javascript" src="http://admin.biarq.com/js/imageselect.js"></script>
-
-<script type="text/javascript">
-    $().ready(function () {
-
-        $('textarea.tinymce').tinymce({
-            // Location of TinyMCE script
-            script_url:'http://admin.biarq.com/js/tiny_mce/tiny_mce.js',
-
-            // General options
-            theme:"advanced",
-            plugins:"autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
-
-            // Theme options
-            theme_advanced_buttons1:"save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-            theme_advanced_buttons2:"cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-            theme_advanced_buttons3:"tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-            theme_advanced_buttons4:"insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
-            theme_advanced_toolbar_location:"top",
-            theme_advanced_toolbar_align:"left",
-            theme_advanced_statusbar_location:"bottom",
-            theme_advanced_resizing:true
-
-
-        });
-    });
-</script>
-<!-- /TinyMCE -->
 
 
 <!--  start page-heading -->
@@ -198,29 +191,6 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 
-    <!-- Bootstrap CSS Toolkit styles -->
-    <link rel="stylesheet"
-            href="/css/bootstrap.min.css">
-    <!-- Generic page styles -->
-
-    <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-    <link rel="stylesheet"
-            href="/css/bootstrap-responsive.min.css">
-
-    <!-- Bootstrap CSS fixes for IE6 -->
-    <!--[if lt IE 7]>
-    <link rel="stylesheet"
-            href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css">
-    <![endif]-->
-    <!-- Bootstrap Image Gallery styles -->
-    <link rel="stylesheet"
-            href="http://blueimp.github.com/Bootstrap-Image-Gallery/css/bootstrap-image-gallery.min.css">
-    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-    <link rel="stylesheet" href="/css/jquery.fileupload-ui.css">
-    <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
     <!-- The file upload form used as target for the file upload widget -->
     <form id="fileupload" action="/projectos/upload_handler/<?=$projectos->_id?>"
@@ -387,6 +357,37 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     {% } %}
 </script>
 
+
+<!-- Load TinyMCE -->
+<script type="text/javascript" src="http://admin.biarq.com/js/tiny_mce/jquery.tinymce.js"></script>
+<script type="text/javascript" src="http://admin.biarq.com/js/imageselect.js"></script>
+
+<script type="text/javascript">
+    $().ready(function () {
+
+        $('textarea.tinymce').tinymce({
+            // Location of TinyMCE script
+            script_url:'http://admin.biarq.com/js/tiny_mce/tiny_mce.js',
+
+            // General options
+            theme:"advanced",
+            plugins:"autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
+
+            // Theme options
+            theme_advanced_buttons1:"save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2:"cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3:"tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4:"insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+            theme_advanced_toolbar_location:"top",
+            theme_advanced_toolbar_align:"left",
+            theme_advanced_statusbar_location:"bottom",
+            theme_advanced_resizing:true
+
+
+        });
+    });
+</script>
+<!-- /TinyMCE -->
 
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
