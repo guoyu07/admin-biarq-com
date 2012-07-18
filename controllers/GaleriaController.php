@@ -7,10 +7,11 @@ namespace app\controllers;
  * 
  */
 
-use app\libraries\Image\ImageTool as Resize;
+
 use app\models\Galeria;
 use app\models\Projectos;
 use lithium\storage\Session;
+use li3_upload_progress\extensions\Upload_handler;
 
 class GaleriaController extends \lithium\action\Controller {
      public function _init() {
@@ -22,8 +23,7 @@ class GaleriaController extends \lithium\action\Controller {
 
     public function index() {
  
-        $galeriatrue = TRUE;
-        $galeriaindextrue = TRUE;
+
 
         $galeria = Galeria::find('first');
 
@@ -50,20 +50,29 @@ class GaleriaController extends \lithium\action\Controller {
 
         if ($foto) {
 
+            $imagine = new \Imagine\Gmagick\Imagine();
 
-            $fotodir = LITHIUM_APP_PATH .'/webroot/img/projectos/';
-            $fotoOriginal = substr($foto,0,-10).'.jpg';
+            $size = new \Imagine\Image\Box(615, 302);
+
+            $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+
+
+
+            $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'.$foto) ?
+                    LITHIUM_APP_PATH . '/webroot/img/original/':
+                    LITHIUM_APP_PATH . '/webroot/img/grandes/';
+
+            $destfotodir = LITHIUM_APP_PATH . '/webroot/img/projectos/galeria/';
+
+            $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
+                    strstr($foto,'_thumb.jpg', true): $foto;
+
            
 
-            $config['image_library'] = 'gd2';
-            $config['create_thumb'] = FALSE;
-            $config['maintain_ratio'] = FALSE;
-            $config['source_image'] = $fotodir .  $fotoOriginal;
-            $config['new_image'] = $fotodir . 'galeria/' . $foto;
-            $config['width'] = 615;
-            $config['height'] = 302;
-           $img = new Resize($config);
-           $img->resize();
+            $imagine->open($srcfotodir . $srcfoto)
+                    ->thumbnail($size, $mode)
+                    ->save($destfotodir. $foto);
 
             $galeria = Galeria::find('first');
 
