@@ -48,7 +48,9 @@ class GaleriaController extends \lithium\action\Controller {
 
 
 
+
         if ($foto) {
+            $foto = base64_decode($foto);
 
             $imagine = new \Imagine\Gmagick\Imagine();
 
