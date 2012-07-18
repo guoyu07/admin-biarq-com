@@ -395,7 +395,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <!-- The localization script -->
 <script src="/js/upload_progress/locale.js"></script>
 
-<script src="https://github.com/arunjitsingh/base64/blob/master/base64.js"></script>
+<script src="https://raw.github.com/arunjitsingh/base64/master/base64.js"></script>
 
 <!-- The main application script -->
 <script src="/js/upload_progress/main.js"></script>
