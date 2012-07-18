@@ -104,6 +104,7 @@ class GaleriaController extends \lithium\action\Controller {
     }
 
     public function eliminarfoto($id) {
+        $id= base64_decode($id);
         $galeria = Galeria::find('first');
 
         $imagens = $galeria->foto->to('array');
