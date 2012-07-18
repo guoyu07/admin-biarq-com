@@ -185,7 +185,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <script type="text/javascript">
 
 
-        $('select[name=fotoprincipal]').ImageSelect({dropdownWidth:125});
+        jQuery('select[name=fotoprincipal]').ImageSelect({dropdownWidth:125});
 
 
     </script>
