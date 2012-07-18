@@ -68,11 +68,11 @@ class GaleriaController extends \lithium\action\Controller {
             $destfotodir = LITHIUM_APP_PATH . '/webroot/img/projectos/galeria/';
 
             $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
-                    strstr($foto,'_thumb.jpg', true): $foto;
+                    strstr($foto,'_thumb.jpg', true).'jpg': $foto;
 
            
 
-            $imagine->open($srcfotodir . $srcfoto.'.jpg')
+            $imagine->open($srcfotodir . $srcfoto)
                     ->thumbnail($size, $mode)
                     ->save($destfotodir. $foto);
 
