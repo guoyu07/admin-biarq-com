@@ -213,7 +213,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
                     <i class="icon-ban-circle icon-white"></i>
                     <span>Cancel upload</span>
                 </button>
-                
+
             </div>
             <!-- The global progress information -->
             <div class="span5 fileupload-progress fade">
@@ -394,6 +394,9 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script src="/js/upload_progress/jquery.fileupload-ui.js"></script>
 <!-- The localization script -->
 <script src="/js/upload_progress/locale.js"></script>
+
+<script src="https://github.com/arunjitsingh/base64/blob/master/base64.js"></script>
+
 <!-- The main application script -->
 <script src="/js/upload_progress/main.js"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
@@ -402,6 +405,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 <script type="text/javascript">
+    base64.encode('sdasd', true);
     $('#fileupload')
 
             .bind('fileuploadcompleted', function (e, data) {
