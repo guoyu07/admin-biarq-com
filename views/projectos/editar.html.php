@@ -181,7 +181,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <!-- End demo -->
 
 
-    <?= $this->form->end(); ?>
+
     <script type="text/javascript">
 
 
@@ -191,7 +191,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     </script>
 
     <?= $this->form->submit('Editar Projecto'); ?>
-
+    <?= $this->form->end(); ?>
 
 
 
