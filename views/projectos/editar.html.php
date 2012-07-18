@@ -405,7 +405,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 <script type="text/javascript">
-    base64.encode('sdasd', true);
+
     $('#fileupload')
 
             .bind('fileuploadcompleted', function (e, data) {
@@ -427,9 +427,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     <ul class="gallery ui-helper-reset ui-helper-clearfix">
 
 
-        {% for (var i=0; i
-        <o.projectos.foto.length
-        ; i++) { %}
+        {% for (var i=0; i<o.projectos.foto.length; i++) { %}
 
         <li class="ui-widget-content ui-corner-tr" id="imagens">
             <h5 class="ui-widget-header">foto{%=[i]%}</h5>
@@ -441,15 +439,14 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
                     title="Ver maior"
                     class="ui-icon ui-icon-zoomin">Ver Maior</a>
             <a href="http://admin.biarq.com/projectos/apagarfoto/{%=o
-            .projectos_id%}/javascript:Base64.encode({%=o
-            .projectos.foto[i]%})"
+            .projectos_id%}/{%=(base64.encode(o.projectos.foto[i], true)); %}"
                     title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
         </li>
 
         {% } %}
     </ul>
 </script>
-
+{%=(base64.encode(o.projectos.foto[i], true)); %}
 
 <script type="text/javascript">
     $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
