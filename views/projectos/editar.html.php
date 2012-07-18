@@ -446,7 +446,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         {% } %}
     </ul>
 </script>
-{%=(base64.encode(o.projectos.foto[i], true)); %}
+
 
 <script type="text/javascript">
     $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
