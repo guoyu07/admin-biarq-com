@@ -61,7 +61,7 @@ class GaleriaController extends \lithium\action\Controller {
             $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
                     strstr($foto, '_thumb.jpg', true) . '.jpg' : $foto;
 
-            $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'.$foto) ?
+            $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'. $srcfoto) ?
                     LITHIUM_APP_PATH . '/webroot/img/original/':
                     LITHIUM_APP_PATH . '/webroot/img/projectos/grandes/';
 
