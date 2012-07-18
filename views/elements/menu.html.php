@@ -23,8 +23,7 @@
                         .com/Projectos">Listar Projectos</a></li>
 				<li <?php if ((ucwords($this->_request->controller) == ucwords('projectos')) &&
                         ($this->_request->action == 'adicionar')
-                ) echo ' class="sub_show"' ?>><a href="http://admin.biarq
-                .com/Projectos/adicionar">Adicionar Projecto</a></li>
+                ) echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/adicionar">Adicionar Projecto</a></li>
 				<li <?php if ((ucwords($this->_request->controller) == ucwords('projectos')) &&
                         ($this->_request->action == 'ordenar')
                 )echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/Projectos/ordenar">Ordenar Projectos</a></li>
