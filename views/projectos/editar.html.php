@@ -162,17 +162,6 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $('.egg_imagedropdown').EggImageDropdown();
-        });
-
-
-
-
-    </script>
 
     <?= $this->form->submit('Editar Projecto'); ?>
     <?= $this->form->end(); ?>
@@ -402,6 +391,9 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
                         function (data) {
                             //console.log(data);
                             document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
+                            document.getElementById("result2").innerHTML = tmpl("selectfotos",
+                                    data);
+                            $('.egg_imagedropdown').EggImageDropdown();
 
                         });
 
@@ -459,9 +451,10 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 <script type="text/javascript">
     $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
             function (data) {
-                console.log(data);
+
                 document.getElementById("result").innerHTML = tmpl("displayfotos", data);
                 document.getElementById("result2").innerHTML = tmpl("selectfotos", data);
+                $('.egg_imagedropdown').EggImageDropdown();
 
             });
 
