@@ -144,21 +144,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
     <br>
-    <select name="fotoprincipal" id="dropdown_demo"
-            class="egg_imagedropdown">
-        <?php
-
-        foreach ($projectos->foto as $foto) {
-            $cond = '';
-            if ($projectos->fotoprincipal == $foto) {
-                $cond = ' selected="selected"';
-            }
-            echo' <option ' . $cond . ' value="' . $foto .
-                    '" > http://admin.biarq.com/img/projectos/pequenas/' . $foto .
-                    '</option>';
-        }
-        ?>
-    </select>
+   <div id="result2"></div>
     <br>
     <br>
     <br>
@@ -426,7 +412,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 </script>
 
 
-<script type="text/x-tmpl" id="tmpl-demo">
+<script type="text/x-tmpl" id="displayfotos">
     <ul class="gallery ui-helper-reset ui-helper-clearfix">
 
 
@@ -451,11 +437,35 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 </script>
 
 
+<script type="text/x-tmpl" id="selectfotos">
+    <select name="fotoprincipal" id="dropdown_demo"
+            class="egg_imagedropdown">
+
+        {% for (var i=0; i
+        <o.projectos.foto.length
+        ; i++) { %}
+        {%
+        cond = ""
+        if (o.projectos.fotoprincipal == o.projectos.foto[i]){
+        cond = ' selected="selected"';
+        } %}
+        '
+        <option
+        {%=cond %} value="{%=o.projectos.foto[i]%}">
+        http://admin.biarq.com/img/projectos/pequenas/{%=o.projectos.foto[i]%}
+        </option>
+
+        {% } %}
+    </select>
+</script>
+
+
 <script type="text/javascript">
     $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
             function (data) {
                 console.log(data);
-                document.getElementById("result").innerHTML = tmpl("tmpl-demo", data);
+                document.getElementById("result").innerHTML = tmpl("displayfotos", data);
+                document.getElementById("result2").innerHTML = tmpl("selectfotos", data);
 
             });
 
