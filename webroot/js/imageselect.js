@@ -114,7 +114,8 @@ var EGG = {
 /* EggImageDropdown */
 (function ($) {
 
-    var methods = {
+    var methods;
+    methods = {
         init:function (options) {
             if (!/select/i.test(this.tagName)) {
                 return false;
@@ -242,10 +243,12 @@ var EGG = {
                             $(this).parent().parent().animate({width:$(this).width() + 60});
                             $('.egg_imagedropdown_dropdown',
                                     $(this).parent().parent()).animate({width:$(this).width() +
-                                    50});
+                                            50});
 
                         }).each(function () {
-                                    if (this.complete) $(this).load();
+                                    if (this.complete) {
+                                        $(this).load();
+                                    }
                                 });
                     } else {
                         $('#' + id + ' .egg_imagedropdown_header img').unbind('load');
@@ -255,7 +258,9 @@ var EGG = {
                             $(this).parent().parent().css('height', ($(this).height() + 2) + 'px');
                             $(this).parent().animate({height:$(this).height() + 2});
                         }).each(function () {
-                                    if (this.complete) $(this).load();
+                                    if (this.complete) {
+                                        $(this).load();
+                                    }
                                 });
 
                     }
