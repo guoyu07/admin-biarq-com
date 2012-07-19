@@ -460,19 +460,5 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 </script>
-<select name="fotoprincipal" id="dropdown_demo"
-        class="egg_imagedropdown">
-    <?php
 
-    foreach ($projectos->foto as $foto) {
-        $cond = '';
-        if ($projectos->fotoprincipal == $foto) {
-            $cond = ' selected="selected"';
-        }
-        echo' <option ' . $cond . ' value="' . $foto .
-                '" > http://admin.biarq.com/img/projectos/pequenas/' . $foto .
-                '</option>';
-    }
-    ?>
-</select>
 
