@@ -442,14 +442,12 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
             class="egg_imagedropdown">
 
         {% for (var i=0; i
-        <o.projectos.foto.length
-        ; i++) { %}
+        <o.projectos.foto.length; i++) { %}
         {%
-        cond = ""
+        cond = "";
         if (o.projectos.fotoprincipal == o.projectos.foto[i]){
         cond = ' selected="selected"';
         } %}
-        '
         <option
         {%=cond %} value="{%=o.projectos.foto[i]%}">
         http://admin.biarq.com/img/projectos/pequenas/{%=o.projectos.foto[i]%}
