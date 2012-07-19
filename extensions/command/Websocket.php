@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler;
 ini_set('session.name', 'PHPSESSID');
 ini_set('session.save_handler', 'memcached');
 ini_set('session.save_path', 'localhost:11211');
+//Session::adapter('Php')->key($conn->WebSocket->request->getCookie(ini_get('session.name')));
 
 /**
  * chat.php

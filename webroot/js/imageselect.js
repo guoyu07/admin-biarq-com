@@ -1,267 +1,383 @@
 /*
- * ImageSelect jQuery Plugin
- * Version 1.2
+ * Egg Plugin Pack
  *
- * lgalvin
- * http://www.liam-galvin.co.uk/imageselect
+ * http://www.liam-galvin.co.uk/
  *
  */
 
+/*
 
-(function( $ ){
+ - EggPreload
+ - EggAccordion
+ - EggSlideshow
+ - EggImageDropdown
 
-  var methods = {
-      init: function(options){
-          if(!/select/i.test(this.tagName)){return false;}
+
+
+ */
+
+/* Info */
+var EGG = {
+    version:{
+        number:0.4
+    }
+};
+
+/* EggPreload */
+(function ($) {
+
+    var methods = {
+        init:function (options) { //init runs only to make sure images are loaded before plugin starts
+
+            var $c = $(this);
+
+            $c.addClass('please_wait_preloading');
+
+            $c.data('options', options);
+
+            //if not then wait for everything to preload
+
+            $('img', $c).each(function (i, e) {
+                $(e).attr('pre_src', $(e).attr('src'));
+                $(e).attr('src', '');
+            });
+
+            //check if all (non-errored) images are loaded each time an image loads
+            $('img', $c).one('load',function () {
+
+                $(this).attr('preloaded', "1");
+
+                var $parent = $(this);
+
+                while (!$parent.hasClass("please_wait_preloading")) {
+                    $parent = $parent.parent();
+                }
+
+                var total = $('img', $parent).length;
+                var loads = $('img[preloaded=1]', $parent).length;
+
+                if (loads >= total) {
+                    $parent.removeAttr('preload_images_loaded');
+                    $parent.removeAttr('preload_image_count');
+                    $('img', $parent).removeAttr('preloaded');
+                    var options = $parent.data('options');
+                    $parent.data('options', '');
+                    options.complete($parent, options.options);
+                }
+
+            }).each(function (i, e) {
+                        if (this.complete) {
+                            $(e).load();
+                        }
+                    });
+
+            $('img', $c).each(function (i, e) {
+                $(e).attr('src', $(e).attr('pre_src'));
+                $(e).removeAttr('pre_src')
+            });
+
+        }
+    };
+
+    $.fn.EggPreload = function (method, options) {
+
+        var settings = {
+            complete:function () {
+            },
+            options:{}
+        };
+
+        method = method == undefined ? 'init' : method;
+        if (options) {
+            $.extend(settings, options);
+        }
+        if (typeof method === 'object') {
+            $.extend(settings, method);
+            method = 'init';
+        }
+
+        return this.each(function () {
+            if (methods[method]) {
+                return methods[method].apply(this, Array(settings));
+            } else {
+                $.error('Method ' + method + ' does not exist on jQuery Egg plugin.');
+            }
+        });
+
+    };
+})(jQuery);
+/* End EggPreload */
+
+
+
+
+/* EggImageDropdown */
+(function ($) {
+
+    var methods = {
+        init:function (options) {
+            if (!/select/i.test(this.tagName)) {
+                return false;
+            }
 
             var element = $(this);
 
-          var selectName = element.attr('name');
-          var id = 'jq_imageselect_' + selectName;
+            var selectName = element.attr('id');
+            if (!selectName) {
+                var nid = 'egg_rnd_' + Math.floor(Math.random() * 99999);
+                while ($('#' + nid).length > 0) {
+                    nid = 'egg_rnd_' + Math.floor(Math.random() * 99999);
+                }
+                element.attr('id', nid);
+                selectNamer = nid;
+            }
+            var id = 'egg_imagedropdown_' + selectName;
 
-          if($('#'+id).length > 0){
-              //already exists
-              return;
-          }
+            if ($('#' + id).length > 0) {
+                //already exists
+                return;
+            }
 
-          var iWidth= options.width > options.dropdownWidth ? options.width : options.dropdownWidth;
+            var iWidth = options.width > options.dropdownWidth ? options.width :
+                    options.dropdownWidth;
 
-          var imageSelect = $(document.createElement('div')).attr('id',id).addClass('jqis');
+            var imageSelect = $(document.createElement('div')).attr('id', id).addClass('jqis');
 
-          imageSelect.css('width',iWidth+'px').css('height',options.height+'px');
+            imageSelect.css('width', iWidth + 'px').css('height', options.height + 'px');
 
-          var header = $(document.createElement('div')).addClass('jqis_header');
-          header.css('width',options.width+'px').css('height',options.height +'px');
-          header.css('text-align','center').css('background-color',options.backgroundColor);
-          header.css('border','1px solid ' + options.borderColor);
+            var header = $(document.createElement('div')).addClass('egg_imagedropdown_header');
+            header.css('width', options.width + 'px').css('height', options.height + 'px');
+            header.css('text-align', 'center').css('background-color', options.backgroundColor);
+            header.css('border', '1px solid ' + options.borderColor);
 
-          var dropdown = $(document.createElement('div')).addClass('jqis_dropdown');
+            var dropdown = $(document.createElement('div')).addClass('egg_imagedropdown_dropdown');
 
-          dropdown.css('width',options.dropdownWidth+'px');//.css('height',options.dropdownHeight +'px');
-          dropdown.css('z-index',options.z).css('background-color',options.backgroundColor).css('border','1px solid ' + options.borderColor);;
-          dropdown.hide();
+            dropdown.css('width', options.dropdownWidth + 'px');//.css('height',options.dropdownHeight +'px');
+            dropdown.css('z-index', options.z).css('background-color',
+                    options.backgroundColor).css('border', '1px solid ' + options.borderColor);
+            ;
+            dropdown.hide();
 
-          var selectedImage = $('option:selected',element).text();
+            var selectedImage = $('option:selected', element).text();
 
-          header.attr('lock',options.lock);
-          if(options.lock == 'height'){
-            header.append('<img style="height:' + options.height + 'px" />');
-          }else{
-            header.append('<img style="width:' + (options.width-75) + 'px" />');
-          }
-          
+            header.attr('lock', options.lock);
+            if (options.lock == 'height') {
+                header.append('<img style="height:' + options.height + 'px" />');
+            } else {
+                header.append('<img style="width:' + (options.width - 75) + 'px" />');
+            }
 
-          var $options = $('option',element);
+            var $options = $('option', element);
 
-          $options.each(function(i,el){
-                //dropdown.append('<img style="width:' + options.dropdownWidth + 'px" onclick="jQuery(\'select[name=' + selectName + ']\').val(\''+ $(el).val() + '\').ImageSelect(\'close\').ImageSelect(\'update\',{src:\''+ $(el).text() + '\'});" src="' + $(el).text() + '"/>');
-                dropdown.append('<img style="width:100%" onclick="jQuery(\'select[name=' + selectName + ']\').val(\''+ $(el).val() + '\').ImageSelect(\'close\').ImageSelect(\'update\',{src:\''+ $(el).text() + '\'});" src="' + $(el).text() + '"/>');
-          });
+            $options.each(function (i, el) {
+                dropdown.append('<img style="width:100%" onclick="var t=jQuery(\'select[id=' +
+                        selectName + ']\').val(\'' + $(el).val() +
+                        '\').EggImageDropdown(\'close\').EggImageDropdown(\'update\',{src:\'' +
+                        $(el).text() + '\'});t.trigger(\'change\');" src="' + $(el).text() + '"/>');
+            });
 
+            imageSelect.append(header);
+            imageSelect.append(dropdown);
 
-          imageSelect.append(header);
-          imageSelect.append(dropdown);
+            element.after(imageSelect);
+            element.hide();
 
-          
+            header.attr('linkedselect', selectName);
+            header.children().attr('linkedselect', selectName);
+            header.click(function () {
+                $('select[id=' + $(this).attr('linkedselect') + ']').EggImageDropdown('open');
+            });
+            //header.children().click(function(){$('select[id=' + $(this).attr('linkedselect') + ']').ImageSelect('open');});
 
+            var w = 0;
 
+            $('.egg_imagedropdown_dropdown img').mouseover(function () {
+                $(this).css('opacity', 1);
+            }).mouseout(function () {
+                        $(this).css('opacity', 0.9);
+                    }).css('opacity', 0.9).each(function (i, el) {
+                        w = w + $(el).width();
+                    });
 
-          element.after(imageSelect);
-          element.hide();
+            dropdown.css('max-height', options.dropdownHeight + 'px');
 
+            element.EggImageDropdown('update', {src:selectedImage});
 
-          header.attr('linkedselect',selectName);
-          header.children().attr('linkedselect',selectName);
-          header.click(function(){$('select[name=' + $(this).attr('linkedselect') + ']').ImageSelect('open');});
-          //header.children().click(function(){$('select[name=' + $(this).attr('linkedselect') + ']').ImageSelect('open');});
+        },
 
-          var w = 0;
+        update:function (options) {
 
-          $('.jqis_dropdown img').mouseover(function(){
-              $(this).css('opacity',1);
-          }).mouseout(function(){
-              $(this).css('opacity',0.7);
-          }).css('opacity',0.7).each(function(i,el){
-            w = w+$(el).width();
-          });
+            var element = $(this);
 
-          dropdown.css('max-height',options.dropdownHeight + 'px');
-            
-          /*
-          if(w < options.dropdownWidth){
-              dropdown.css('height',options.height + 'px');
-          }else{
-             var mod = (w % options.dropdownWidth);
-             var rows = ((w - mod)/options.dropdownWidth) + 1;
-             var h = (options.height * rows);
-             if(h > options.dropdownHeight){
-                dropdown.css('height',options.dropdownHeight + 'px');
-                
-             }else{
-                dropdown.css('height',h + 'px'); 
-             }
-          }*/
+            var selectName = element.attr('id');
+            var id = 'egg_imagedropdown_' + selectName;
 
-          element.ImageSelect('update',{src:selectedImage});
-
-      },
-      
-      update:function(options){
-
-          var element = $(this);
-
-          var selectName = element.attr('name');
-          var id = 'jq_imageselect_' + selectName;
-
-          if($('#'+id + ' .jqis_header').length == 1){
+            if ($('#' + id + ' .egg_imagedropdown_header').length == 1) {
 
                 var ffix = false;
 
-             if($('#'+id + ' .jqis_header img').attr('src') != options.src){
-                 ffix = true; //run fix for firefox
-             }
+                if ($('#' + id + ' .egg_imagedropdown_header img').attr('src') != options.src) {
+                    ffix = true; //run fix for firefox
+                }
 
-             $('#'+id + ' .jqis_header img').attr('src',options.src).css('opacity',0.1);
+                $('#' + id + ' .egg_imagedropdown_header img').attr('src',
+                        options.src).css('opacity', 0.1);
 
-             if(ffix){
-                 setTimeout(function(){element.ImageSelect('update',options);},1);
-                 return;
-             }
+                if (ffix) {
+                    setTimeout(function () {
+                        element.EggImageDropdown('update', options);
+                    }, 1);
+                } else {
 
-             if($('#'+id + ' .jqis_header').attr('lock') == 'height'){
+                    if ($('#' + id + ' .egg_imagedropdown_header').attr('lock') == 'height') {
 
-                $('#'+id + ' .jqis_header img').unbind('load');
+                        $('#' + id + ' .egg_imagedropdown_header img').unbind('load');
 
-                $('#'+id + ' .jqis_header img').one('load',function(){
+                        $('#' + id + ' .egg_imagedropdown_header img').one('load',function () {
 
-                    $(this).parent().stop();
-                    //$('.jqis_dropdown',$(this).parent().parent()).stop();
-                    $(this).parent().parent().stop();
-                    $(this).parent().animate({width:$(this).width() + 60});
-                    $(this).parent().parent().animate({width:$(this).width() + 60});
-                    $('.jqis_dropdown',$(this).parent().parent()).animate({width:$(this).width() + 50});
+                            $(this).parent().stop();
+                            //$('.jqis_dropdown',$(this).parent().parent()).stop();
+                            $(this).parent().parent().stop();
+                            $(this).parent().animate({width:$(this).width() + 60});
+                            $(this).parent().parent().animate({width:$(this).width() + 60});
+                            $('.egg_imagedropdown_dropdown',
+                                    $(this).parent().parent()).animate({width:$(this).width() +
+                                    50});
 
-                }).each(function() {
-                  if(this.complete) $(this).load();
-                });
-             }else{
-                $('#'+id + ' .jqis_header img').unbind('load');
-                $('#'+id + ' .jqis_header img').one('load', function() {
-                    $(this).parent().parent().stop();
-                    $(this).parent().stop();
-                    $(this).parent().parent().css('height',($(this).height()+2) + 'px');
-                    $(this).parent().animate({height:$(this).height()+2});
-                }).each(function() {
-                  if(this.complete) $(this).load();
-                });
-                
-             }
+                        }).each(function () {
+                                    if (this.complete) $(this).load();
+                                });
+                    } else {
+                        $('#' + id + ' .egg_imagedropdown_header img').unbind('load');
+                        $('#' + id + ' .egg_imagedropdown_header img').one('load',function () {
+                            $(this).parent().parent().stop();
+                            $(this).parent().stop();
+                            $(this).parent().parent().css('height', ($(this).height() + 2) + 'px');
+                            $(this).parent().animate({height:$(this).height() + 2});
+                        }).each(function () {
+                                    if (this.complete) $(this).load();
+                                });
 
-             $('#'+id + ' .jqis_header img').animate({opacity:1});
+                    }
 
+                    $('#' + id + ' .egg_imagedropdown_header img').animate({opacity:1});
 
-          }
+                }
 
-      },
-      open: function(){
-
-          var element = $(this);
-
-          var selectName = element.attr('name');
-          var id = 'jq_imageselect_' + selectName;
-
-          var w = 0;
-
-          if($('#'+id).length == 1){
-
-            if($('#'+id + ' .jqis_dropdown').is(':visible')){
-                $('#'+id + ' .jqis_dropdown').stop();
-                $('#'+id + ' .jqis_dropdown').slideUp().fadeOut();
-            }else{
-                $('#'+id + ' .jqis_dropdown').stop();
-                var mh = $('#'+id + ' .jqis_dropdown').css('max-height').replace(/px/,'');
-                mh = parseInt(mh);
-
-                window.imageHeightTotal = 0;
-
-                $('#'+id + ' .jqis_dropdown').show();
-
-                $('#'+id + ' .jqis_dropdown img').each(function(i,el){
-                   window.imageHeightTotal = window.imageHeightTotal + $(el).height();
-                });
-
-                var ih = window.imageHeightTotal;
-
-                mh = (ih < mh && ih > 0) ? ih : mh;
-
-                $('#'+id + ' .jqis_dropdown').height(mh);
             }
-              
-          }
-      },
-      close:function(){
 
-          var element = $(this);
+            element.trigger('change');
 
-          var selectName = element.attr('name');
-          var id = 'jq_imageselect_' + selectName;
+        },
+        open:function () {
 
-          if($('#'+id).length == 1){
+            var element = $(this);
 
-            $('#'+id + ' .jqis_dropdown').slideUp().hide();
+            var selectName = element.attr('id');
+            var id = 'egg_imagedropdown_' + selectName;
 
-          }
-      },
-      remove: function(){
-          if(!/select/i.test(this.tagName)){return false;}
+            var w = 0;
 
-          var element = $(this);
+            if ($('#' + id).length == 1) {
 
-          var selectName = element.attr('name');
-          var id = 'jq_imageselect_' + selectName;
+                if ($('#' + id + ' .egg_imagedropdown_dropdown').is(':visible')) {
+                    $('#' + id + ' .egg_imagedropdown_dropdown').stop();
+                    $('#' + id + ' .egg_imagedropdown_dropdown').slideUp().hide();
+                } else {
+                    $('#' + id + ' .egg_imagedropdown_dropdown').stop();
+                    var mh = $('#' + id +
+                            ' .egg_imagedropdown_dropdown').css('max-height').replace(/px/, '');
+                    mh = parseInt(mh);
 
-          if($('#'+id).length > 0){
-              $('#'+id).remove();
-              $('select[name=' + selectName + ']').show();
-              return;
-          }
-      }
-  };
+                    element.data('imageHeightTotal', 0);
 
+                    $('#' + id + ' .egg_imagedropdown_dropdown').show().css('opacity', 1);
 
-  $.fn.ImageSelect = function(method,options) {
+                    $('#' + id + ' .egg_imagedropdown_dropdown img').each(function (i, el) {
+                        $(el).parent().parent().data('imageHeightTotal',
+                                $(el).parent().parent().data('imageHeightTotal') + $(el).height());
+                    });
 
-    if(method == undefined){
-        method = 'init';
-    }
+                    var ih = element.data('imageHeightTotal');
 
-    var settings = {
-        width:200,
-        height:75,
-        dropdownHeight:250,
-        dropdownWidth:200,
-        z:99999,
-        backgroundColor:'#ffffff',
-        border:true,
-        borderColor:'#cccccc',
-        lock:'height'
+                    mh = (ih < mh && ih > 0) ? ih : mh;
+
+                    $('#' + id + ' .egg_imagedropdown_dropdown').height(mh).css('overflow-y',
+                            'scroll');
+                }
+
+            }
+        },
+        close:function () {
+
+            var element = $(this);
+
+            var selectName = element.attr('id');
+            var id = 'egg_imagedropdown_' + selectName;
+
+            if ($('#' + id).length == 1) {
+
+                $('#' + id + ' .egg_imagedropdown_dropdown').slideUp().hide();
+
+            }
+        },
+        remove:function () {
+            if (!/select/i.test(this.tagName)) {
+                return false;
+            }
+
+            var element = $(this);
+
+            var selectName = element.attr('id');
+            var id = 'egg_imagedropdown_' + selectName;
+
+            if ($('#' + id).length > 0) {
+                $('#' + id).remove();
+                $('select[id=' + selectName + ']').show();
+                return;
+            }
+        }
     };
 
-    if ( options) { $.extend( settings, options ); }
+    $.fn.EggImageDropdown = function (method, options) {
 
-    if(typeof method === 'object'){$.extend( settings, method );}
-
-    settings.dropdownWidth = settings.width - 10;
-
-    return this.each(function() {
-        if ( methods[method] ) {
-            return methods[method].apply( this, Array(settings));
-        } else if ( typeof method === 'object' || ! method ) {
-            return methods.init.apply( this, Array(settings) );
-        } else {
-            $.error( 'Method ' +  method + ' does not exist on jQuery.ImageSelect' );
+        if (method == undefined) {
+            method = 'init';
         }
-    });
 
-  };
-})( jQuery );
+        var settings = {
+            width:200,
+            height:75,
+            dropdownHeight:250,
+            dropdownWidth:200,
+            z:99999,
+            backgroundColor:'#ffffff',
+            border:true,
+            borderColor:'#cccccc',
+            lock:'height'
+        };
+
+        if (options) {
+            $.extend(settings, options);
+        }
+
+        if (typeof method === 'object') {
+            $.extend(settings, method);
+            method = 'init';
+        }
+
+        return this.each(function () {
+            if (methods[method]) {
+                return methods[method].apply(this, Array(settings));
+            } else {
+                $.error('Method ' + method + ' does not exist on EggPlugin');
+            }
+        });
+
+    };
+})(jQuery);
+
+/* NiceForm */
+// resize, validation
+// http://james.padolsey.com/javascript/jquery-plugin-autoresize/
+// http://www.tripwiremagazine.com/2010/01/75-top-jquery-plugins-to-improve-your-html-forms.html
