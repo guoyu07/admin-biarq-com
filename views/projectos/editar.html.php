@@ -438,7 +438,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
         {%
         cond = "";
         if (o.projectos.fotoprincipal == o.projectos.foto[i]){
-        cond = ' selected="selected"';
+        cond = 'selected=selected';
         } %}
         <option
         {%=cond %} value="{%=o.projectos.foto[i]%}">http://admin.biarq.com/img/projectos/pequenas/{%=o.projectos.foto[i]%}</option>
