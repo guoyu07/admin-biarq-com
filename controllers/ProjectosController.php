@@ -300,9 +300,19 @@ class ProjectosController extends \lithium\action\Controller {
 
         foreach($projectos as $projecto){
 
+            $tmpimg=array();
+
             foreach($projecto->foto as $foto){
-                echo $foto;
+
+                $new = str_replace('_thumb', '', $foto);
+
+
+                array_push($tmpimg, $new);
+
+
             }
+            $projecto->foto=$tmpimg;
+            print_r($projecto->foto);
         }
     }
 
