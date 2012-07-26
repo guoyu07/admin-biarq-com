@@ -277,8 +277,14 @@ class ProjectosController extends \lithium\action\Controller {
                 $path) {
 
             if (strpos($path, 'thumb') !== false) {
-                
-                echo     str_replace('_thumb','',$path);
+
+                $new=  str_replace('_thumb','',$path);
+
+                 copy($path, $new) or die("Unable to copy $path to $new.");
+
+
+
+
 
 
 
