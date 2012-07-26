@@ -274,7 +274,7 @@ class ProjectosController extends \lithium\action\Controller {
     public function teste() {
 
         foreach(glob(Libraries::get(true, 'path') . '/webroot/img/original/*.jpg') as $path) {
-            print_r($path);
+            echo($path);
 
         }
     }
