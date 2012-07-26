@@ -312,7 +312,7 @@ class ProjectosController extends \lithium\action\Controller {
 
             }
             $projecto->foto=$tmpimg;
-           // print_r($projecto->foto);
+            print_r($projecto->foto);
         }
     }
 
