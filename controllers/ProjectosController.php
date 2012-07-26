@@ -273,7 +273,8 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function teste() {
 
-        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/original/*.jpg') as $path) {
+        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/*.jpg') as
+                $path) {
 
             if (strpos($path, 'thumb') !== false) {
                 echo $path;
