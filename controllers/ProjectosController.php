@@ -5,6 +5,7 @@ namespace app\controllers;
 use lithium\storage\Session;
 use app\models\Projectos;
 use li3_upload_progress\extensions\Upload_handler;
+use lithium\core\Libraries;
 
 class ProjectosController extends \lithium\action\Controller {
 
@@ -271,7 +272,15 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function teste() {
+
+        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/original/*.jpg') as $path) {
+            print_r($path);
+
+        }
     }
+
+
+
 }
 
 ?>

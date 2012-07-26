@@ -134,8 +134,8 @@ Libraries::add('Ratchet', array(
 Libraries::add('li3_upload_progress', array(
     'config' => array(
         'script_url' => '/',
-        'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
-        'upload_url' => '/img/paginas/',
+        'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/original/',
+        'upload_url' => '/img/original/',
         'param_name' => 'files',
         // Set the following option to 'POST', if your server does not support
         // DELETE requests. This is a parameter sent to the client:
