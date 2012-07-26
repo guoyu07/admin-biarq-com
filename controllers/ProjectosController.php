@@ -275,7 +275,7 @@ class ProjectosController extends \lithium\action\Controller {
 
         foreach(glob(Libraries::get(true, 'path') . '/webroot/img/original/*.jpg') as $path) {
 
-            if (strpos($path, '_thumb') !== false) {
+            if (strpos($path, 'thumb') !== false) {
                 echo $path;
 
 
