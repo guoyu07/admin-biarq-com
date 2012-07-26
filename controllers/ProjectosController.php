@@ -304,7 +304,7 @@ class ProjectosController extends \lithium\action\Controller {
 
             foreach($projecto->foto as $foto){
 
-                $new = str_replace('_thumb', '', $foto);
+                $new = str_replace('#"$42', '', $foto);
 
 
                 array_push($tmpimg, $new);
@@ -312,7 +312,7 @@ class ProjectosController extends \lithium\action\Controller {
 
             }
             $projecto->foto=$tmpimg;
-            print_r($projecto->foto);
+           // print_r($projecto->foto);
         }
     }
 
