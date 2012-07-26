@@ -277,7 +277,7 @@ class ProjectosController extends \lithium\action\Controller {
                 $path) {
 
             if (strpos($path, 'thumb') !== false) {
-                echo $path;
+                echo     str_replace(str_split($path), '','_thumb' );
 
 
 
