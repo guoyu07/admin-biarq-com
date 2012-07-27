@@ -292,6 +292,7 @@ class ProjectosController extends \lithium\action\Controller {
 
                  if (!in_array(basename($path),$tmpimg))  {
                       unlink($path);
+                     echo "deleted $path <br>";
 
                  }
 
