@@ -252,13 +252,15 @@ class ProjectosController extends \lithium\action\Controller {
         $projectos->foto = $imagens;
         $projectos->save();*/
 
-        Upload_handler::applyFilter('handle_form_data', function($self, $params, $chain) {
+
+
+        $upload_handler = new Upload_handler();
+
+        $upload_handler->applyFilter('handle_form_data', function($self, $params, $chain) {
 
             print_r($params);
             return $chain->next($self, $params, $chain);
         });
-
-        $upload_handler = new Upload_handler();
 
         header('Pragma: no-cache');
         header('Cache-Control: no-store, no-cache, must-revalidate');
