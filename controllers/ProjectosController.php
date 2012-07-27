@@ -288,11 +288,10 @@ class ProjectosController extends \lithium\action\Controller {
         foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/*.jpg') as
                 $path) {
 
-            if (strpos($path, 'thumb') !== false) {
+
 
                 echo basename($path);
 
-                 
 
 
 
@@ -300,7 +299,8 @@ class ProjectosController extends \lithium\action\Controller {
 
 
 
-            }
+
+            
 
 
         }
