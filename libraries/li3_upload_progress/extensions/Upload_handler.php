@@ -15,6 +15,7 @@ class Upload_handler extends \lithium\core\Object {
             'script_url' => '/',
             'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
             'upload_url' => '/img/paginas/',
+            'img_name' => uniqid('img') . '.jpg',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
@@ -163,16 +164,11 @@ class Upload_handler extends \lithium\core\Object {
 
     protected function handle_form_data($file, $index, $id) {
 
-        $params = compact('file', 'id','index');
-
-
-
+        $params = compact('file', 'id', 'index');
         return $this->_filter(__METHOD__, $params, function($self, $params) {
 
-            return ;
+            return;
         });
-
-
         // Handle form data, e.g. $_REQUEST['description'][$index]
     }
 
@@ -208,7 +204,7 @@ class Upload_handler extends \lithium\core\Object {
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
                                           $index = null, $projectId) {
         $file = new \stdClass();
-        $file->name = uniqid('img') . '.jpg';
+        $file->name = $this->options['img_name'];
         $file->size = intval($size);
         $file->type = $type;
         if ($this->validate($uploaded_file, $file, $error, $index)) {
@@ -277,7 +273,7 @@ class Upload_handler extends \lithium\core\Object {
         echo json_encode($info);
     }
 
-    public function post($projectId) {
+    public function post($id) {
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete();
         }
@@ -298,7 +294,7 @@ class Upload_handler extends \lithium\core\Object {
                             $_SERVER['HTTP_X_FILE_TYPE'] : $upload['type'][$index],
                     $upload['error'][$index],
                     $index,
-                    $projectId
+                    $id
                 );
             }
         } elseif ($upload || isset($_SERVER['HTTP_X_FILE_NAME'])) {
@@ -316,7 +312,7 @@ class Upload_handler extends \lithium\core\Object {
                         $_SERVER['HTTP_X_FILE_TYPE'] : (isset($upload['type']) ?
                         $upload['type'] : null),
                 isset($upload['error']) ? $upload['error'] : null,
-                $projectId
+                $id
             );
         }
         header('Vary: Accept');
