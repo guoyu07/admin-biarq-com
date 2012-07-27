@@ -291,7 +291,7 @@ class ProjectosController extends \lithium\action\Controller {
 
 
                  if (!in_array(basename($path),$tmpimg))  {
-                     echo basename($path);
+                      unlink($path);
 
                  }
 
