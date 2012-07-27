@@ -286,7 +286,7 @@ class ProjectosController extends \lithium\action\Controller {
             }
         }
 
-        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/*.jpg') as
+        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/pequenas/*.jpg') as
                 $path) {
 
 
