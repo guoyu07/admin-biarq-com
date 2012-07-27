@@ -13,8 +13,8 @@ class Upload_handler extends \lithium\core\Object {
         }
         $this->options = array(
             'script_url' => '/',
-            'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/paginas/',
-            'upload_url' => '/img/paginas/',
+            'upload_dir' => Libraries::get(true, 'path') . '/webroot/img/original/',
+            'upload_url' => '/img/original/',
             'img_name' => uniqid('img') . '.jpg',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
