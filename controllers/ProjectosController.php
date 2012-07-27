@@ -289,18 +289,21 @@ class ProjectosController extends \lithium\action\Controller {
                 $path) {
 
 
+                 if (!in_array(basename($path),$tmpimg))  {
+                     echo basename($path);
 
-                echo basename($path);
-
-
-
-
+                 }
 
 
 
 
 
-            
+
+
+
+
+
+
 
 
         }
