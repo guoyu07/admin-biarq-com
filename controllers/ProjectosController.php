@@ -273,47 +273,42 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function teste() {
 
-        /*foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/galeria/*.jpg') as
+        $projectos = Projectos::find('all');
+
+        foreach ($projectos as $projecto) {
+
+            $tmpimg = array();
+
+            foreach ($projecto->foto as $foto) {
+
+                array_push($tmpimg, $foto);
+            }
+        }
+
+        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/*.jpg') as
                 $path) {
 
             if (strpos($path, 'thumb') !== false) {
 
-                $new=  str_replace('_thumb','',$path);
+                echo basename($path);
 
-                 copy($path, $new) or die("Unable to copy $path to $new.");
-
-
+                 
 
 
 
 
 
-            }
-
-
-        }*/
-
-
-
-
-        $projectos=Projectos::find('all');
-
-        foreach($projectos as $projecto){
-
-            $tmpimg=array();
-
-            foreach($projecto->foto as $foto){
-
-                $new = str_replace('_thumb', '', $foto);
-
-
-                array_push($tmpimg, $new);
 
 
             }
-            $projecto->foto=$tmpimg;
-            $projecto->save();
+
+
         }
+
+
+
+
+
     }
 
 
