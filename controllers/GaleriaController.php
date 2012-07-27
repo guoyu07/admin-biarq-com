@@ -58,10 +58,9 @@ class GaleriaController extends \lithium\action\Controller {
 
             $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
-            $srcfoto = is_string(strstr($foto, '_thumb.jpg', true)) ?
-                    strstr($foto, '_thumb.jpg', true) . '.jpg' : $foto;
 
-            $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'. $srcfoto) ?
+
+            $srcfotodir = file_exists(LITHIUM_APP_PATH . '/webroot/img/original/'. $foto) ?
                     LITHIUM_APP_PATH . '/webroot/img/original/':
                     LITHIUM_APP_PATH . '/webroot/img/projectos/grandes/';
 
@@ -70,7 +69,7 @@ class GaleriaController extends \lithium\action\Controller {
 
            
 
-            $imagine->open($srcfotodir . $srcfoto)
+            $imagine->open($srcfotodir . $foto)
                     ->thumbnail($size, $mode)
                     ->save($destfotodir. $foto);
 
