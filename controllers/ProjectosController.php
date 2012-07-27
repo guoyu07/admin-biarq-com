@@ -154,10 +154,11 @@ class ProjectosController extends \lithium\action\Controller {
 
         // $imagens = $projecto->foto->to('array');
         if (isset($projecto->foto)) {
-            $imagens = $projecto->foto->to('array');
-            foreach ($imagens as $imagem) {
+
+            foreach ($projecto->foto->to('array') as $imagem) {
                 unlink(LITHIUM_APP_PATH . '/webroot/img/projectos/grandes/' . $imagem);
                 unlink(LITHIUM_APP_PATH . '/webroot/img/projectos/pequenas/' . $imagem);
+                unlink(LITHIUM_APP_PATH . '/webroot/img/original/' . $imagem);
             }
         }
 
@@ -241,6 +242,21 @@ class ProjectosController extends \lithium\action\Controller {
     }
 
     public function upload_handler() {
+
+        /*$projectos = Projectos::find('first', array(
+            'conditions' => array('_id' => $projectId)
+        ));
+
+        $imagens = $projectos->foto->to('array');
+        array_push($imagens, $file->name);
+        $projectos->foto = $imagens;
+        $projectos->save();*/
+
+        Upload_handler::applyFilter('handle_form_data', function($self, $params, $chain) {
+
+            print_r($params);
+            return $chain->next($self, $params, $chain);
+        });
 
         $upload_handler = new Upload_handler();
 

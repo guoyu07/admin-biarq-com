@@ -161,16 +161,18 @@ class Upload_handler extends \lithium\core\Object {
         return true;
     }
 
-    protected function handle_form_data($file, $index, $projectId) {
+    protected function handle_form_data($file, $index, $id) {
 
-        $projectos = Projectos::find('first', array(
-            'conditions' => array('_id' => $projectId)
-        ));
+        $params = compact('file', 'id','index');
 
-        $imagens = $projectos->foto->to('array');
-        array_push($imagens, $file->name);
-        $projectos->foto = $imagens;
-        $projectos->save();
+
+
+        return $this->_filter(__METHOD__, $params, function($self, $params) {
+
+            return ;
+        });
+
+
         // Handle form data, e.g. $_REQUEST['description'][$index]
     }
 
