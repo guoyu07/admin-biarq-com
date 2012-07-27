@@ -274,10 +274,11 @@ class ProjectosController extends \lithium\action\Controller {
     public function teste() {
 
         $projectos = Projectos::find('all');
+        $tmpimg = array();
 
         foreach ($projectos as $projecto) {
 
-            $tmpimg = array();
+
 
             foreach ($projecto->foto as $foto) {
 
