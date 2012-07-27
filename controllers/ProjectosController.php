@@ -243,22 +243,22 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function upload_handler() {
 
-        /*$projectos = Projectos::find('first', array(
-            'conditions' => array('_id' => $projectId)
-        ));
-
-        $imagens = $projectos->foto->to('array');
-        array_push($imagens, $file->name);
-        $projectos->foto = $imagens;
-        $projectos->save();*/
+        /**/
 
 
 
         $upload_handler = new Upload_handler();
 
-        $upload_handler->applyFilter('handle_form_data', function($self, $params, $chain) {
+        $upload_handler->applyFilter('handle_form_data', function($self, $params, $chain)  {
 
-            print_r($params);
+            $projectos = Projectos::find('first', array(
+                'conditions' => array('_id' => $params['id'])
+            ));
+
+            $imagens = $projectos->foto->to('array');
+            array_push($imagens, $params['file']->name);
+            $projectos->foto = $imagens;
+            $projectos->save();
             return $chain->next($self, $params, $chain);
         });
 
