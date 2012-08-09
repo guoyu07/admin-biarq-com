@@ -48,7 +48,7 @@ Connections::add('default', array(
     'password' => 'Kirk1zodiak'
 ));
 
-Connections::add('new', array(
+Connections::add('news', array(
     'type' => 'MongoDb',
     'host' => 'ds029307.mongolab.com:29307',
     'database' => 'biarq',
