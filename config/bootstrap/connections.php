@@ -54,7 +54,7 @@ Connections::add('news', array(
     'database' => 'biarq',
     'login' => 'root',
     'password' => 'Kirk1zodiak',
-    'persistent' => true
+    'timeout' => 300
 ));
 
 
