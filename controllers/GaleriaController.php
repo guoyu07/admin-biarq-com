@@ -70,7 +70,7 @@ class GaleriaController extends \lithium\action\Controller {
             $imagine->open($srcfotodir . $foto)
                     ->resize($size, $mode)
                     ->save($destfotodir. $foto);
-
+ 
             $galeria = Galeria::find('first');
 
             $fotos = $galeria->foto->to('array');
