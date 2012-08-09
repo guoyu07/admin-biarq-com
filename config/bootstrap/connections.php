@@ -53,7 +53,8 @@ Connections::add('news', array(
     'host' => 'ds029307.mongolab.com:29307',
     'database' => 'biarq',
     'login' => 'root',
-    'password' => 'Kirk1zodiak'
+    'password' => 'Kirk1zodiak',
+    'persistent' => true
 ));
 
 
