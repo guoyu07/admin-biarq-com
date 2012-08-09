@@ -48,6 +48,15 @@ Connections::add('default', array(
     'password' => 'Kirk1zodiak'
 ));
 
+Connections::add('new', array(
+    'type' => 'MongoDb',
+    'host' => 'ds029307.mongolab.com:29307',
+    'database' => 'biarq',
+    'login' => 'root',
+    'password' => 'Kirk1zodiak'
+));
+
+
 
 /**
  * Uncomment this configuration to use CouchDB as your default database.

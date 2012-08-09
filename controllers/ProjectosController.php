@@ -6,7 +6,7 @@ use lithium\storage\Session;
 use app\models\Projectos;
 use li3_upload_progress\extensions\Upload_handler;
 use lithium\core\Libraries;
-
+use app\models\Relation;
 class ProjectosController extends \lithium\action\Controller {
 
     public function _init() {
@@ -291,46 +291,11 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function teste() {
 
-        $projectos = Projectos::find('all');
-        $tmpimg = array();
+        $projectos = Relation::find('all', array(
+            'order' => array('ordem' => 'ASC')
+        ));
 
-        foreach ($projectos as $projecto) {
-
-
-
-            foreach ($projecto->foto as $foto) {
-
-                array_push($tmpimg, $foto);
-            }
-        }
-
-        foreach(glob(Libraries::get(true, 'path') . '/webroot/img/original/*.jpg*') as
-                $path) {
-
-
-                 if (!in_array(basename($path),$tmpimg))  {
-                      unlink($path);
-                     echo "deleted $path <br>";
-
-                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-
-
-
+        print_r($projectos);
 
     }
 
