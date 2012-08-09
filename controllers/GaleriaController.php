@@ -60,7 +60,7 @@ class GaleriaController extends \lithium\action\Controller {
 
 
 
-            $srcfotodir = LITHIUM_APP_PATH . '/webroot/img/original/'. $foto;
+            $srcfotodir = LITHIUM_APP_PATH . '/webroot/img/original/';
 
             $destfotodir = LITHIUM_APP_PATH . '/webroot/img/projectos/galeria/';
 
