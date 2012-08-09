@@ -102,7 +102,7 @@ class Upload_handler extends \lithium\core\Object {
         $file_path = $this->options['upload_dir'] . $file_name;
         $new_file_path = $options['upload_dir'] . $file_name;
         $success = $imagine->open($file_path)
-                ->thumbnail($size, $mode)
+                ->resize($size, $mode)
                 ->save($new_file_path);
         return $success;
     }

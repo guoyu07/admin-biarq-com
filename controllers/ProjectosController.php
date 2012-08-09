@@ -81,7 +81,7 @@ class ProjectosController extends \lithium\action\Controller {
             if ($projectos->fotoprincipal != $this->request->data['fotoprincipal']) {
 
                 $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
-                        ->thumbnail($sizeTop, $mode)
+                        ->resize($sizeTop, $mode)
                         ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
                 @unlink($fotodir . 'principal/' . $projectos->fotoprincipal);
 
