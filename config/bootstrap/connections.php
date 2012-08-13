@@ -52,7 +52,7 @@ Connections::add('default', array(
 
 Connections::add('news', array(
     'type' => 'MongoDb',
-    'host' => 'ds035997.mongolab.com:35997',
+    'host' => 'ds037007.mongolab.com:37007',
     'database' => 'biarq-test',
     'login' => 'root',
     'password' => 'Kirk1zodiak',
