@@ -46,6 +46,7 @@ Connections::add('default', array(
     'database' => 'biarq',
     'login' => 'biarq',
     'password' => 'Kirk1zodiak',
+    'persistent' => true,
     'timeout' => 300
 ));
 
