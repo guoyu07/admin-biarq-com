@@ -45,7 +45,8 @@ Connections::add('default', array(
     'host' => 'pearl.mongohq.com:27086',
     'database' => 'biarq',
     'login' => 'biarq',
-    'password' => 'Kirk1zodiak'
+    'password' => 'Kirk1zodiak',
+    'timeout' => 300
 ));
 
 Connections::add('news', array(
