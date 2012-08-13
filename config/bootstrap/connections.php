@@ -54,7 +54,7 @@ Connections::add('news', array(
     'type' => 'MongoDb',
     'host' => 'ds037007.mongolab.com:37007',
     'database' => 'biarq-test',
-    'login' => 'root',
+    'login' => 'biarq',
     'password' => 'Kirk1zodiak',
     'persistent' => true,
     'timeout' => 300
