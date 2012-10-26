@@ -309,10 +309,15 @@ class ProjectosController extends \lithium\action\Controller
 
         $fotos =[];
         foreach ($projectos as $projecto) {
-            foreach($projecto as $foto){
-                print_r($foto);
+            foreach($projecto as $fotoarray){
+               foreach($fotoarray as $foto){
+                   $fotos+=$foto;
+
+               }
             }
         }
+
+        print_r($fotos);
 
     }
 
