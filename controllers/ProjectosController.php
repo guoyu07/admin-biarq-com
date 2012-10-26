@@ -7,9 +7,11 @@ use app\models\Projectos;
 use li3_upload_progress\extensions\Upload_handler;
 use lithium\core\Libraries;
 
-class ProjectosController extends \lithium\action\Controller {
+class ProjectosController extends \lithium\action\Controller
+{
 
-    public function _init() {
+    public function _init()
+    {
         $this->_render['negotiate'] = true;
 
         parent::_init();
@@ -19,7 +21,8 @@ class ProjectosController extends \lithium\action\Controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
 
         $projectos = Projectos::find('all', array(
             'order' => array('ordem' => 'ASC')
@@ -28,8 +31,8 @@ class ProjectosController extends \lithium\action\Controller {
         return compact('projectos');
     }
 
-    public function adicionar() {
-
+    public function adicionar()
+    {
 
 
         if ($this->request->data) {
@@ -53,15 +56,16 @@ class ProjectosController extends \lithium\action\Controller {
                     'msg' => 'Falha ao inserir ' . $projectos->titulo
                 ));
             }
-             array('controller' => 'projectos', 'action' => 'editar','args'=> array());
-            $this->redirect(array('Projectos::editar', 'id'=> $projectos->_id));
+            array('controller' => 'projectos', 'action' => 'editar', 'args' => array());
+            $this->redirect(array('Projectos::editar', 'id' => $projectos->_id));
 
         }
 
         return;
     }
 
-    public function editar() {
+    public function editar()
+    {
         $imagine = new \Imagine\Gmagick\Imagine();
         $sizeTop = new \Imagine\Image\Box(219, 146);
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
@@ -81,8 +85,8 @@ class ProjectosController extends \lithium\action\Controller {
             if ($projectos->fotoprincipal != $this->request->data['fotoprincipal']) {
 
                 $imagine->open($fotodir . 'grandes/' . $this->request->data['fotoprincipal'])
-                        ->resize($sizeTop, $mode)
-                        ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
+                    ->resize($sizeTop, $mode)
+                    ->save($fotodir . 'principal/' . $this->request->data['fotoprincipal']);
                 @unlink($fotodir . 'principal/' . $projectos->fotoprincipal);
 
                 $projectos->fotoprincipal = $this->request->data['fotoprincipal'];
@@ -108,7 +112,8 @@ class ProjectosController extends \lithium\action\Controller {
         return compact('projectos');
     }
 
-    public function apagarfoto($idProjecto, $idFoto) {
+    public function apagarfoto($idProjecto, $idFoto)
+    {
         $idFoto = base64_decode($idFoto);
 
         $projecto = Projectos::find('first', array(
@@ -144,7 +149,8 @@ class ProjectosController extends \lithium\action\Controller {
         $this->redirect(array('Projectos::editar', 'id' => $idProjecto));
     }
 
-    public function apagarProjecto() {
+    public function apagarProjecto()
+    {
 
         $projecto = Projectos::find('first', array(
             'conditions' => array(
@@ -178,7 +184,8 @@ class ProjectosController extends \lithium\action\Controller {
         $this->redirect('Projectos::index');
     }
 
-    public function ordenar() {
+    public function ordenar()
+    {
 
         if (isset($this->request->data['menu'])) {
             $menu = $this->request->data['menu'];
@@ -195,7 +202,8 @@ class ProjectosController extends \lithium\action\Controller {
         return compact('projectos');
     }
 
-    public function featured($id) {
+    public function featured($id)
+    {
 
         $projecto = Projectos::find('first', array(
             'conditions' => array('_id' => $id)
@@ -238,18 +246,19 @@ class ProjectosController extends \lithium\action\Controller {
         $this->redirect('Projectos::index');
     }
 
-    public function search() {
+    public function search()
+    {
     }
 
-    public function upload_handler() {
+    public function upload_handler()
+    {
 
         /**/
 
 
-
         $upload_handler = new Upload_handler();
 
-        $upload_handler->applyFilter('handle_form_data', function($self, $params, $chain)  {
+        $upload_handler->applyFilter('handle_form_data', function ($self, $params, $chain) {
 
             $projectos = Projectos::find('first', array(
                 'conditions' => array('_id' => $params['id'])
@@ -289,19 +298,21 @@ class ProjectosController extends \lithium\action\Controller {
         $this->_render = false;
     }
 
-    public function teste() {
+    public function teste()
+    {
 
         $projectos = Projectos::find('all', array(
-            'order' => array('ordem' => 'ASC','fields'=>'foto')
-        ));
+
+                'order' => array('ordem' => 'ASC'),
+                'fields' => 'foto')
+        );
 
 
-        foreach ($projectos as $projecto){
+        foreach ($projectos as $projecto) {
             print_r($projecto);
         }
 
     }
-
 
 
 }
