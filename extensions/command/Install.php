@@ -53,7 +53,7 @@ class Install extends \lithium\console\Command {
         $cont = 0;
 
 
-        foreach (glob(LITHIUM_APP_PATH . "/webroot/img/projectos/*.jpg") as $srcimg) {
+        foreach (glob(LITHIUM_APP_PATH . "/webroot/img/original/*.jpg") as $srcimg) {
 
             $imgname = substr($srcimg, -20);
             if (in_array($imgname, $fotos)) {
