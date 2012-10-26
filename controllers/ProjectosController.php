@@ -319,8 +319,9 @@ class ProjectosController extends \lithium\action\Controller
 $cont=0;
         foreach (glob(LITHIUM_APP_PATH . "/webroot/img/projectos/*.jpg") as $srcimg) {
 
-        print_r($srcimg);
-        ++$cont;
+         $imgname= $srcimg[strlen($srcimg) - 16];
+            echo $imgname;
+
         }
 echo $cont;
     }
