@@ -311,7 +311,7 @@ class ProjectosController extends \lithium\action\Controller
         foreach ($projectos as $projecto) {
             foreach($projecto as $fotoarray){
                foreach($fotoarray as $foto){
-                   $fotos+=$foto;
+                   array_push($fotos,$foto);
 
                }
             }
