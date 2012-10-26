@@ -307,9 +307,11 @@ class ProjectosController extends \lithium\action\Controller
                 'fields' => 'foto')
         );
 
-
+        $fotos =[];
         foreach ($projectos as $projecto) {
-            print_r($projecto);
+            foreach($projecto as $foto){
+                print_r($foto);
+            }
         }
 
     }
