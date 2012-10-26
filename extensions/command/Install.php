@@ -62,7 +62,7 @@ class Install extends \lithium\console\Command {
                     ->resize($size, $mode)
                     ->save($new_file_path);
                 if ($success)
-                    echo "done $imgname /n";
+                    echo "done $imgname \n";
 
             }
 
