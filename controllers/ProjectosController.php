@@ -335,7 +335,8 @@ $cont=0;
               $success = $imagine->open($srcimg)
                   ->resize($size, $mode)
                   ->save($new_file_path);
-              echo $success;
+             if($success)
+                 echo "done $imgname";
 
           }
 
