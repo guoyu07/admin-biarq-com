@@ -292,7 +292,7 @@ class ProjectosController extends \lithium\action\Controller {
     public function teste() {
 
         $projectos = Projectos::find('all', array(
-            'order' => array('ordem' => 'ASC')
+            'order' => array('ordem' => 'ASC','fields'=>'foto')
         ));
 
 
