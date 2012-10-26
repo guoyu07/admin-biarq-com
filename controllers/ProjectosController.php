@@ -301,6 +301,13 @@ class ProjectosController extends \lithium\action\Controller
     public function teste()
     {
 
+
+        $imagine = new \Imagine\Gmagick\Imagine();
+        $size = new \Imagine\Image\Box(635, 381);
+        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+
+
         $projectos = Projectos::find('all', array(
 
                 'order' => array('ordem' => 'ASC'),
@@ -324,7 +331,11 @@ $cont=0;
 
          $imgname= substr($srcimg ,-20);
           if (in_array($imgname,$fotos)){
-              echo "fail $imgname \n";
+              $new_file_path = Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/' . $imgname;
+              $success = $imagine->open($srcimg)
+                  ->resize($size, $mode)
+                  ->save($new_file_path);
+              echo $success;
 
           }
 
