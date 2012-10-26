@@ -38,7 +38,7 @@ class Install extends \lithium\console\Command {
         $projectos = Projectos::find('all', array(
 
                 'order' => array('ordem' => 'ASC'),
-                'fields' => 'foto', "limit" => 3, "page" => 4)
+                'fields' => 'foto')
         );
 
         $fotos = [];
