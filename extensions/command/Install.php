@@ -53,16 +53,12 @@ class Install extends \lithium\console\Command {
         $cont = 0;
 
 
-        foreach (glob(LITHIUM_APP_PATH . "/webroot/img/original/*.jpg") as $srcimg) {
+        foreach (glob(LITHIUM_APP_PATH . "/webroot/img/projectos/grandes/*.jpg") as $srcimg) {
 
             $imgname = substr($srcimg, -20);
-            if (in_array($imgname, $fotos)) {
-                $new_file_path = Libraries::get(true, 'path') . '/webroot/img/projectos/grandes/' . $imgname;
-                $success = $imagine->open($srcimg)
-                    ->resize($size, $mode)
-                    ->save($new_file_path);
-                if ($success)
-                    echo "done $imgname \n";
+            if (!in_array($imgname, $fotos)) {
+                echo "fail $imgname \n";
+
 
             }
 
