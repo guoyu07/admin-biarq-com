@@ -311,7 +311,7 @@ class ProjectosController extends \lithium\action\Controller
         $projectos = Projectos::find('all', array(
 
                 'order' => array('ordem' => 'ASC'),
-                'fields' => 'foto',"limit"=>1,"page"=>0)
+                'fields' => 'foto',"limit"=>1,"page"=>1)
         );
 
         $fotos =[];
