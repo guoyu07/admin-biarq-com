@@ -9,7 +9,7 @@
 namespace app\extensions\command;
 
 use app\models\Projectos;
-
+use lithium\core\Libraries;
 class Install extends \lithium\console\Command {
 
 	
