@@ -319,7 +319,7 @@ class ProjectosController extends \lithium\action\Controller
 $cont=0;
         foreach (glob(LITHIUM_APP_PATH . "/webroot/img/projectos/*.jpg") as $srcimg) {
 
-         $imgname= $srcimg[strlen($srcimg) - 16];
+         $imgname= substr($srcimg ,-16);
             echo $imgname;
 
         }
