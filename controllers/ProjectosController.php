@@ -311,7 +311,7 @@ class ProjectosController extends \lithium\action\Controller
         $projectos = Projectos::find('all', array(
 
                 'order' => array('ordem' => 'ASC'),
-                'fields' => 'foto',"limit"=>4)
+                'fields' => 'foto',"limit"=>4,"page"=>1)
         );
 
         $fotos =[];
@@ -336,7 +336,7 @@ $cont=0;
                   ->resize($size, $mode)
                   ->save($new_file_path);
              if($success)
-                 echo "done $imgname";
+                 echo "done $imgname </br>";
 
           }
 
