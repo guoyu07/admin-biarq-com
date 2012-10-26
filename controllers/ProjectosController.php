@@ -296,7 +296,9 @@ class ProjectosController extends \lithium\action\Controller {
         ));
 
 
-        print_r($projectos);
+        foreach ($projectos as $projecto){
+            print_r($projecto);
+        }
 
     }
 
