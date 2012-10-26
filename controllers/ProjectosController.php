@@ -6,7 +6,7 @@ use lithium\storage\Session;
 use app\models\Projectos;
 use li3_upload_progress\extensions\Upload_handler;
 use lithium\core\Libraries;
-use app\models\Relation;
+
 class ProjectosController extends \lithium\action\Controller {
 
     public function _init() {
@@ -291,9 +291,8 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function teste() {
 
-        $projectos = Relation::find('all', array(
-            'order' => array('ordem' => 'ASC')
-        ));
+        $projectos = Projectos::find('all',array('fields'=>'foto'));
+        
 
         print_r($projectos);
 
