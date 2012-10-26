@@ -317,10 +317,16 @@ class ProjectosController extends \lithium\action\Controller
             }
         }
 $cont=0;
+
+
+
         foreach (glob(LITHIUM_APP_PATH . "/webroot/img/projectos/*.jpg") as $srcimg) {
 
          $imgname= substr($srcimg ,-20);
-            echo $imgname;
+          if (!in_array($imgname,$fotos)){
+              echo "fail $imgname";
+
+          }
 
         }
 echo $cont;
