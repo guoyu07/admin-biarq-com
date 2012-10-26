@@ -291,8 +291,8 @@ class ProjectosController extends \lithium\action\Controller {
 
     public function teste() {
 
-        $projectos = Projectos::find('all',array('fields'=>'foto'));
-        
+        $projectos = Projectos::find('all');
+
 
         print_r($projectos);
 
