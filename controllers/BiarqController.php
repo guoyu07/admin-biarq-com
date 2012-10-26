@@ -63,7 +63,7 @@ class BiarqController extends \lithium\action\Controller {
     }
 
     public function apagarsms($id) {
-        Mensagens::remove(array('_id' => $id));
+        Mensagens::remove(array('_id' => $this->request->id));
         $this->redirect('Biarq::inbox');
     }
 
