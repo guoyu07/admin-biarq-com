@@ -39,7 +39,7 @@
 		class="current"';
             else echo
             'class="select"'; ?> >
-                <li><a href="http://admin.biarq.com/Construcao"><b>Projectos</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                <li><a href="http://admin.biarq.com/Construcao"><b>Em construção</b><!--[if IE 7]><!--></a><!--<![endif]-->
                     <!--[if lte IE 6]>
                     <table>
                         <tr>
