@@ -6,7 +6,7 @@
             update : function () {
                 serial = $('#sortme').sortable('serialize');
                 $.ajax({
-                    url: "http://admin.biarq.com/projectos/ordenar",
+                    url: "http://admin.biarq.com/construcao/ordenar",
                     type: "post",
                     data: serial,
                     error: function(){

@@ -51,9 +51,9 @@
 					<td>' . $projecto->texto . '</td>
 					<td><a href=""><img src="http://admin.biarq.com/img/projectos/pequenas/' . $projecto->fotoprincipal . '"/></td>
 					<td' . $condicao . '>
-					<a href="http://admin.biarq.com/projectos/editar/' . $projecto->_id . '" title="editar ' . $projecto->titulo . '" class="icon-1 info-tooltip"></a>
-					<a  id="delete" href="http://admin.biarq.com/projectos/apagarprojecto/' . $projecto->_id . '" title="apagar ' . $projecto->titulo . '" class="icon-2 info-tooltip"></a>
-					<a href="http://admin.biarq.com/projectos/featured/' . $projecto->_id . '" title="' . $acto . ' pagina principal" class="icon-3 info-tooltip"></a>
+					<a href="http://admin.biarq.com/construcao/editar/' . $projecto->_id . '" title="editar ' . $projecto->titulo . '" class="icon-1 info-tooltip"></a>
+					<a  id="delete" href="http://admin.biarq.com/construcao/apagarprojecto/' . $projecto->_id . '" title="apagar ' . $projecto->titulo . '" class="icon-2 info-tooltip"></a>
+					<a href="http://admin.biarq.com/construcao/featured/' . $projecto->_id . '" title="' . $acto . ' pagina principal" class="icon-3 info-tooltip"></a>
 					
 					</td>
 				</tr>';

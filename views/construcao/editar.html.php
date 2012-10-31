@@ -171,7 +171,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
     <!-- The file upload form used as target for the file upload widget -->
-    <form id="fileupload" action="/projectos/upload_handler/<?=$projectos->_id?>"
+    <form id="fileupload" action="/construcao/upload_handler/<?=$projectos->_id?>"
             method="POST"
             enctype="multipart/form-data">
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -387,7 +387,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
     $('#fileupload')
 
             .bind('fileuploadcompleted', function (e, data) {
-                $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
+                $.getJSON('http://admin.biarq.com/construcao/editar/<?=$projectos->_id?>.json',
                         function (data) {
                             //console.log(data);
                             document.getElementById("result").innerHTML = tmpl("displayfotos", data);
@@ -419,7 +419,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
             <a href="http://admin.biarq.com/img/projectos/grandes/{%=o.projectos.foto[i]%}"
                     title="Ver maior"
                     class="ui-icon ui-icon-zoomin">Ver Maior</a>
-            <a href="http://admin.biarq.com/projectos/apagarfoto/{%=o
+            <a href="http://admin.biarq.com/construcao/apagarfoto/{%=o
             .projectos._id%}/{%=(base64.encode(o.projectos.foto[i], true)) %}"
                     title="Delete this image" class="ui-icon ui-icon-trash">Apagar imagem</a>
         </li>
@@ -449,7 +449,7 @@ $this->html->style(array('imageselect', 'ui-darkness/jquery-ui-1.8.16.custom'))
 
 
 <script type="text/javascript">
-    $.getJSON('http://admin.biarq.com/projectos/editar/<?=$projectos->_id?>.json',
+    $.getJSON('http://admin.biarq.com/construcao/editar/<?=$projectos->_id?>.json',
             function (data) {
 
                 document.getElementById("result").innerHTML = tmpl("displayfotos", data);

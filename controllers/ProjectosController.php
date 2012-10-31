@@ -37,7 +37,7 @@ class ProjectosController extends \lithium\action\Controller
 
         if ($this->request->data) {
 
-            $projectos = Projectos::create();
+            $projectos = projectos::create();
             $projectos->titulo = $this->request->data['titulo'];
             $projectos->texto = $this->request->data['texto'];
 
