@@ -51,7 +51,7 @@
                             <li <?php if ((ucwords($this->_request->controller) == ucwords('construcao')) &&
                                 ($this->_request->action == 'index')
                             ) echo ' class="sub_show"' ?>><a
-                                    href="http://admin.biarq.com/Projectos">Listar Projectos</a></li>
+                                    href="http://admin.biarq.com/construcao">Listar Projectos em construção</a></li>
                             <li <?php if ((ucwords($this->_request->controller) == ucwords('construcao')) &&
                                 ($this->_request->action == 'adicionar')
                             ) echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/construcao/adicionar">Adicionar
