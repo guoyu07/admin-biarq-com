@@ -202,11 +202,11 @@ class ConstrucaoController extends \lithium\action\Controller
         return compact('projectos');
     }
 
-    public function featured($id)
+    public function featured()
     {
 
         $projecto = Construcao::find('first', array(
-            'conditions' => array('_id' => $id)
+            'conditions' => array('_id' => $this->request->id)
         ));
         $featured = Construcao::count(array('featured' => true));
         if ($featured < 4) {
