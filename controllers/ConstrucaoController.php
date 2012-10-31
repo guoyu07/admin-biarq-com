@@ -57,7 +57,7 @@ class ConstrucaoController extends \lithium\action\Controller
                 ));
             }
             array('controller' => 'projectos', 'action' => 'editar', 'args' => array());
-            $this->redirect(array('Projectos::editar', 'id' => $projectos->_id));
+            $this->redirect(array('construcao::editar', 'id' => $projectos->_id));
 
         }
 
@@ -105,7 +105,7 @@ class ConstrucaoController extends \lithium\action\Controller
                     'msg' => 'Falha ao editar ' . $projectos->titulo
                 ));
             }
-            $this->redirect('Projectos::index');
+            $this->redirect('construcao::index');
         }
 
         //return $this->render(array('layout' => false, 'json' => $projectos));
@@ -146,7 +146,7 @@ class ConstrucaoController extends \lithium\action\Controller
             }
         }
 
-        $this->redirect(array('Projectos::editar', 'id' => $idProjecto));
+        $this->redirect(array('construcao::editar', 'id' => $idProjecto));
     }
 
     public function apagarProjecto()
@@ -195,7 +195,7 @@ class ConstrucaoController extends \lithium\action\Controller
             }
         }
 
-        $projectos = Projectos::find('all', array(
+        $projectos = construcao::find('all', array(
             'order' => array('ordem' => 'ASC')
         ));
 
