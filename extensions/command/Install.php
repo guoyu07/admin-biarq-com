@@ -17,7 +17,7 @@ class Install extends \lithium\console\Command {
 	public $webroot = null;
 
 	protected function _init() {
-		parent::_init();
+
 		$this->webroot = $this->webroot ?: LITHIUM_APP_PATH . '/webroot';
 	}
 

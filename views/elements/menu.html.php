@@ -33,6 +33,42 @@
 		</li>
 		</ul>
 		<div class="nav-divider">&nbsp;</div>
+
+
+            <ul <?php if (ucwords($this->_request->controller) == ucwords('construcao')) echo '
+		class="current"';
+            else echo
+            'class="select"'; ?> >
+                <li><a href="http://admin.biarq.com/Construcao"><b>Projectos</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]>
+                    <table>
+                        <tr>
+                            <td><![endif]-->
+                    <div class="select_sub <?php if (ucwords($this->_request->controller) == ucwords
+                    ('construcao')
+                    ) echo ' show' ?>">
+                        <ul class="sub">
+                            <li <?php if ((ucwords($this->_request->controller) == ucwords('construcao')) &&
+                                ($this->_request->action == 'index')
+                            ) echo ' class="sub_show"' ?>><a
+                                    href="http://admin.biarq.com/Projectos">Listar Projectos</a></li>
+                            <li <?php if ((ucwords($this->_request->controller) == ucwords('construcao')) &&
+                                ($this->_request->action == 'adicionar')
+                            ) echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/construcao/adicionar">Adicionar
+                                Projecto em construcao</a></li>
+                            <li <?php if ((ucwords($this->_request->controller) == ucwords('construcao')) &&
+                                ($this->_request->action == 'ordenar')
+                            ) echo ' class="sub_show"' ?>><a href="http://admin.biarq.com/construcao/ordenar">Ordenar
+                                Projectos em construcao</a></li>
+
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+            </ul>
+            <div class="nav-divider">&nbsp;</div>
+
+
 		<ul  <?php if (ucwords($this->_request->controller) == ucwords('paginas')) echo '
 		class="current"';else echo 'class="select"'; ?> ><li><a href="http://admin.biarq.com/Paginas"><b>Paginas</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
